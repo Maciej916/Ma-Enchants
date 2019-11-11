@@ -40,7 +40,6 @@ public class StoneMending extends Enchantment {
 
         ItemStack stack = player.getHeldItem(Hand.MAIN_HAND);
         int lvl = EnchantmentHelper.getEnchantmentLevel(STONE_MENDING, stack);
-
         switch (lvl) {
             case 1: if (Math.random()> 0.30) return;
             case 2: if (Math.random()> 0.60) return;

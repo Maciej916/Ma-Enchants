@@ -1,32 +1,21 @@
 package com.maciej916.maenchants;
 
-import com.maciej916.maenchants.enchantment.Lumberjack;
-import com.maciej916.maenchants.enchantment.Momentum;
-import com.maciej916.maenchants.enchantment.ReinforcedTip;
-import com.maciej916.maenchants.enchantment.StoneMending;
+import com.maciej916.maenchants.enchantment.*;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentType;
-import net.minecraft.item.Item;
-import net.minecraft.item.PickaxeItem;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.ObjectHolder;
 
-import javax.annotation.Nonnull;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.function.Predicate;
 
 @Mod(MaEnchants.MODID)
-public class MaEnchants
-{
+public class MaEnchants {
     public static final String MODID = "ma-enchants";
 
     public MaEnchants() {
@@ -49,6 +38,13 @@ public class MaEnchants
         enchants.add(new Lumberjack());
         enchants.add(new Momentum());
 
+        // Bows
+        enchants.add(new TrueShot());
+        enchants.add(new QuickDraw());
+        enchants.add(new Floating());
+        enchants.add(new Paralysis());
+
+
         IForgeRegistry<Enchantment> r = event.getRegistry();
         for (Enchantment enchant : enchants) {
             r.register(enchant);
@@ -57,9 +53,17 @@ public class MaEnchants
 
     @ObjectHolder(MODID)
     public static class ObjectHolders {
+        // Tools
         public static final Enchantment REINFORCED_TIP = null;
         public static final Enchantment STONE_MENDING = null;
         public static final Enchantment LUMBERJACK = null;
         public static final Enchantment MOMENTUM = null;
+
+        // Bows
+        public static final Enchantment TRUE_SHOT = null;
+        public static final Enchantment QUICK_DRAW = null;
+        public static final Enchantment FLOATING = null;
+        public static final Enchantment PARALYSIS  = null;
+
     }
 }
