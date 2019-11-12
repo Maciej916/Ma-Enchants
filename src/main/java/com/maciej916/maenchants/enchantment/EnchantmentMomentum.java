@@ -1,7 +1,6 @@
 package com.maciej916.maenchants.enchantment;
 
 import com.maciej916.maenchants.MaEnchants;
-
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentType;
@@ -15,15 +14,15 @@ import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-import static com.maciej916.maenchants.MaEnchants.ObjectHolders.MOMENTUM;
+import static com.maciej916.maenchants.utils.Enchants.MOMENTUM;
 
 @Mod.EventBusSubscriber(modid = MaEnchants.MODID)
-public class Momentum extends Enchantment {
-    public Momentum() {
+public class EnchantmentMomentum extends Enchantment {
+    public EnchantmentMomentum(String name) {
         super(Rarity.RARE, EnchantmentType.DIGGER, new EquipmentSlotType[]{
                 EquipmentSlotType.MAINHAND
         });
-        this.setRegistryName("momentum");
+        this.setRegistryName(name);
     }
 
     @Override

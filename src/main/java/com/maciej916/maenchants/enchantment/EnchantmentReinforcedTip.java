@@ -1,7 +1,7 @@
 package com.maciej916.maenchants.enchantment;
 
 import com.maciej916.maenchants.MaEnchants;
-import com.maciej916.maenchants.utils.EnchantmentType;
+import com.maciej916.maenchants.utils.CustomEnchantmentType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.enchantment.Enchantment;
@@ -14,15 +14,15 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-import static com.maciej916.maenchants.MaEnchants.ObjectHolders.REINFORCED_TIP;
+import static com.maciej916.maenchants.utils.Enchants.REINFORCED_TIP;
 
 @Mod.EventBusSubscriber(modid = MaEnchants.MODID)
-public class ReinforcedTip extends Enchantment {
-    public ReinforcedTip() {
-        super(Rarity.RARE, EnchantmentType.PICKAXE, new EquipmentSlotType[]{
+public class EnchantmentReinforcedTip extends Enchantment {
+    public EnchantmentReinforcedTip(String name) {
+        super(Rarity.UNCOMMON, CustomEnchantmentType.PICKAXE, new EquipmentSlotType[]{
                 EquipmentSlotType.MAINHAND
         });
-        this.setRegistryName("reinforced_tip");
+        this.setRegistryName(name);
     }
 
     @Override

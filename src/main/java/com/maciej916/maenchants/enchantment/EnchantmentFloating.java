@@ -8,29 +8,22 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.BowItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
-import net.minecraft.util.Hand;
-import net.minecraftforge.event.entity.living.LivingEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 
-import java.lang.reflect.Method;
-
-import static com.maciej916.maenchants.MaEnchants.ObjectHolders.*;
 import static com.maciej916.maenchants.utils.EnchantUtils.getBowInHand;
+import static com.maciej916.maenchants.utils.Enchants.FLOATING;
 
 @Mod.EventBusSubscriber(modid = MaEnchants.MODID)
-public class Floating extends Enchantment {
-    public Floating() {
+public class EnchantmentFloating extends Enchantment {
+    public EnchantmentFloating(String name) {
         super(Rarity.RARE, EnchantmentType.BOW, new EquipmentSlotType[]{
                 EquipmentSlotType.MAINHAND,
                 EquipmentSlotType.OFFHAND
         });
-        this.setRegistryName("floating");
+        this.setRegistryName(name);
     }
 
     @Override

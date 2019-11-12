@@ -13,17 +13,17 @@ import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraftforge.fml.common.Mod;
 
-import static com.maciej916.maenchants.MaEnchants.ObjectHolders.PARALYSIS;
 import static com.maciej916.maenchants.utils.EnchantUtils.getBowInHand;
+import static com.maciej916.maenchants.utils.Enchants.PARALYSIS;
 
 @Mod.EventBusSubscriber(modid = MaEnchants.MODID)
-public class Paralysis extends Enchantment {
-    public Paralysis() {
+public class EnchantmentParalysis extends Enchantment {
+    public EnchantmentParalysis(String name) {
         super(Rarity.RARE, EnchantmentType.BOW, new EquipmentSlotType[]{
                 EquipmentSlotType.MAINHAND,
                 EquipmentSlotType.OFFHAND
         });
-        this.setRegistryName("paralysis");
+        this.setRegistryName(name);
     }
 
     @Override

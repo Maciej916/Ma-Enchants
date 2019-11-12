@@ -1,7 +1,7 @@
 package com.maciej916.maenchants.enchantment;
 
 import com.maciej916.maenchants.MaEnchants;
-import com.maciej916.maenchants.utils.EnchantmentType;
+import com.maciej916.maenchants.utils.CustomEnchantmentType;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.enchantment.Enchantment;
@@ -16,15 +16,15 @@ import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-import static com.maciej916.maenchants.MaEnchants.ObjectHolders.LUMBERJACK;
+import static com.maciej916.maenchants.utils.Enchants.LUMBERJACK;
 
 @Mod.EventBusSubscriber(modid = MaEnchants.MODID)
-public class Lumberjack extends Enchantment {
-    public Lumberjack() {
-        super(Rarity.RARE, EnchantmentType.AXE, new EquipmentSlotType[]{
+public class EnchantmentLumberjack extends Enchantment {
+    public EnchantmentLumberjack(String name) {
+        super(Rarity.UNCOMMON, CustomEnchantmentType.AXE, new EquipmentSlotType[]{
                 EquipmentSlotType.MAINHAND
         });
-        this.setRegistryName("lumberjack");
+        this.setRegistryName(name);
     }
 
     @SubscribeEvent

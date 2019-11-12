@@ -11,10 +11,6 @@ public final class ForgeEventSubscriber {
     @SubscribeEvent
     public static void worldTick(TickEvent.ServerTickEvent event) {
         if (event.phase != TickEvent.Phase.END) return;
-
         EventTrueShot.event();
-
     }
-
-
 }

@@ -1,7 +1,7 @@
 package com.maciej916.maenchants.enchantment;
 
 import com.maciej916.maenchants.MaEnchants;
-import com.maciej916.maenchants.utils.EnchantmentType;
+import com.maciej916.maenchants.utils.CustomEnchantmentType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.enchantment.Enchantment;
@@ -14,15 +14,15 @@ import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-import static com.maciej916.maenchants.MaEnchants.ObjectHolders.STONE_MENDING;
+import static com.maciej916.maenchants.utils.Enchants.STONE_MENDING;
 
 @Mod.EventBusSubscriber(modid = MaEnchants.MODID)
-public class StoneMending extends Enchantment {
-    public StoneMending() {
-        super(Enchantment.Rarity.RARE, EnchantmentType.PICKAXE, new EquipmentSlotType[]{
+public class EnchantmentStoneMending extends Enchantment {
+    public EnchantmentStoneMending(String name) {
+        super(Enchantment.Rarity.RARE, CustomEnchantmentType.PICKAXE, new EquipmentSlotType[]{
                 EquipmentSlotType.MAINHAND
         });
-        this.setRegistryName("stone_mending");
+        this.setRegistryName(name);
     }
 
     @Override

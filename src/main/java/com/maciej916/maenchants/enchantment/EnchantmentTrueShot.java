@@ -1,7 +1,6 @@
 package com.maciej916.maenchants.enchantment;
 
 import com.maciej916.maenchants.MaEnchants;
-
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentType;
@@ -13,18 +12,17 @@ import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-import static com.maciej916.maenchants.MaEnchants.ObjectHolders.STONE_MENDING;
-import static com.maciej916.maenchants.MaEnchants.ObjectHolders.TRUE_SHOT;
 import static com.maciej916.maenchants.events.EventTrueShot.trueShotArrows;
+import static com.maciej916.maenchants.utils.Enchants.TRUE_SHOT;
 
 @Mod.EventBusSubscriber(modid = MaEnchants.MODID)
-public class TrueShot extends Enchantment {
-    public TrueShot() {
-        super(Rarity.RARE, EnchantmentType.BOW, new EquipmentSlotType[]{
+public class EnchantmentTrueShot extends Enchantment {
+    public EnchantmentTrueShot(String name) {
+        super(Rarity.VERY_RARE, EnchantmentType.BOW, new EquipmentSlotType[]{
                 EquipmentSlotType.MAINHAND,
                 EquipmentSlotType.OFFHAND
         });
-        this.setRegistryName("true_shot");
+        this.setRegistryName(name);
     }
 
     @Override

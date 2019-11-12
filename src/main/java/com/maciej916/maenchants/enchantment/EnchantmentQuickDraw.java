@@ -7,9 +7,7 @@ import net.minecraft.enchantment.EnchantmentType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.BowItem;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Hand;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -17,17 +15,17 @@ import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 
 import java.lang.reflect.Method;
 
-import static com.maciej916.maenchants.MaEnchants.ObjectHolders.QUICK_DRAW;
 import static com.maciej916.maenchants.utils.EnchantUtils.getBowInHand;
+import static com.maciej916.maenchants.utils.Enchants.QUICK_DRAW;
 
 @Mod.EventBusSubscriber(modid = MaEnchants.MODID)
-public class QuickDraw extends Enchantment {
-    public QuickDraw() {
+public class EnchantmentQuickDraw extends Enchantment {
+    public EnchantmentQuickDraw(String name) {
         super(Rarity.RARE, EnchantmentType.BOW, new EquipmentSlotType[]{
                 EquipmentSlotType.MAINHAND,
                 EquipmentSlotType.OFFHAND
         });
-        this.setRegistryName("quick_draw");
+        this.setRegistryName(name);
     }
 
     @Override

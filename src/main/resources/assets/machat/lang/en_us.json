@@ -7,6 +7,11 @@
   "enchantment.ma-enchants.true_shot": "True Shot",
   "enchantment.ma-enchants.quick_draw": "Quick Draw",
   "enchantment.ma-enchants.floating": "Floating",
-  "enchantment.ma-enchants.paralysis": "Paralysis"
+  "enchantment.ma-enchants.paralysis": "Paralysis",
+
+  "enchantment.ma-enchants.combo": "Combo",
+  "enchantment.ma-enchants.faster_attack": "Faster Attack",
+  "enchantment.ma-enchants.lifesteal": "Lifesteal",
+  "enchantment.ma-enchants.ice_aspect": "Ice Aspect"
 
 }
