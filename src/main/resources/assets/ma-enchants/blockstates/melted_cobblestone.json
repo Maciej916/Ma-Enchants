@@ -1,0 +1,8 @@
+{
+	"variants": {
+		"age=0": { "model": "ma-enchants:block/melted_cobblestone_0" },
+		"age=1": { "model": "ma-enchants:block/melted_cobblestone_1" },
+		"age=2": { "model": "ma-enchants:block/melted_cobblestone_2" },
+		"age=3": { "model": "ma-enchants:block/melted_cobblestone_3" }
+	}
+}

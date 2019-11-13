@@ -1,11 +1,8 @@
 package com.maciej916.maenchants;
 
 import com.maciej916.maenchants.network.Networking;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.ObjectHolder;
 
 @Mod(MaEnchants.MODID)
 public class MaEnchants {
