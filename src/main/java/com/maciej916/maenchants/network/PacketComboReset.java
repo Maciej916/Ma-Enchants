@@ -7,12 +7,12 @@ import net.minecraftforge.fml.network.NetworkEvent;
 
 import java.util.function.Supplier;
 
-public class PacketCombo {
+public class PacketComboReset {
 
-    public PacketCombo() {}
+    public PacketComboReset() {}
 
 
-    public PacketCombo(PacketBuffer buf) {
+    public PacketComboReset(PacketBuffer buf) {
     }
 
     public void toBytes(PacketBuffer buf) {

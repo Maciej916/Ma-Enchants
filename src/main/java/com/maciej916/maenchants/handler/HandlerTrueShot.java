@@ -16,7 +16,7 @@ public class HandlerTrueShot {
 
     public static List<AbstractArrowEntity> trueShotArrows = new ArrayList<>();
 
-    public static void handlerTick(TickEvent.ServerTickEvent event) {
+    public static void handlerWorldTick(TickEvent.ServerTickEvent event) {
         if (event.phase != TickEvent.Phase.END) return;
 
         List<AbstractArrowEntity> removeTrueShot = new ArrayList<>();
