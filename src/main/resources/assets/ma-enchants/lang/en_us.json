@@ -2,7 +2,6 @@
   "itemGroup.ma-enchants": "Ma Enchants",
   "block.ma-enchants.melted_cobblestone": "Melted Cobblestone",
 
-
   "enchantment.ma-enchants.reinforced_tip": "Reinforced Tip",
   "enchantment.ma-enchants.stone_mending": "Stone Mending",
   "enchantment.ma-enchants.lumberjack": "Lumberjack",
@@ -18,6 +17,9 @@
   "enchantment.ma-enchants.lifesteal": "Lifesteal",
   "enchantment.ma-enchants.ice_aspect": "Ice Aspect",
 
-  "enchantment.ma-enchants.blazing_walker": "Blazing Walker"
+  "enchantment.ma-enchants.blazing_walker": "Blazing Walker",
+  "enchantment.ma-enchants.step_assist": "Step Assist",
+  "enchantment.ma-enchants.night_vision": "Night Vision",
+  "enchantment.ma-enchants.multi_jump": "Multi Jump"
 
 }

@@ -8,11 +8,14 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.item.*;
-import net.minecraft.util.NonNullList;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.registry.Registry;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.config.ModConfig;
@@ -21,9 +24,6 @@ import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
 import javax.annotation.Nonnull;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static com.maciej916.maenchants.MaEnchants.MODID;
 import static com.maciej916.maenchants.init.ModItemGroups.MOD_ITEM_GROUP;
@@ -88,7 +88,10 @@ public final class ModEventSubscriber {
 				setup(new EnchantmentIceAspect(), "ice_aspect"),
 
 				// Armour
-				setup(new EnchantmentBlazingWalker(), "blazing_walker")
+				setup(new EnchantmentBlazingWalker(), "blazing_walker"),
+				setup(new EnchantmentStepAssist(), "step_assist"),
+				setup(new EnchantmentNightVision(), "night_vision"),
+				setup(new EnchantmentMultiJump(), "multi_jump")
 		);
 	}
 

@@ -28,5 +28,8 @@ public class ModEnchants {
 
     // Armour
     public static final Enchantment BLAZING_WALKER = ModUtil._null();
+    public static final Enchantment STEP_ASSIST = ModUtil._null();
+    public static final Enchantment NIGHT_VISION = ModUtil._null();
+    public static final Enchantment MULTI_JUMP = ModUtil._null();
 
 }
