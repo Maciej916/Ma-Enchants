@@ -3,10 +3,7 @@ package com.maciej916.maenchants;
 import com.maciej916.maenchants.capabilities.EnchantsProvider;
 import com.maciej916.maenchants.capabilities.IEnchants;
 import com.maciej916.maenchants.handler.*;
-import com.maciej916.maenchants.network.Networking;
-import com.maciej916.maenchants.network.PacketMultiJumpSync;
 import com.maciej916.maenchants.utils.PlayerUtil;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
@@ -18,14 +15,13 @@ import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
-import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
-import net.minecraftforge.fml.network.NetworkDirection;
 
 @EventBusSubscriber(modid = MaEnchants.MODID, bus = EventBusSubscriber.Bus.FORGE)
 public final class ForgeEventSubscriber {
@@ -49,6 +45,7 @@ public final class ForgeEventSubscriber {
         enchantsCap.setStepAssist(origEnchantsCap.getStepAssist());
         enchantsCap.setNightVision(origEnchantsCap.getNightVision());
         enchantsCap.setMultiJump(origEnchantsCap.getMultiJump());
+        enchantsCap.setMultiJumpSpace(origEnchantsCap.getMultiJumpSpace());
     }
 
     @SubscribeEvent
@@ -84,7 +81,7 @@ public final class ForgeEventSubscriber {
         HandlerCombo.handlerHitBlock(event);
     }
 
-    @SubscribeEvent
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void onBreak(BlockEvent.BreakEvent event) {
         HandlerLumberjack.handlerBreak(event);
         HandlerMomentum.handlerBreak(event);
@@ -98,7 +95,7 @@ public final class ForgeEventSubscriber {
     }
 
     @SubscribeEvent
-    public void onEntityJoinWorld(EntityJoinWorldEvent event) {
+    public static void onEntityJoinWorld(EntityJoinWorldEvent event) {
         HandlerTrueShot.handlerSpawn(event);
     }
 

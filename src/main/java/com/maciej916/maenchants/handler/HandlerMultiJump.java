@@ -45,9 +45,10 @@ public class HandlerMultiJump {
 
     public static void handlerKeyInput(InputEvent.KeyInputEvent event) {
         Minecraft mc = Minecraft.getInstance();
-        boolean down = mc.gameSettings.keyBindJump.isKeyDown();
+        if (!mc.isGameFocused() || mc.world == null) return;
         IEnchants enchantsCap = PlayerUtil.getEnchantsCapability(mc.player);
-        if (mc.isGameFocused() && down) {
+        boolean down = mc.gameSettings.keyBindJump.isKeyDown();
+        if (down) {
             if (!enchantsCap.getMultiJumpSpace()) {
                 enchantsCap.setMultiJumpSpace(true);
                 HandlerMultiJump.handlerJumpClient(mc.player);
