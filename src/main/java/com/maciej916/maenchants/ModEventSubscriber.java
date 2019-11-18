@@ -2,6 +2,7 @@ package com.maciej916.maenchants;
 
 import com.google.common.base.Preconditions;
 import com.maciej916.maenchants.block.MeltedCobblestone;
+import com.maciej916.maenchants.config.ConfigHelper;
 import com.maciej916.maenchants.enchantment.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
@@ -11,17 +12,14 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.IForgeRegistryEntry;
+import org.jline.utils.Log;
 
 import javax.annotation.Nonnull;
 
@@ -33,14 +31,9 @@ public final class ModEventSubscriber {
 
 	@SubscribeEvent
 	public static void onModConfigEvent(final ModConfig.ModConfigEvent event) {
-//		final ModConfig config = event.getConfig();
-//		if (config.getSpec() == ConfigHolder.CLIENT_SPEC) {
-//			ConfigHelper.bakeClient(config);
-//			Log.debug("Baked client config");
-//		} else if (config.getSpec() == ConfigHolder.SERVER_SPEC) {
-//			ConfigHelper.bakeServer(config);
-//			Log.debug("Baked server config");
-//		}
+		final ModConfig config = event.getConfig();
+		ConfigHelper.bake(config);
+		Log.debug("Baked config");
 	}
 
 	@SubscribeEvent

@@ -1,5 +1,6 @@
 package com.maciej916.maenchants.enchantment;
 
+import com.maciej916.maenchants.config.ConfigValues;
 import com.maciej916.maenchants.utils.CustomEnchantmentType;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
@@ -19,14 +20,24 @@ public class EnchantmentCombo extends Enchantment {
         });
     }
 
-    @Override
     public int getMinEnchantability(int level) {
         return 15;
     }
 
+    public boolean canApply(ItemStack stack) {
+        return ConfigValues.combo && super.canApply(stack);
+    }
+
+    public boolean canApplyAtEnchantingTable(ItemStack stack) {
+        return ConfigValues.combo && super.canApplyAtEnchantingTable(stack);
+    }
+
+    public boolean isAllowedOnBooks() {
+        return ConfigValues.combo;
+    }
+
     private static boolean handled = false;
 
-    @Override
     public void onEntityDamaged(LivingEntity entity, Entity target, int level) {
         if (handled) {
             handled = false;

@@ -1,5 +1,6 @@
 package com.maciej916.maenchants.enchantment;
 
+import com.maciej916.maenchants.config.ConfigValues;
 import com.maciej916.maenchants.init.ModBlocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -10,6 +11,7 @@ import net.minecraft.enchantment.EnchantmentType;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.shapes.ISelectionContext;
@@ -27,5 +29,16 @@ public class EnchantmentMultiJump extends Enchantment {
         return 2;
     }
 
+    public boolean canApply(ItemStack stack) {
+        return ConfigValues.multi_jump && super.canApply(stack);
+    }
+
+    public boolean canApplyAtEnchantingTable(ItemStack stack) {
+        return ConfigValues.multi_jump && super.canApplyAtEnchantingTable(stack);
+    }
+
+    public boolean isAllowedOnBooks() {
+        return ConfigValues.multi_jump;
+    }
 
 }

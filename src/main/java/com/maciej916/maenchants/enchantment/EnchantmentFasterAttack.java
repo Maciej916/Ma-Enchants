@@ -1,8 +1,10 @@
 package com.maciej916.maenchants.enchantment;
 
+import com.maciej916.maenchants.config.ConfigValues;
 import com.maciej916.maenchants.utils.CustomEnchantmentType;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.item.ItemStack;
 
 public class EnchantmentFasterAttack extends Enchantment {
 
@@ -12,13 +14,24 @@ public class EnchantmentFasterAttack extends Enchantment {
         });
     }
 
-    @Override
     public int getMinEnchantability(int level) {
         return level * 6;
     }
 
-    @Override
     public int getMaxLevel() {
         return 5;
     }
+
+    public boolean canApply(ItemStack stack) {
+        return ConfigValues.faster_attack && super.canApply(stack);
+    }
+
+    public boolean canApplyAtEnchantingTable(ItemStack stack) {
+        return ConfigValues.faster_attack && super.canApplyAtEnchantingTable(stack);
+    }
+
+    public boolean isAllowedOnBooks() {
+        return ConfigValues.faster_attack;
+    }
+
 }
