@@ -17,10 +17,17 @@
   "enchantment.ma-enchants.faster_attack": "Faster Attack",
   "enchantment.ma-enchants.lifesteal": "Lifesteal",
   "enchantment.ma-enchants.ice_aspect": "Ice Aspect",
+  "enchantment.ma-enchants.wisdom": "Wisdom",
 
   "enchantment.ma-enchants.blazing_walker": "Blazing Walker",
   "enchantment.ma-enchants.step_assist": "Step Assist",
   "enchantment.ma-enchants.night_vision": "Night Vision",
-  "enchantment.ma-enchants.multi_jump": "Multi Jump"
+  "enchantment.ma-enchants.multi_jump": "Multi Jump",
 
+
+  "enchantment.ma-enchants.momentum.speed": "§aMomentum speed: §a§l%s",
+  "enchantment.ma-enchants.momentum.speed_max": "§cMomentum speed: §c§l%s",
+  "enchantment.ma-enchants.momentum.block": "§aMomentum block: §a§l%s",
+  "enchantment.ma-enchants.combo.lvl": "§aCombo: §a§l%s",
+  "enchantment.ma-enchants.combo.lvl_max": "§aCombo: §a§l%s"
 }

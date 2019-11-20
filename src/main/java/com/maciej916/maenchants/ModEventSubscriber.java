@@ -79,6 +79,7 @@ public final class ModEventSubscriber {
 				setup(new EnchantmentFasterAttack(), "faster_attack"),
 				setup(new EnchantmentLifesteal(), "lifesteal"),
 				setup(new EnchantmentIceAspect(), "ice_aspect"),
+				setup(new EnchantmentWisdom(), "wisdom"),
 
 				// Armour
 				setup(new EnchantmentBlazingWalker(), "blazing_walker"),

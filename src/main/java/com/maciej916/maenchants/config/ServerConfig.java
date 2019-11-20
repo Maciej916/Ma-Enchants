@@ -19,6 +19,7 @@ final class ServerConfig {
 	final ForgeConfigSpec.BooleanValue faster_attack;
 	final ForgeConfigSpec.BooleanValue lifesteal;
 	final ForgeConfigSpec.BooleanValue ice_aspect;
+	final ForgeConfigSpec.BooleanValue wisdom;
 
 	final ForgeConfigSpec.BooleanValue blazing_walker;
 	final ForgeConfigSpec.BooleanValue step_assist;
@@ -74,6 +75,10 @@ final class ServerConfig {
 
 		builder.push("ice_aspect");
 		ice_aspect = builder.define("enable", true);
+		builder.pop();
+
+		builder.push("wisdom");
+		wisdom = builder.define("enable", true);
 		builder.pop();
 
 

@@ -49,8 +49,10 @@ public class EnchantmentCombo extends Enchantment {
         ItemStack stack = player.getHeldItem(Hand.MAIN_HAND);
         CompoundNBT compound = stack.getOrCreateTag();
         target.attackEntityFrom(DamageSource.causePlayerDamage(player), compound.getInt("combo") * .5f);
-        compound.putInt("combo", compound.getInt("combo") + 1);
-
+        int combo = compound.getInt("combo");
+        if (combo < 100) {
+            compound.putInt("combo", compound.getInt("combo") + 1);
+        }
         handled = true;
     }
 }

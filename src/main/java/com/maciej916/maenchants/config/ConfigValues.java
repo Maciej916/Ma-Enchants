@@ -16,6 +16,7 @@ public final class ConfigValues {
 	public static boolean faster_attack;
 	public static boolean lifesteal;
 	public static boolean ice_aspect;
+	public static boolean wisdom;
 
 	public static boolean blazing_walker;
 	public static boolean step_assist;

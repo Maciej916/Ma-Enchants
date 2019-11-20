@@ -23,6 +23,8 @@ public final class ConfigHelper {
 		ConfigValues.faster_attack = ConfigHolder.SERVER.faster_attack.get();
 		ConfigValues.lifesteal = ConfigHolder.SERVER.lifesteal.get();
 		ConfigValues.ice_aspect = ConfigHolder.SERVER.ice_aspect.get();
+		ConfigValues.ice_aspect = ConfigHolder.SERVER.ice_aspect.get();
+		ConfigValues.wisdom = ConfigHolder.SERVER.wisdom.get();
 
 		ConfigValues.blazing_walker = ConfigHolder.SERVER.blazing_walker.get();
 		ConfigValues.step_assist = ConfigHolder.SERVER.step_assist.get();

@@ -19,6 +19,7 @@ public class Networking {
         INSTANCE.registerMessage(nextID(), PacketComboReset.class, PacketComboReset::toBytes, PacketComboReset::new, PacketComboReset::handle);
         INSTANCE.registerMessage(nextID(), PacketMultiJumpSync.class, PacketMultiJumpSync::toBytes, PacketMultiJumpSync::new, PacketMultiJumpSync::handle);
         INSTANCE.registerMessage(nextID(), PacketMultiJumpDo.class, PacketMultiJumpDo::toBytes, PacketMultiJumpDo::new, PacketMultiJumpDo::handle);
+        INSTANCE.registerMessage(nextID(), PacketLumberjack.class, PacketLumberjack::toBytes, PacketLumberjack::new, PacketLumberjack::handle);
     }
 
 }

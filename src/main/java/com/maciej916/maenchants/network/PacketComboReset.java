@@ -22,7 +22,7 @@ public class PacketComboReset {
         ctx.get().enqueueWork(() -> {
             if (ctx.get() == null || ctx.get().getSender() == null) return;
             ItemStack stack = ctx.get().getSender().getHeldItem(Hand.MAIN_HAND);
-            stack.getOrCreateTag().putInt("combo", 1);
+            stack.getOrCreateTag().putInt("combo", 0);
         });
         ctx.get().setPacketHandled(true);
     }

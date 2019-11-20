@@ -9,12 +9,10 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraftforge.event.entity.living.LivingExperienceDropEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -30,9 +28,6 @@ public final class ForgeEventSubscriber {
     public static void onAttachCapabilities(AttachCapabilitiesEvent<Entity> event) {
         if (event.getObject() instanceof PlayerEntity) {
             event.addCapability(new ResourceLocation(MaEnchants.MODID, "enchants"), new EnchantsProvider());
-        }
-        if (event.getObject() instanceof ServerPlayerEntity) {
-            event.addCapability(new ResourceLocation(MaEnchants.MODID, "enchants_server"), new EnchantsProvider());
         }
     }
 
@@ -72,18 +67,17 @@ public final class ForgeEventSubscriber {
     }
 
     @SubscribeEvent
+    public static void onExperienceDrop(LivingExperienceDropEvent event) {
+        HandlerWisdom.handlerExpDrop(event);
+    }
+
+    @SubscribeEvent
     public static void onMiss(PlayerInteractEvent.LeftClickEmpty event) {
         HandlerCombo.handlerMiss(event);
     }
 
-    @SubscribeEvent
-    public static void onHitBlock(PlayerInteractEvent.LeftClickBlock event) {
-        HandlerCombo.handlerHitBlock(event);
-    }
-
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void onBreak(BlockEvent.BreakEvent event) {
-        HandlerLumberjack.handlerBreak(event);
         HandlerMomentum.handlerBreak(event);
         HandlerStoneMending.handlerBreak(event);
     }
@@ -106,9 +100,4 @@ public final class ForgeEventSubscriber {
         HandlerMultiJump.handlerLoggedIn(serverPlayer);
     }
 
-    @OnlyIn(Dist.CLIENT)
-    @SubscribeEvent
-    public static void clientKeyInput(InputEvent.KeyInputEvent event) {
-        HandlerMultiJump.handlerKeyInput(event);
-    }
 }

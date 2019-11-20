@@ -13,10 +13,14 @@ import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ElytraItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.fml.network.NetworkDirection;
+import org.jline.utils.Log;
 
+import static com.maciej916.maenchants.MaEnchants.proxy;
 import static com.maciej916.maenchants.init.ModEnchants.MULTI_JUMP;
 
 public class HandlerMultiJump {
@@ -43,8 +47,9 @@ public class HandlerMultiJump {
         }
     }
 
+    @OnlyIn(Dist.CLIENT)
     public static void handlerKeyInput(InputEvent.KeyInputEvent event) {
-        Minecraft mc = Minecraft.getInstance();
+        Minecraft mc = proxy.getClient();
         if (!mc.isGameFocused() || mc.world == null) return;
         IEnchants enchantsCap = PlayerUtil.getEnchantsCapability(mc.player);
         boolean down = mc.gameSettings.keyBindJump.isKeyDown();

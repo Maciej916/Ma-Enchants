@@ -25,6 +25,7 @@ public class ModEnchants {
     public static final Enchantment FASTER_ATTACK = ModUtil._null();
     public static final Enchantment LIFESTEAL = ModUtil._null();
     public static final Enchantment ICE_ASPECT = ModUtil._null();
+    public static final Enchantment WISDOM = ModUtil._null();
 
     // Armour
     public static final Enchantment BLAZING_WALKER = ModUtil._null();
