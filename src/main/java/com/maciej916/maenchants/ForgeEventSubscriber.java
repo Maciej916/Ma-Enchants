@@ -41,6 +41,7 @@ public final class ForgeEventSubscriber {
         enchantsCap.setNightVision(origEnchantsCap.getNightVision());
         enchantsCap.setMultiJump(origEnchantsCap.getMultiJump());
         enchantsCap.setMultiJumpSpace(origEnchantsCap.getMultiJumpSpace());
+        enchantsCap.setExcavateActive(origEnchantsCap.getExcavateActive());
     }
 
     @SubscribeEvent
@@ -78,6 +79,7 @@ public final class ForgeEventSubscriber {
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void onBreak(BlockEvent.BreakEvent event) {
+        HandlerLumberjack.handlerBreak(event);
         HandlerMomentum.handlerBreak(event);
         HandlerStoneMending.handlerBreak(event);
     }

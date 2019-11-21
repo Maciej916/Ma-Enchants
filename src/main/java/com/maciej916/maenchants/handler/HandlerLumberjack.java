@@ -2,13 +2,16 @@ package com.maciej916.maenchants.handler;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.ImmutableSet;
+import com.maciej916.maenchants.capabilities.IEnchants;
 import com.maciej916.maenchants.client.Keys;
 import com.maciej916.maenchants.network.Networking;
-import com.maciej916.maenchants.network.PacketLumberjack;
+import com.maciej916.maenchants.network.PacketLumberjackToggle;
+import com.maciej916.maenchants.utils.PlayerUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.Minecraft;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -17,9 +20,9 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.event.world.BlockEvent;
 
 import static com.maciej916.maenchants.init.ModEnchants.LUMBERJACK;
@@ -29,25 +32,43 @@ public class HandlerLumberjack {
     private static HashMultimap<PlayerEntity, BlockPos> treeMap = HashMultimap.create();
 
     @OnlyIn(Dist.CLIENT)
+    public static void handlerKeyInput(Minecraft mc, InputEvent.KeyInputEvent event) {
+        IEnchants enchantsCap = PlayerUtil.getEnchantsCapability(mc.player);
+        boolean down = Keys.excavateKey.isKeyDown();
+        if (down) {
+            if (!enchantsCap.getExcavateActive()) {
+                enchantsCap.setExcavateActive(true);
+                Networking.INSTANCE.sendToServer(new PacketLumberjackToggle(true));
+            }
+        } else {
+            if (enchantsCap.getExcavateActive()) {
+                enchantsCap.setExcavateActive(false);
+                Networking.INSTANCE.sendToServer(new PacketLumberjackToggle(false));
+            }
+        }
+    }
+
     public static void handlerBreak(BlockEvent.BreakEvent event) {
         PlayerEntity player = event.getPlayer();
         if (EnchantmentHelper.getMaxEnchantmentLevel(LUMBERJACK, player) == 0) return;
+        IEnchants enchantsCap = PlayerUtil.getEnchantsCapability(player);
+        if (enchantsCap.getExcavateActive()) {
+            BlockState state = event.getState();
+            Block block = state.getBlock();
+            if (!block.isIn(BlockTags.LOGS)) return;
 
-        BlockState state = event.getState();
-        Block block = state.getBlock();
-        if (!block.isIn(BlockTags.LOGS)) return;
-
-        World world = (World) event.getWorld();
-        BlockPos pos = event.getPos();
-
-        if (Keys.excavateKey.isKeyDown()) {
+            World world = (World) event.getWorld();
+            BlockPos pos = event.getPos();
             findTree(player, world, pos, state);
+
             if (treeMap.get(player).size() < 512) {
-                Networking.INSTANCE.sendToServer(new PacketLumberjack(pos));
+                doBreak(player, world, pos);
                 event.setCanceled(true);
             } else {
-                treeMap.clear();
+                treeMap.asMap().remove(player);
             }
+        } else {
+            treeMap.asMap().remove(player);
         }
     }
 
@@ -55,6 +76,7 @@ public class HandlerLumberjack {
         int logsBreak = 0;
         Block block = world.getBlockState(pos).getBlock();
         ItemStack stack = player.getHeldItem(Hand.MAIN_HAND);
+
         for (BlockPos point : ImmutableSet.copyOf(treeMap.get(player))) {
             if (stack.getDamage() > 0) {
                 logsBreak++;
@@ -68,7 +90,7 @@ public class HandlerLumberjack {
         ItemEntity item = new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(block, logsBreak));
         world.addEntity(item);
 
-        treeMap.clear();
+        treeMap.asMap().remove(player);
     }
 
     private static void findTree(PlayerEntity player, World world, BlockPos mine, BlockState state) {

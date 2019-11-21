@@ -18,9 +18,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.fml.network.NetworkDirection;
-import org.jline.utils.Log;
 
-import static com.maciej916.maenchants.MaEnchants.proxy;
 import static com.maciej916.maenchants.init.ModEnchants.MULTI_JUMP;
 
 public class HandlerMultiJump {
@@ -48,9 +46,7 @@ public class HandlerMultiJump {
     }
 
     @OnlyIn(Dist.CLIENT)
-    public static void handlerKeyInput(InputEvent.KeyInputEvent event) {
-        Minecraft mc = proxy.getClient();
-        if (!mc.isGameFocused() || mc.world == null) return;
+    public static void handlerKeyInput(Minecraft mc, InputEvent.KeyInputEvent event) {
         IEnchants enchantsCap = PlayerUtil.getEnchantsCapability(mc.player);
         boolean down = mc.gameSettings.keyBindJump.isKeyDown();
         if (down) {
@@ -59,7 +55,9 @@ public class HandlerMultiJump {
                 HandlerMultiJump.handlerJumpClient(mc.player);
             }
         } else {
-            enchantsCap.setMultiJumpSpace(false);
+            if (enchantsCap.getMultiJumpSpace()) {
+                enchantsCap.setMultiJumpSpace(false);
+            }
         }
     }
 

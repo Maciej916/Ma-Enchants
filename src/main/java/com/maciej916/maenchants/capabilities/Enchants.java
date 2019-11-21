@@ -7,6 +7,7 @@ public class Enchants implements IEnchants {
     private boolean nightVision;
     private int multiJump;
     private boolean multiJumpSpace;
+    private boolean excavate;
 
     public Enchants() {
         this.version = 1;
@@ -14,6 +15,7 @@ public class Enchants implements IEnchants {
         this.nightVision = false;
         this.multiJump = 0;
         this.multiJumpSpace = false;
+        this.excavate = false;
     }
 
     @Override
@@ -42,6 +44,11 @@ public class Enchants implements IEnchants {
     }
 
     @Override
+    public boolean getExcavateActive() {
+        return excavate;
+    }
+
+    @Override
     public void setVersion(byte version) {
         this.version = version;
     }
@@ -64,5 +71,10 @@ public class Enchants implements IEnchants {
     @Override
     public void setMultiJumpSpace(boolean enabled) {
         this.multiJumpSpace = enabled;
+    }
+
+    @Override
+    public void setExcavateActive(boolean enabled) {
+        this.excavate = enabled;
     }
 }

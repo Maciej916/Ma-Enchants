@@ -11,7 +11,7 @@ public class HandlerWisdom {
         int lvl = EnchantmentHelper.getMaxEnchantmentLevel(WISDOM, event.getAttackingPlayer());
         if (lvl == 0) return;
         int orginalExp = event.getOriginalExperience();
-        int resultExp = (int) (orginalExp + orginalExp * (1 * 0.2));
+        int resultExp = (int) (orginalExp + orginalExp * (lvl * 0.2));
         event.setDroppedExperience(resultExp);
     }
 

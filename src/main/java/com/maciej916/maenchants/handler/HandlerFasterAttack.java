@@ -13,7 +13,6 @@ public class HandlerFasterAttack {
         int lvl = EnchantmentHelper.getMaxEnchantmentLevel(FASTER_ATTACK, player);
         if (lvl == 0) return;
 
-
         int swing = ObfuscationReflectionHelper.getPrivateValue(LivingEntity.class, player, "field_184617_aD");
         swing = new Double(swing * (lvl * 0.1 + 1)).intValue();
         swing = Math.min(swing, 100);

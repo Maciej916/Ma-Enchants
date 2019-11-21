@@ -14,6 +14,7 @@ public class EnchantsStorage implements Capability.IStorage<IEnchants> {
         tag.putBoolean("stepAssist", instance.getStepAssist());
         tag.putBoolean("nightVision", instance.getNightVision());
         tag.putInt("multiJump", instance.getMultiJump());
+        tag.putBoolean("excavate", instance.getExcavateActive());
         return tag;
     }
 
@@ -24,6 +25,7 @@ public class EnchantsStorage implements Capability.IStorage<IEnchants> {
         instance.setStepAssist(tag.getBoolean("stepAssist"));
         instance.setNightVision(tag.getBoolean("nightVision"));
         instance.setMultiJump(tag.getInt("multiJump"));
+        instance.setExcavateActive(tag.getBoolean("excavate"));
     }
 
 }
