@@ -8,6 +8,8 @@ import static com.maciej916.maenchants.init.ModEnchants.WISDOM;
 public class HandlerWisdom {
 
     public static void handlerExpDrop(LivingExperienceDropEvent event) {
+        if (event.getEntity() != event.getAttackingPlayer()) return;
+
         int lvl = EnchantmentHelper.getMaxEnchantmentLevel(WISDOM, event.getAttackingPlayer());
         if (lvl == 0) return;
         int orginalExp = event.getOriginalExperience();

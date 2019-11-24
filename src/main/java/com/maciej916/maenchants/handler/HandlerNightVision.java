@@ -13,8 +13,8 @@ import static com.maciej916.maenchants.init.ModEnchants.NIGHT_VISION;
 public class HandlerNightVision {
 
     public static void handlerUpdate(PlayerEntity player, World world) {
-        IEnchants enchantsCap = PlayerUtil.getEnchantsCapability(player);
         if (world.isRemote) {
+            IEnchants enchantsCap = PlayerUtil.getEnchantsCapability(player);
             int lvl = EnchantmentHelper.getMaxEnchantmentLevel(NIGHT_VISION, player);
             if (lvl == 0) {
                 if (enchantsCap.getNightVision()) {

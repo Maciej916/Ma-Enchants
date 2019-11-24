@@ -14,6 +14,7 @@ import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraftforge.fml.common.Mod;
 
+import static com.maciej916.maenchants.init.ModEnchants.FLOATING;
 import static com.maciej916.maenchants.init.ModEnchants.PARALYSIS;
 
 @Mod.EventBusSubscriber(modid = MaEnchants.MODID)
@@ -59,6 +60,10 @@ public class EnchantmentParalysis extends Enchantment {
         livingTarget.addPotionEffect(new EffectInstance(Effects.SLOWNESS, lvl * 20, 100, false, false));
         livingTarget.addPotionEffect(new EffectInstance(Effects.MINING_FATIGUE, lvl * 20, 100, false, false));
         livingTarget.addPotionEffect(new EffectInstance(Effects.WEAKNESS, lvl * 20, 100, false, false));
+    }
+
+    public boolean canApplyTogether(Enchantment ench) {
+        return super.canApplyTogether(ench) && ench != FLOATING;
     }
 
 }

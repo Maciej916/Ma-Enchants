@@ -11,8 +11,8 @@ import static com.maciej916.maenchants.init.ModEnchants.STEP_ASSIST;
 public class HandlerStepAssist {
 
     public static void handlerUpdate(PlayerEntity player, World world) {
-        IEnchants enchantsCap = PlayerUtil.getEnchantsCapability(player);
         if (world.isRemote) {
+            IEnchants enchantsCap = PlayerUtil.getEnchantsCapability(player);
             int lvl = EnchantmentHelper.getMaxEnchantmentLevel(STEP_ASSIST, player);
             if (lvl == 0) {
                 if (enchantsCap.getStepAssist()) {
@@ -21,6 +21,7 @@ public class HandlerStepAssist {
                 }
                 return;
             }
+
             if (!enchantsCap.getStepAssist()) {
                 player.stepHeight += 0.4f;
                 enchantsCap.setStepAssist(true);

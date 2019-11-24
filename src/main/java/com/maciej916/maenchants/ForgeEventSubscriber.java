@@ -53,13 +53,14 @@ public final class ForgeEventSubscriber {
     public static void onPlayerUpdate(TickEvent.PlayerTickEvent event) {
         PlayerEntity player = event.player;
         World world = event.player.world;
-
-        HandlerBlazingWalker.handlerUpdate(player, world);
-        HandlerFasterAttack.handlerUpdate(player);
-        HandlerQuickDraw.handlerUpdate(player);
-        HandlerStepAssist.handlerUpdate(player, world);
-        HandlerNightVision.handlerUpdate(player, world);
-        HandlerMultiJump.handlerUpdate(event);
+        try {
+            HandlerBlazingWalker.handlerUpdate(player, world);
+            HandlerFasterAttack.handlerUpdate(player);
+            HandlerQuickDraw.handlerUpdate(player);
+            HandlerStepAssist.handlerUpdate(player, world);
+            HandlerNightVision.handlerUpdate(player, world);
+            HandlerMultiJump.handlerUpdate(event);
+        } catch (Exception ignored) {}
     }
 
     @SubscribeEvent

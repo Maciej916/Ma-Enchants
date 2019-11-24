@@ -4,6 +4,7 @@ import com.maciej916.maenchants.config.ConfigValues;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentType;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -13,6 +14,7 @@ import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 
 import static com.maciej916.maenchants.init.ModEnchants.FLOATING;
+import static com.maciej916.maenchants.init.ModEnchants.PARALYSIS;
 
 public class EnchantmentFloating extends Enchantment {
 
@@ -54,6 +56,10 @@ public class EnchantmentFloating extends Enchantment {
         if (lvl == 0) return;
 
         livingTarget.addPotionEffect(new EffectInstance(Effects.LEVITATION, lvl * 20, 1, false, false));
+    }
+
+    public boolean canApplyTogether(Enchantment ench) {
+        return super.canApplyTogether(ench) && ench != PARALYSIS;
     }
 
 }
