@@ -12,7 +12,7 @@ public class HandlerQuickDraw {
 
     private static int tick = 0;
 
-    public static void handlerUpdate(PlayerEntity player) {
+    public static void handlerPlayerTick(PlayerEntity player) {
         int lvl = EnchantmentHelper.getMaxEnchantmentLevel(QUICK_DRAW, player);
         if (lvl == 0) return;
         if (!player.isHandActive()) {

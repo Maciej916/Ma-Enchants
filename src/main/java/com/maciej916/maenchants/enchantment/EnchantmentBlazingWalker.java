@@ -53,29 +53,6 @@ public class EnchantmentBlazingWalker extends Enchantment {
         return ConfigValues.blazing_walker;
     }
 
-    public static void makeFloor(LivingEntity living, World worldIn, BlockPos pos, int level) {
-        if (living.onGround) {
-            BlockState blockstate = ModBlocks.MELTED_COBBLESTONE.getDefaultState();
-            float f = (float)Math.min(16, 2 + level);
-            BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
-
-            for(BlockPos blockpos : BlockPos.getAllInBoxMutable(pos.add((double)(-f), -1.0D, (double)(-f)), pos.add((double)f, -1.0D, (double)f))) {
-                if (blockpos.withinDistance(living.getPositionVec(), (double)f)) {
-                    blockpos$mutableblockpos.setPos(blockpos.getX(), blockpos.getY() + 1, blockpos.getZ());
-                    BlockState blockstate1 = worldIn.getBlockState(blockpos$mutableblockpos);
-                    if (blockstate1.isAir(worldIn, blockpos$mutableblockpos)) {
-                        BlockState blockstate2 = worldIn.getBlockState(blockpos);
-                        boolean isFull = blockstate2.getBlock() == Blocks.LAVA && blockstate2.get(FlowingFluidBlock.LEVEL) == 0;
-                        if (blockstate2.getMaterial() == Material.LAVA && isFull && blockstate.isValidPosition(worldIn, blockpos) && worldIn.func_217350_a(blockstate, blockpos, ISelectionContext.dummy()) && !net.minecraftforge.event.ForgeEventFactory.onBlockPlace(living, new net.minecraftforge.common.util.BlockSnapshot(worldIn, blockpos, blockstate2), net.minecraft.util.Direction.UP)) {
-                            worldIn.setBlockState(blockpos, blockstate);
-                            worldIn.getPendingBlockTicks().scheduleTick(blockpos, ModBlocks.MELTED_COBBLESTONE, MathHelper.nextInt(living.getRNG(), 20, 60));
-                        }
-                    }
-                }
-            }
-        }
-    }
-
     public boolean canApplyTogether(Enchantment ench) {
         return super.canApplyTogether(ench) && ench != Enchantments.FROST_WALKER;
     }

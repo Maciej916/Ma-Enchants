@@ -13,8 +13,6 @@ import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ElytraItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.fml.network.NetworkDirection;
@@ -23,7 +21,7 @@ import static com.maciej916.maenchants.init.ModEnchants.MULTI_JUMP;
 
 public class HandlerMultiJump {
 
-    public static void handlerUpdate(TickEvent.PlayerTickEvent event) {
+    public static void handlerPlayerTick(TickEvent.PlayerTickEvent event) {
         if (event.phase != TickEvent.Phase.END) return;
         if (event.player.onGround) {
             IEnchants enchantsCap = PlayerUtil.getEnchantsCapability(event.player);
@@ -45,8 +43,8 @@ public class HandlerMultiJump {
         }
     }
 
-    @OnlyIn(Dist.CLIENT)
     public static void handlerKeyInput(Minecraft mc, InputEvent.KeyInputEvent event) {
+        if (!mc.isGameFocused() || mc.world == null) return;
         IEnchants enchantsCap = PlayerUtil.getEnchantsCapability(mc.player);
         boolean down = mc.gameSettings.keyBindJump.isKeyDown();
         if (down) {
@@ -55,9 +53,7 @@ public class HandlerMultiJump {
                 HandlerMultiJump.handlerJumpClient(mc.player);
             }
         } else {
-            if (enchantsCap.getMultiJumpSpace()) {
-                enchantsCap.setMultiJumpSpace(false);
-            }
+            enchantsCap.setMultiJumpSpace(false);
         }
     }
 
@@ -69,7 +65,6 @@ public class HandlerMultiJump {
         if (jumps < lvl) {
             enchantsCap.setMultiJump(++jumps);
             player.jump();
-            setFallDistance(player, jumps);
             extraExhaustion(player);
             return true;
         }
@@ -90,11 +85,6 @@ public class HandlerMultiJump {
         if (fallFlyingReady) return false;
 
         return true;
-    }
-
-    private static void setFallDistance(PlayerEntity player, int jumps) {
-        float f = -1.25F;
-        player.fallDistance = player.fallDistance + f;
     }
 
     private static void extraExhaustion(PlayerEntity player) {

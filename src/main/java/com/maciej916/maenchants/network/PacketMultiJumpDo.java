@@ -13,7 +13,6 @@ public class PacketMultiJumpDo {
 
     public PacketMultiJumpDo() {}
 
-
     public PacketMultiJumpDo(PacketBuffer buf) {
     }
 

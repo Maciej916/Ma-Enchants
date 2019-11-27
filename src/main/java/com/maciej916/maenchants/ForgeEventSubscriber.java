@@ -9,10 +9,13 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
-import net.minecraftforge.event.entity.living.LivingExperienceDropEvent;
+import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -29,6 +32,9 @@ public final class ForgeEventSubscriber {
         if (event.getObject() instanceof PlayerEntity) {
             event.addCapability(new ResourceLocation(MaEnchants.MODID, "enchants"), new EnchantsProvider());
         }
+        if (event.getObject() instanceof ServerPlayerEntity) {
+            event.addCapability(new ResourceLocation(MaEnchants.MODID, "enchants_server"), new EnchantsProvider());
+        }
     }
 
     @SubscribeEvent
@@ -41,7 +47,6 @@ public final class ForgeEventSubscriber {
         enchantsCap.setNightVision(origEnchantsCap.getNightVision());
         enchantsCap.setMultiJump(origEnchantsCap.getMultiJump());
         enchantsCap.setMultiJumpSpace(origEnchantsCap.getMultiJumpSpace());
-        enchantsCap.setExcavateActive(origEnchantsCap.getExcavateActive());
     }
 
     @SubscribeEvent
@@ -50,17 +55,20 @@ public final class ForgeEventSubscriber {
     }
 
     @SubscribeEvent
-    public static void onPlayerUpdate(TickEvent.PlayerTickEvent event) {
+    public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
+
         PlayerEntity player = event.player;
-        World world = event.player.world;
-        try {
-            HandlerBlazingWalker.handlerUpdate(player, world);
-            HandlerFasterAttack.handlerUpdate(player);
-            HandlerQuickDraw.handlerUpdate(player);
-            HandlerStepAssist.handlerUpdate(player, world);
-            HandlerNightVision.handlerUpdate(player, world);
-            HandlerMultiJump.handlerUpdate(event);
-        } catch (Exception ignored) {}
+        World world = player.world;
+
+        if (!world.isRemote()) {
+            HandlerBlazingWalker.handlerPlayerTick(player);
+        } else {
+            HandlerMultiJump.handlerPlayerTick(event);
+            HandlerNightVision.handlerPlayerTick(player);
+            HandlerStepAssist.handlerPlayerTick(player);
+            HandlerFasterAttack.handlerPlayerTick(player);
+            HandlerQuickDraw.handlerPlayerTick(player);
+        }
     }
 
     @SubscribeEvent
@@ -69,13 +77,13 @@ public final class ForgeEventSubscriber {
     }
 
     @SubscribeEvent
-    public static void onExperienceDrop(LivingExperienceDropEvent event) {
-        HandlerWisdom.handlerExpDrop(event);
+    public static void onMiss(PlayerInteractEvent.LeftClickEmpty event) {
+        HandlerCombo.handlerMiss(event);
     }
 
     @SubscribeEvent
-    public static void onMiss(PlayerInteractEvent.LeftClickEmpty event) {
-        HandlerCombo.handlerMiss(event);
+    public static void onHitBlock(PlayerInteractEvent.LeftClickBlock event) {
+        HandlerCombo.handlerHitBlock(event);
     }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)

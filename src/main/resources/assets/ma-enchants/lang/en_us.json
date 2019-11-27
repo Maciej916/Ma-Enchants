@@ -29,5 +29,31 @@
   "enchantment.ma-enchants.momentum.speed_max": "§cMomentum speed: §c§l%s",
   "enchantment.ma-enchants.momentum.block": "§aMomentum block: §a§l%s",
   "enchantment.ma-enchants.combo.lvl": "§aCombo: §a§l%s",
-  "enchantment.ma-enchants.combo.lvl_max": "§aCombo: §a§l%s"
+  "enchantment.ma-enchants.combo.lvl_max": "§aCombo: §a§l%s",
+
+
+
+
+
+  "_comment": "Descriptions",
+  "enchantment.ma-enchants.reinforced_tip.desc": "Increase speed when mining obsidian.",
+  "enchantment.ma-enchants.stone_mending.desc": "Chance to restore durability when mining stone.",
+  "enchantment.ma-enchants.lumberjack.desc": "Chop down trees at once.",
+  "enchantment.ma-enchants.momentum.desc": "Mining speed increases for each consecutive block of the same one.",
+
+  "enchantment.ma-enchants.true_shot.desc": "Arrows fired by this bow will not be affected by gravity.",
+  "enchantment.ma-enchants.quick_draw.desc": "Draw bow faster.",
+  "enchantment.ma-enchants.floating.desc": "Any mob struck with this enchant will be affected by the floating effect.",
+  "enchantment.ma-enchants.paralysis.desc": "Any mob struck with this will find themselves unable to move, jump, or attack.",
+
+  "enchantment.ma-enchants.combo.desc": "Increased damage with each successful strike, resets if it hits air or blocks.",
+  "enchantment.ma-enchants.faster_attack.desc": "Increase attack speed.",
+  "enchantment.ma-enchants.lifesteal.desc": "Part of dealt damage restore your health.",
+  "enchantment.ma-enchants.ice_aspect.desc": "Slow down enemies.",
+  "enchantment.ma-enchants.wisdom.desc": "Gives you more XP when killing mobs",
+
+  "enchantment.ma-enchants.blazing_walker.desc": "Temporary turns lava into a melted cobblestone.",
+  "enchantment.ma-enchants.step_assist.desc": "Allows you to walk onto 1 height block without jumping.",
+  "enchantment.ma-enchants.night_vision.desc": "Gives you night vision potion effect when you wear it.",
+  "enchantment.ma-enchants.multi_jump.desc": "Allows you to make more jump in air."
 }
