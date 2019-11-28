@@ -45,19 +45,6 @@ public class EnchantmentFloating extends Enchantment {
         return ConfigValues.floating;
     }
 
-    public void onEntityDamaged(LivingEntity user, Entity target, int level)  {
-        if (!(user instanceof PlayerEntity)) return;
-        if (!(target instanceof LivingEntity)) return;
-
-        PlayerEntity player = (PlayerEntity) user;
-        LivingEntity livingTarget = (LivingEntity) target;
-
-        int lvl = EnchantmentHelper.getMaxEnchantmentLevel(FLOATING, player);
-        if (lvl == 0) return;
-
-        livingTarget.addPotionEffect(new EffectInstance(Effects.LEVITATION, lvl * 20, 1, false, false));
-    }
-
     public boolean canApplyTogether(Enchantment ench) {
         return super.canApplyTogether(ench) && ench != PARALYSIS;
     }

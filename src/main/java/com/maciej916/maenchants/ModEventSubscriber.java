@@ -62,6 +62,10 @@ public final class ModEventSubscriber {
 	public static void registerEnchantments(RegistryEvent.Register<Enchantment> event) {
 		final IForgeRegistry<Enchantment> registry = event.getRegistry();
 		registry.registerAll(
+				// All
+				setup(new EnchantmentCurseBreaking(), "curse_breaking"),
+				setup(new EnchantmentCurseButterfingers(), "curse_butterfingers"),
+
 				// Tools
 				setup(new EnchantmentReinforcedTip(), "reinforced_tip"),
 				setup(new EnchantmentStoneMending(), "stone_mending"),

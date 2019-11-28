@@ -50,7 +50,10 @@ public class HandlerLumberjack {
 
     public static void handlerBreak(BlockEvent.BreakEvent event) {
         PlayerEntity player = event.getPlayer();
-        if (EnchantmentHelper.getMaxEnchantmentLevel(LUMBERJACK, player) == 0) return;
+
+        ItemStack stack = player.getHeldItem(Hand.MAIN_HAND);
+        if (EnchantmentHelper.getEnchantmentLevel(LUMBERJACK, stack) == 0) return;
+
         IEnchants enchantsCap = PlayerUtil.getEnchantsCapability(player);
         if (enchantsCap.getExcavateActive()) {
             BlockState state = event.getState();

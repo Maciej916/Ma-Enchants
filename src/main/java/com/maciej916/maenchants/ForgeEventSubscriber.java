@@ -74,16 +74,10 @@ public final class ForgeEventSubscriber {
     @SubscribeEvent
     public static void onAttack(LivingHurtEvent event) {
         HandlerLifesteal.handlerAttack(event);
-    }
-
-    @SubscribeEvent
-    public static void onMiss(PlayerInteractEvent.LeftClickEmpty event) {
-        HandlerCombo.handlerMiss(event);
-    }
-
-    @SubscribeEvent
-    public static void onHitBlock(PlayerInteractEvent.LeftClickBlock event) {
-        HandlerCombo.handlerHitBlock(event);
+        HandlerFloating.handlerAttack(event);
+        HandlerParalysis.handlerAttack(event);
+        HandlerIceAspect.handlerAttack(event);
+        HandlerCurseButterfingers.handlerAttack(event);
     }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
@@ -91,6 +85,8 @@ public final class ForgeEventSubscriber {
         HandlerLumberjack.handlerBreak(event);
         HandlerMomentum.handlerBreak(event);
         HandlerStoneMending.handlerBreak(event);
+        HandlerCurseBreaking.handlerBreak(event);
+        HandlerCurseButterfingers.handlerBreak(event);
     }
 
     @SubscribeEvent

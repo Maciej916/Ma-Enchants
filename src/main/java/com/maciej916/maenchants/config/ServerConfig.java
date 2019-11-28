@@ -5,6 +5,9 @@ import net.minecraftforge.common.ForgeConfigSpec;
 final class ServerConfig {
 
 	// Enchants
+	final ForgeConfigSpec.BooleanValue curse_breaking;
+	final ForgeConfigSpec.BooleanValue curse_butterfingers;
+
 	final ForgeConfigSpec.BooleanValue reinforced_tip;
 	final ForgeConfigSpec.BooleanValue stone_mending;
 	final ForgeConfigSpec.BooleanValue lumberjack;
@@ -27,6 +30,15 @@ final class ServerConfig {
 	final ForgeConfigSpec.BooleanValue multi_jump;
 
 	ServerConfig(final ForgeConfigSpec.Builder builder) {
+		builder.push("curse_breaking");
+		curse_breaking = builder.define("enable", true);
+		builder.pop();
+
+		builder.push("curse_butterfingers");
+		curse_butterfingers = builder.define("enable", true);
+		builder.pop();
+
+
 		builder.push("reinforced_tip");
 		reinforced_tip = builder.define("enable", true);
 		builder.pop();

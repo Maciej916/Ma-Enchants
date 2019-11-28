@@ -1,8 +1,8 @@
 package com.maciej916.maenchants.enchantment;
 
 import com.maciej916.maenchants.config.ConfigValues;
-import com.maciej916.maenchants.utils.CustomEnchantmentType;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -15,7 +15,7 @@ import net.minecraft.util.Hand;
 public class EnchantmentCombo extends Enchantment {
 
     public EnchantmentCombo() {
-        super(Rarity.RARE, CustomEnchantmentType.SWORD, new EquipmentSlotType[]{
+        super(Rarity.RARE, EnchantmentType.WEAPON, new EquipmentSlotType[]{
                 EquipmentSlotType.MAINHAND
         });
     }

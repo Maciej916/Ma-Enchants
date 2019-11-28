@@ -4,6 +4,8 @@ import com.maciej916.maenchants.capabilities.IEnchants;
 import com.maciej916.maenchants.utils.PlayerUtil;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.item.ItemStack;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 
@@ -14,7 +16,9 @@ public class HandlerNightVision {
     public static void handlerPlayerTick(PlayerEntity player) {
         if (!player.isAlive()) return;
 
-        int lvl = EnchantmentHelper.getMaxEnchantmentLevel(NIGHT_VISION, player);
+
+        ItemStack stack = player.getItemStackFromSlot(EquipmentSlotType.HEAD);
+        int lvl = EnchantmentHelper.getEnchantmentLevel(NIGHT_VISION, stack);
         IEnchants enchantsCap = PlayerUtil.getEnchantsCapability(player);
 
         if (lvl == 0) {

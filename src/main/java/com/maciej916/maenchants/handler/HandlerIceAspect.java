@@ -5,29 +5,27 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.Hand;
+import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.Effects;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 
-import static com.maciej916.maenchants.init.ModEnchants.LIFESTEAL;
+import static com.maciej916.maenchants.init.ModEnchants.ICE_ASPECT;
 
-public class HandlerLifesteal {
+public class HandlerIceAspect {
 
     public static void handlerAttack(LivingHurtEvent event) {
         Entity source = event.getSource().getTrueSource();
+        LivingEntity target = (LivingEntity) event.getEntity();
 
         if (!(source instanceof PlayerEntity)) return;
 
         PlayerEntity player = (PlayerEntity) source;
-        LivingEntity entity = event.getEntityLiving();
-
-        ItemStack stack = player.getHeldItem(Hand.MAIN_HAND);
-        int lvl = EnchantmentHelper.getEnchantmentLevel(LIFESTEAL, stack);
+        ItemStack stack = player.getHeldItem(player.getActiveHand());
+        int lvl = EnchantmentHelper.getEnchantmentLevel(ICE_ASPECT, stack);
         if (lvl == 0) return;
 
-        float damage = event.getAmount();
-        entity.attackEntityFrom(DamageSource.GENERIC, damage*1.5f);
-        player.heal(damage);
+        target.addPotionEffect(new EffectInstance(Effects.SLOWNESS, lvl * 20, 100, false, true));
     }
 
 }
+

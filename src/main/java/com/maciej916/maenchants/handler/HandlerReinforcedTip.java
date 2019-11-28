@@ -4,6 +4,8 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.Hand;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 
 import static com.maciej916.maenchants.init.ModEnchants.REINFORCED_TIP;
@@ -14,8 +16,10 @@ public class HandlerReinforcedTip {
         PlayerEntity player = event.getPlayer();
         BlockState state = event.getState();
 
-        int lvl = EnchantmentHelper.getMaxEnchantmentLevel(REINFORCED_TIP, player);
+        ItemStack stack = player.getHeldItem(Hand.MAIN_HAND);
+        int lvl = EnchantmentHelper.getEnchantmentLevel(REINFORCED_TIP, stack);
         if (lvl == 0) return;
+
         if (state.getBlock() != Blocks.OBSIDIAN) return;
 
         float oldSpeed = event.getOriginalSpeed();

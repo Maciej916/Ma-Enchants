@@ -3,6 +3,9 @@
   "block.ma-enchants.melted_cobblestone": "Melted Cobblestone",
   "key.ma-enchants.key.excavate": "Excavate",
 
+  "enchantment.ma-enchants.curse_breaking": "Curse of Breaking",
+  "enchantment.ma-enchants.curse_butterfingers": "Curse of Butterfingers",
+
   "enchantment.ma-enchants.reinforced_tip": "Reinforced Tip",
   "enchantment.ma-enchants.stone_mending": "Stone Mending",
   "enchantment.ma-enchants.lumberjack": "Lumberjack",
@@ -36,6 +39,9 @@
 
 
   "_comment": "Descriptions",
+  "enchantment.ma-enchants.curse_breaking.desc": "Your tool is breaking faster.",
+  "enchantment.ma-enchants.curse_butterfingers.desc": "Chance to drop your item when mining or attacking a mob.",
+
   "enchantment.ma-enchants.reinforced_tip.desc": "Increase speed when mining obsidian.",
   "enchantment.ma-enchants.stone_mending.desc": "Chance to restore durability when mining stone.",
   "enchantment.ma-enchants.lumberjack.desc": "Chop down trees at once.",

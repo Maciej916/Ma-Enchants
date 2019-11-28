@@ -4,6 +4,7 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.AbstractArrowEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 
@@ -38,7 +39,10 @@ public class HandlerTrueShot {
         Entity shooter = ((AbstractArrowEntity) entity).getShooter();
         if (!(shooter instanceof PlayerEntity)) return;
         PlayerEntity player = (PlayerEntity) shooter;
-        if (EnchantmentHelper.getMaxEnchantmentLevel(TRUE_SHOT, player) == 0) return;
+
+        ItemStack stack = player.getHeldItem(player.getActiveHand());
+        if (EnchantmentHelper.getEnchantmentLevel(TRUE_SHOT, stack) == 0) return;
+
         entity.setNoGravity(true);
         trueShotArrows.add((AbstractArrowEntity)entity);
     }

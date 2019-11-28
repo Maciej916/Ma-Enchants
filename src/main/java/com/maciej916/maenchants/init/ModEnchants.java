@@ -8,6 +8,10 @@ import net.minecraftforge.registries.ObjectHolder;
 @ObjectHolder(MaEnchants.MODID)
 public class ModEnchants {
 
+    // All
+    public static final Enchantment CURSE_BREAKING = ModUtil._null();
+    public static final Enchantment CURSE_BUTTERFINGERS = ModUtil._null();
+
     // Tools
     public static final Enchantment REINFORCED_TIP = ModUtil._null();
     public static final Enchantment STONE_MENDING = ModUtil._null();
@@ -32,5 +36,6 @@ public class ModEnchants {
     public static final Enchantment STEP_ASSIST = ModUtil._null();
     public static final Enchantment NIGHT_VISION = ModUtil._null();
     public static final Enchantment MULTI_JUMP = ModUtil._null();
+
 
 }

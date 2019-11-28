@@ -47,21 +47,6 @@ public class EnchantmentParalysis extends Enchantment {
         return ConfigValues.paralysis;
     }
 
-    public void onEntityDamaged(LivingEntity user, Entity target, int level)  {
-        if (!(user instanceof PlayerEntity)) return;
-        if (!(target instanceof LivingEntity)) return;
-
-        PlayerEntity player = (PlayerEntity) user;
-        LivingEntity livingTarget = (LivingEntity) target;
-
-        int lvl = EnchantmentHelper.getMaxEnchantmentLevel(PARALYSIS, player);
-        if (lvl == 0) return;
-
-        livingTarget.addPotionEffect(new EffectInstance(Effects.SLOWNESS, lvl * 20, 100, false, false));
-        livingTarget.addPotionEffect(new EffectInstance(Effects.MINING_FATIGUE, lvl * 20, 100, false, false));
-        livingTarget.addPotionEffect(new EffectInstance(Effects.WEAKNESS, lvl * 20, 100, false, false));
-    }
-
     public boolean canApplyTogether(Enchantment ench) {
         return super.canApplyTogether(ench) && ench != FLOATING;
     }

@@ -9,6 +9,9 @@ public final class ConfigHelper {
 	public static void bake(final ModConfig config) {
 		serverConfig = config;
 
+		ConfigValues.curse_breaking = ConfigHolder.SERVER.curse_breaking.get();
+		ConfigValues.curse_butterfingers = ConfigHolder.SERVER.curse_butterfingers.get();
+
 		ConfigValues.reinforced_tip = ConfigHolder.SERVER.reinforced_tip.get();
 		ConfigValues.stone_mending = ConfigHolder.SERVER.stone_mending.get();
 		ConfigValues.lumberjack = ConfigHolder.SERVER.lumberjack.get();

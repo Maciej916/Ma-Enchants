@@ -5,12 +5,9 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.Hand;
-import net.minecraft.util.text.NBTTextComponent;
-import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.world.BlockEvent;
@@ -23,9 +20,10 @@ public class HandlerMomentum {
 
     public static void handlerBreak(BlockEvent.BreakEvent event) {
         PlayerEntity player = event.getPlayer();
-        if (EnchantmentHelper.getMaxEnchantmentLevel(MOMENTUM, player) == 0) return;
 
         ItemStack stack = player.getHeldItem(Hand.MAIN_HAND);
+        if (EnchantmentHelper.getEnchantmentLevel(MOMENTUM, stack) == 0) return;
+
         CompoundNBT compound = stack.getOrCreateTag();
         int momentum = compound.getInt("momentum");
         String cachedBlock = compound.getString("block");

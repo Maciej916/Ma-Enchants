@@ -3,6 +3,7 @@ package com.maciej916.maenchants.handler;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 
 import java.lang.reflect.Method;
 
@@ -13,18 +14,21 @@ public class HandlerQuickDraw {
     private static int tick = 0;
 
     public static void handlerPlayerTick(PlayerEntity player) {
-        int lvl = EnchantmentHelper.getMaxEnchantmentLevel(QUICK_DRAW, player);
-        if (lvl == 0) return;
         if (!player.isHandActive()) {
             tick = 0;
             return;
         }
+
+        ItemStack stack = player.getHeldItem(player.getActiveHand());
+        int lvl = EnchantmentHelper.getEnchantmentLevel(QUICK_DRAW, stack);
+        if (lvl == 0) return;
 
         switch (lvl) {
             case 1: if (tick % 10 == 0) tickBow(player); break;
             case 2: if (tick % 8 == 0) tickBow(player); break;
             case 3: if (tick % 5 == 0) tickBow(player); break;
         }
+
         tick++;
         if (tick >= 100) tick = 0;
     }

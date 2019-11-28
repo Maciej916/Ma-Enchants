@@ -16,8 +16,10 @@ public class HandlerStoneMending {
         PlayerEntity player = event.getPlayer();
         BlockState state = event.getState();
 
-        int lvl = EnchantmentHelper.getMaxEnchantmentLevel(STONE_MENDING, player);
+        ItemStack stack = player.getHeldItem(Hand.MAIN_HAND);
+        int lvl = EnchantmentHelper.getEnchantmentLevel(STONE_MENDING, stack);
         if (lvl == 0) return;
+
         if (state.getBlock() != Blocks.STONE) return;
 
         switch (lvl) {
@@ -26,7 +28,6 @@ public class HandlerStoneMending {
             case 3: if (Math.random()> 0.80) return;
         }
 
-        ItemStack stack = player.getHeldItem(Hand.MAIN_HAND);
         stack.setDamage(stack.getDamage() - 2);
     }
 

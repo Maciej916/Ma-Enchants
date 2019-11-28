@@ -2,6 +2,9 @@ package com.maciej916.maenchants.config;
 
 public final class ConfigValues {
 
+	public static boolean curse_breaking;
+	public static boolean curse_butterfingers;
+
 	public static boolean reinforced_tip;
 	public static boolean stone_mending;
 	public static boolean lumberjack;

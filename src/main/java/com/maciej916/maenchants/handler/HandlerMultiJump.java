@@ -13,6 +13,8 @@ import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ElytraItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.fml.network.NetworkDirection;
@@ -43,6 +45,7 @@ public class HandlerMultiJump {
         }
     }
 
+    @OnlyIn(Dist.CLIENT)
     public static void handlerKeyInput(Minecraft mc, InputEvent.KeyInputEvent event) {
         if (!mc.isGameFocused() || mc.world == null) return;
         IEnchants enchantsCap = PlayerUtil.getEnchantsCapability(mc.player);
@@ -58,7 +61,8 @@ public class HandlerMultiJump {
     }
 
     public static boolean handlerJump(PlayerEntity player) {
-        int lvl = EnchantmentHelper.getMaxEnchantmentLevel(MULTI_JUMP, player);
+        ItemStack stack = player.getItemStackFromSlot(EquipmentSlotType.FEET);
+        int lvl = EnchantmentHelper.getEnchantmentLevel(MULTI_JUMP, stack);
         if (lvl == 0 || !allowJump(player)) return false;
         IEnchants enchantsCap = PlayerUtil.getEnchantsCapability(player);
         int jumps = enchantsCap.getMultiJump();

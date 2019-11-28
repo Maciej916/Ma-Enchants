@@ -1,15 +1,15 @@
 package com.maciej916.maenchants.enchantment;
 
 import com.maciej916.maenchants.config.ConfigValues;
-import com.maciej916.maenchants.utils.CustomEnchantmentType;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentType;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
 
 public class EnchantmentWisdom extends Enchantment {
 
     public EnchantmentWisdom() {
-        super(Rarity.RARE, CustomEnchantmentType.SWORD, new EquipmentSlotType[]{
+        super(Rarity.RARE, EnchantmentType.WEAPON, new EquipmentSlotType[]{
                 EquipmentSlotType.MAINHAND
         });
     }

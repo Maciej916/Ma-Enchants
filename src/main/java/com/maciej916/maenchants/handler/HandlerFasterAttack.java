@@ -3,6 +3,8 @@ package com.maciej916.maenchants.handler;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.Hand;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 
 import static com.maciej916.maenchants.init.ModEnchants.FASTER_ATTACK;
@@ -10,9 +12,9 @@ import static com.maciej916.maenchants.init.ModEnchants.FASTER_ATTACK;
 public class HandlerFasterAttack {
 
     public static void handlerPlayerTick(PlayerEntity player) {
-        int lvl = EnchantmentHelper.getMaxEnchantmentLevel(FASTER_ATTACK, player);
+        ItemStack stack = player.getHeldItem(Hand.MAIN_HAND);
+        int lvl = EnchantmentHelper.getEnchantmentLevel(FASTER_ATTACK, stack);
         if (lvl == 0) return;
-
 
         int swing = ObfuscationReflectionHelper.getPrivateValue(LivingEntity.class, player, "field_184617_aD");
         swing = new Double(swing * (lvl * 0.1 + 1)).intValue();

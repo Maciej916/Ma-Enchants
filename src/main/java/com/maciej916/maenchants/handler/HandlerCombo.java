@@ -15,6 +15,7 @@ import static com.maciej916.maenchants.init.ModEnchants.COMBO;
 
 public class HandlerCombo {
 
+    @OnlyIn(Dist.CLIENT)
     public static void handlerMiss(PlayerInteractEvent.LeftClickEmpty event) {
         if (EnchantmentHelper.getEnchantmentLevel(COMBO, event.getItemStack()) == 0) return;
         Networking.INSTANCE.sendToServer(new PacketComboReset());

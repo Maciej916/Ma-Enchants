@@ -9,6 +9,8 @@ import net.minecraft.block.material.Material;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.shapes.ISelectionContext;
@@ -16,17 +18,17 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 
 import static com.maciej916.maenchants.init.ModEnchants.BLAZING_WALKER;
+import static com.maciej916.maenchants.init.ModEnchants.FLOATING;
 
 public class HandlerBlazingWalker {
 
     public static void handlerPlayerTick(PlayerEntity player) {
-        int lvl = EnchantmentHelper.getMaxEnchantmentLevel(BLAZING_WALKER, player);
+        ItemStack stack = player.getItemStackFromSlot(EquipmentSlotType.FEET);
+        int lvl = EnchantmentHelper.getEnchantmentLevel(BLAZING_WALKER, stack);
         if (lvl == 0) return;
+
         BlockPos prevBlockpos = ObfuscationReflectionHelper.getPrivateValue(LivingEntity.class, player, "field_184620_bC");
         BlockPos blockpos = new BlockPos(player);
-
-        System.out.println(prevBlockpos);
-        System.out.println(blockpos);
 
         if (!Objects.equal(prevBlockpos, blockpos)) {
             makeFloor(player, player.world, blockpos, lvl);
