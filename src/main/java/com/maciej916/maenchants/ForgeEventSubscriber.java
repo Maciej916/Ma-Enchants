@@ -78,6 +78,7 @@ public final class ForgeEventSubscriber {
         HandlerParalysis.handlerAttack(event);
         HandlerIceAspect.handlerAttack(event);
         HandlerCurseButterfingers.handlerAttack(event);
+        HandlerCurseBreaking.handlerAttack(event);
     }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
