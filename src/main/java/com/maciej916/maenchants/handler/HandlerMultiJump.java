@@ -25,7 +25,7 @@ public class HandlerMultiJump {
 
     public static void handlerPlayerTick(TickEvent.PlayerTickEvent event) {
         if (event.phase != TickEvent.Phase.END) return;
-        if (event.player.onGround) {
+        if (event.player.isAlive() && event.player.onGround) {
             IEnchants enchantsCap = PlayerUtil.getEnchantsCapability(event.player);
             enchantsCap.setMultiJump(0);
         }
