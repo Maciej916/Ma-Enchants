@@ -14,12 +14,11 @@ import static com.maciej916.maenchants.init.ModEnchants.NIGHT_VISION;
 public class HandlerNightVision {
 
     public static void handlerPlayerTick(PlayerEntity player) {
-        if (!player.isAlive()) return;
-
+        IEnchants enchantsCap = PlayerUtil.getAliveEnchantsCapability(player);
+        if (enchantsCap == null) return;
 
         ItemStack stack = player.getItemStackFromSlot(EquipmentSlotType.HEAD);
         int lvl = EnchantmentHelper.getEnchantmentLevel(NIGHT_VISION, stack);
-        IEnchants enchantsCap = PlayerUtil.getEnchantsCapability(player);
 
         if (lvl == 0) {
             if (enchantsCap.getNightVision()) {

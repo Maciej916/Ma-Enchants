@@ -33,11 +33,14 @@ public class HandlerLumberjack {
 
     @OnlyIn(Dist.CLIENT)
     public static void handlerKeyInput(Minecraft mc, InputEvent.KeyInputEvent event) {
-        IEnchants enchantsCap = PlayerUtil.getEnchantsCapability(mc.player);
+        IEnchants enchantsCap = PlayerUtil.getAliveEnchantsCapability(mc.player);
+        if (enchantsCap == null) return;
+
         boolean down = Keys.excavateKey.isKeyDown();
         if (down) {
             if (!enchantsCap.getExcavateActive()) {
                 enchantsCap.setExcavateActive(true);
+
                 Networking.INSTANCE.sendToServer(new PacketLumberjackToggle(true));
             }
         } else {
@@ -54,7 +57,9 @@ public class HandlerLumberjack {
         ItemStack stack = player.getHeldItem(Hand.MAIN_HAND);
         if (EnchantmentHelper.getEnchantmentLevel(LUMBERJACK, stack) == 0) return;
 
-        IEnchants enchantsCap = PlayerUtil.getEnchantsCapability(player);
+        IEnchants enchantsCap = PlayerUtil.getAliveEnchantsCapability(player);
+        if (enchantsCap == null) return;
+
         if (enchantsCap.getExcavateActive()) {
             BlockState state = event.getState();
             Block block = state.getBlock();

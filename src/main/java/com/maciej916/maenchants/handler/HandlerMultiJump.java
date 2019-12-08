@@ -25,14 +25,17 @@ public class HandlerMultiJump {
 
     public static void handlerPlayerTick(TickEvent.PlayerTickEvent event) {
         if (event.phase != TickEvent.Phase.END) return;
-        if (event.player.isAlive() && event.player.onGround) {
-            IEnchants enchantsCap = PlayerUtil.getEnchantsCapability(event.player);
+        if (event.player.onGround) {
+            IEnchants enchantsCap = PlayerUtil.getAliveEnchantsCapability(event.player);
+            if (enchantsCap == null) return;
             enchantsCap.setMultiJump(0);
         }
     }
 
     public static void handlerLoggedIn(ServerPlayerEntity player) {
-        IEnchants enchantsCap = PlayerUtil.getEnchantsCapability(player);
+        IEnchants enchantsCap = PlayerUtil.getAliveEnchantsCapability(player);
+        if (enchantsCap == null) return;
+
         int jumps = enchantsCap.getMultiJump();
         if (jumps > 0) {
             Networking.INSTANCE.sendTo(new PacketMultiJumpSync(jumps), player.connection.netManager, NetworkDirection.PLAY_TO_CLIENT);
@@ -48,7 +51,10 @@ public class HandlerMultiJump {
     @OnlyIn(Dist.CLIENT)
     public static void handlerKeyInput(Minecraft mc, InputEvent.KeyInputEvent event) {
         if (!mc.isGameFocused() || mc.world == null) return;
-        IEnchants enchantsCap = PlayerUtil.getEnchantsCapability(mc.player);
+
+        IEnchants enchantsCap = PlayerUtil.getAliveEnchantsCapability(mc.player);
+        if (enchantsCap == null) return;
+
         boolean down = mc.gameSettings.keyBindJump.isKeyDown();
         if (down) {
             if (!enchantsCap.getMultiJumpSpace()) {
@@ -64,7 +70,10 @@ public class HandlerMultiJump {
         ItemStack stack = player.getItemStackFromSlot(EquipmentSlotType.FEET);
         int lvl = EnchantmentHelper.getEnchantmentLevel(MULTI_JUMP, stack);
         if (lvl == 0 || !allowJump(player)) return false;
-        IEnchants enchantsCap = PlayerUtil.getEnchantsCapability(player);
+
+        IEnchants enchantsCap = PlayerUtil.getAliveEnchantsCapability(player);
+        if (enchantsCap == null) return false;
+
         int jumps = enchantsCap.getMultiJump();
         if (jumps < lvl) {
             enchantsCap.setMultiJump(++jumps);

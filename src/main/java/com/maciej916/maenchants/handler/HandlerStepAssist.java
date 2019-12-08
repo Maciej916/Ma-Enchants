@@ -12,11 +12,11 @@ import static com.maciej916.maenchants.init.ModEnchants.STEP_ASSIST;
 public class HandlerStepAssist {
 
     public static void handlerPlayerTick(PlayerEntity player) {
-        if (!player.isAlive()) return;
+        IEnchants enchantsCap = PlayerUtil.getAliveEnchantsCapability(player);
+        if (enchantsCap == null) return;
 
         ItemStack stack = player.getItemStackFromSlot(EquipmentSlotType.FEET);
         int lvl = EnchantmentHelper.getEnchantmentLevel(STEP_ASSIST, stack);
-        IEnchants enchantsCap = PlayerUtil.getEnchantsCapability(player);
 
         if (lvl == 0) {
             if (enchantsCap.getStepAssist()) {

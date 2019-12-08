@@ -32,9 +32,6 @@ public final class ForgeEventSubscriber {
         if (event.getObject() instanceof PlayerEntity) {
             event.addCapability(new ResourceLocation(MaEnchants.MODID, "enchants"), new EnchantsProvider());
         }
-        if (event.getObject() instanceof ServerPlayerEntity) {
-            event.addCapability(new ResourceLocation(MaEnchants.MODID, "enchants_server"), new EnchantsProvider());
-        }
     }
 
     @SubscribeEvent
@@ -47,6 +44,9 @@ public final class ForgeEventSubscriber {
         enchantsCap.setNightVision(origEnchantsCap.getNightVision());
         enchantsCap.setMultiJump(origEnchantsCap.getMultiJump());
         enchantsCap.setMultiJumpSpace(origEnchantsCap.getMultiJumpSpace());
+        enchantsCap.setExcavateActive(origEnchantsCap.getExcavateActive());
+
+        System.out.println(enchantsCap);
     }
 
     @SubscribeEvent
