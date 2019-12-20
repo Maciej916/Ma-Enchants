@@ -85,7 +85,7 @@ public class HandlerMultiJump {
     }
 
     private static boolean allowJump(PlayerEntity player) {
-        if (player.isSneaking()) return false;
+        if (player.func_225608_bj_()) return false; // is sneaking
 
         boolean performingAction = player.onGround || player.isBeingRidden() || player.abilities.isFlying || player.abilities.allowFlying;
         boolean insideLiquid = player.isInWater() || player.isInLava();

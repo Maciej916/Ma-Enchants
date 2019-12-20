@@ -1,28 +1,28 @@
 modLoader="javafml"
-loaderVersion="[28,)"
+loaderVersion="[30,)"
 issueTrackerURL="https://github.com/Maciej916/Ma-Enchants/issues"
 
 [[mods]]
     modId="ma-enchants"
     version="${file.jarVersion}"
     displayName="Ma Enchants"
-    updateJSONURL="https://raw.githubusercontent.com/Maciej916/Ma-Enchants/master/update.json"
+    updateJSONURL="https://raw.githubusercontent.com/Maciej916/Ma-Enchants/1.15.1/update.json"
     displayURL="https://www.curseforge.com/minecraft/mc-mods/ma-enchants"
     logoFile="ma-enchants.png"
     credits=""
     authors="Statywek (Maciej916)"
-    description="This mod adds more enchants"
+    description="Multiple new enchants and curses"
 
-    [[dependencies.maessentials]]
+    [[dependencies.maenchants]]
         modId="forge"
         mandatory=true
-        versionRange="[28.1.70,)"
+        versionRange="[30.0.14,)"
         ordering="NONE"
         side="BOTH"
 
-    [[dependencies.maessentials]]
+    [[dependencies.maenchants]]
         modId="minecraft"
         mandatory=true
-        versionRange="[1.14.4]"
+        versionRange="[1.15.1]"
         ordering="NONE"
         side="BOTH"

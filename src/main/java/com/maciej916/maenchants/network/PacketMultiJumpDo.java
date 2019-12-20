@@ -25,7 +25,7 @@ public class PacketMultiJumpDo {
             ServerWorld world = ctx.get().getSender().getServerWorld();
             ServerPlayerEntity player = ctx.get().getSender();
             HandlerMultiJump.handlerJump(player);
-            world.spawnParticle(ParticleTypes.CLOUD, player.posX, player.posY, player.posZ, 15, 0.25F, 0.0F, 0.25F, 0.01F);
+            world.spawnParticle(ParticleTypes.CLOUD, player.func_226277_ct_(), player.func_226278_cu_(), player.func_226281_cx_(), 15, 0.25F, 0.0F, 0.25F, 0.01F);
         });
         ctx.get().setPacketHandled(true);
     }
