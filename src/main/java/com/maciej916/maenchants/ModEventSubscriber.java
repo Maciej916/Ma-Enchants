@@ -71,7 +71,6 @@ public final class ModEventSubscriber {
 				setup(new EnchantmentStoneMending(), "stone_mending"),
 				setup(new EnchantmentLumberjack(), "lumberjack"),
 				setup(new EnchantmentMomentum(), "momentum"),
-				setup(new EnchantmentButchering(), "butchering"),
 
 				// Bows
 				setup(new EnchantmentTrueShot(), "true_shot"),

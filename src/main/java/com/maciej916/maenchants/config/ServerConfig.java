@@ -12,7 +12,6 @@ final class ServerConfig {
 	final ForgeConfigSpec.BooleanValue stone_mending;
 	final ForgeConfigSpec.BooleanValue lumberjack;
 	final ForgeConfigSpec.BooleanValue momentum;
-	final ForgeConfigSpec.BooleanValue butchering;
 
 	final ForgeConfigSpec.BooleanValue true_shot;
 	final ForgeConfigSpec.BooleanValue quick_draw;
@@ -54,10 +53,6 @@ final class ServerConfig {
 
 		builder.push("momentum");
 		momentum = builder.define("enable", true);
-		builder.pop();
-
-		builder.push("butchering");
-		butchering = builder.define("enable", true);
 		builder.pop();
 
 

@@ -11,16 +11,16 @@ issueTrackerURL="https://github.com/Maciej916/Ma-Enchants/issues"
     logoFile="ma-enchants.png"
     credits=""
     authors="Statywek (Maciej916)"
-    description="Multiple new enchants and curses"
+    description="This mod adds more enchants"
 
-    [[dependencies.maenchants]]
+    [[dependencies.maessentials]]
         modId="forge"
         mandatory=true
         versionRange="[28.1.70,)"
         ordering="NONE"
         side="BOTH"
 
-    [[dependencies.maenchants]]
+    [[dependencies.maessentials]]
         modId="minecraft"
         mandatory=true
         versionRange="[1.14.4]"

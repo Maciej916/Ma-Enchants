@@ -16,7 +16,6 @@ public final class ConfigHelper {
 		ConfigValues.stone_mending = ConfigHolder.SERVER.stone_mending.get();
 		ConfigValues.lumberjack = ConfigHolder.SERVER.lumberjack.get();
 		ConfigValues.momentum = ConfigHolder.SERVER.momentum.get();
-		ConfigValues.butchering = ConfigHolder.SERVER.butchering.get();
 
 		ConfigValues.true_shot = ConfigHolder.SERVER.true_shot.get();
 		ConfigValues.quick_draw = ConfigHolder.SERVER.quick_draw.get();
