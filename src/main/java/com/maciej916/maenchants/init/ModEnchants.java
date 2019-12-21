@@ -17,6 +17,7 @@ public class ModEnchants {
     public static final Enchantment STONE_MENDING = ModUtil._null();
     public static final Enchantment LUMBERJACK = ModUtil._null();
     public static final Enchantment MOMENTUM = ModUtil._null();
+    public static final Enchantment BUTCHERING = ModUtil._null();
 
     // Bows
     public static final Enchantment TRUE_SHOT = ModUtil._null();
