@@ -9,6 +9,7 @@ public final class ConfigValues {
 	public static boolean stone_mending;
 	public static boolean lumberjack;
 	public static boolean momentum;
+	public static boolean butchering;
 
 	public static boolean true_shot;
 	public static boolean quick_draw;
