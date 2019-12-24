@@ -62,6 +62,7 @@ public final class ForgeEventSubscriber {
 
         if (!world.isRemote()) {
             HandlerBlazingWalker.handlerPlayerTick(player);
+            HandlerCurseAquaphobia.handlerPlayerTick(event);
         } else {
             HandlerMultiJump.handlerPlayerTick(event);
             HandlerNightVision.handlerPlayerTick(player);
@@ -80,6 +81,7 @@ public final class ForgeEventSubscriber {
         HandlerCurseButterfingers.handlerAttack(event);
         HandlerCurseBreaking.handlerAttack(event);
         HandlerButchering.handlerAttack(event);
+        HandlerDetonation.handlerAttack(event);
     }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)

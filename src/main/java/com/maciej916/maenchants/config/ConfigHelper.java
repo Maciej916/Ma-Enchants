@@ -11,6 +11,7 @@ public final class ConfigHelper {
 
 		ConfigValues.curse_breaking = ConfigHolder.SERVER.curse_breaking.get();
 		ConfigValues.curse_butterfingers = ConfigHolder.SERVER.curse_butterfingers.get();
+		ConfigValues.curse_aquaphobia = ConfigHolder.SERVER.curse_aquaphobia.get();
 
 		ConfigValues.reinforced_tip = ConfigHolder.SERVER.reinforced_tip.get();
 		ConfigValues.stone_mending = ConfigHolder.SERVER.stone_mending.get();
@@ -22,6 +23,7 @@ public final class ConfigHelper {
 		ConfigValues.quick_draw = ConfigHolder.SERVER.quick_draw.get();
 		ConfigValues.floating = ConfigHolder.SERVER.floating.get();
 		ConfigValues.paralysis = ConfigHolder.SERVER.paralysis.get();
+		ConfigValues.detonation = ConfigHolder.SERVER.detonation.get();
 
 		ConfigValues.combo = ConfigHolder.SERVER.combo.get();
 		ConfigValues.faster_attack = ConfigHolder.SERVER.faster_attack.get();

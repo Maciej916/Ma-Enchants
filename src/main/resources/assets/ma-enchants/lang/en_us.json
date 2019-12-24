@@ -2,9 +2,11 @@
   "itemGroup.ma-enchants": "Ma Enchants",
   "block.ma-enchants.melted_cobblestone": "Melted Cobblestone",
   "key.ma-enchants.key.excavate": "Excavate",
+  "death.attack.aquaphobia": "Player %s died because of his fear of water",
 
   "enchantment.ma-enchants.curse_breaking": "Curse of Breaking",
   "enchantment.ma-enchants.curse_butterfingers": "Curse of Butterfingers",
+  "enchantment.ma-enchants.curse_aquaphobia": "Curse of Aquaphobia",
 
   "enchantment.ma-enchants.reinforced_tip": "Reinforced Tip",
   "enchantment.ma-enchants.stone_mending": "Stone Mending",
@@ -16,6 +18,7 @@
   "enchantment.ma-enchants.quick_draw": "Quick Draw",
   "enchantment.ma-enchants.floating": "Floating",
   "enchantment.ma-enchants.paralysis": "Paralysis",
+  "enchantment.ma-enchants.detonation": "Detonation",
 
   "enchantment.ma-enchants.combo": "Combo",
   "enchantment.ma-enchants.faster_attack": "Faster Attack",
@@ -42,12 +45,14 @@
   "_comment": "Descriptions",
   "enchantment.ma-enchants.curse_breaking.desc": "Your tool is breaking faster.",
   "enchantment.ma-enchants.curse_butterfingers.desc": "Chance to drop your item when mining or attacking a mob.",
+  "enchantment.ma-enchants.curse_aquaphobia.desc": "Slowly damage player when in water.",
 
   "enchantment.ma-enchants.reinforced_tip.desc": "Increase speed when mining obsidian.",
   "enchantment.ma-enchants.stone_mending.desc": "Chance to restore durability when mining stone.",
   "enchantment.ma-enchants.lumberjack.desc": "Chop down trees at once.",
   "enchantment.ma-enchants.momentum.desc": "Mining speed increases for each consecutive block of the same one.",
-  "enchantment.ma-enchants.butchering.desc": "Deals extra damage to animals",
+  "enchantment.ma-enchants.butchering.desc": "Deals extra damage to animals.",
+  "enchantment.ma-enchants.detonation.desc": "Creates an explosion when hit a mob.",
 
   "enchantment.ma-enchants.true_shot.desc": "Arrows fired by this bow will not be affected by gravity.",
   "enchantment.ma-enchants.quick_draw.desc": "Draw bow faster.",
@@ -58,7 +63,7 @@
   "enchantment.ma-enchants.faster_attack.desc": "Increase attack speed.",
   "enchantment.ma-enchants.lifesteal.desc": "Part of dealt damage restore your health.",
   "enchantment.ma-enchants.ice_aspect.desc": "Slow down enemies.",
-  "enchantment.ma-enchants.wisdom.desc": "Gives you more XP when killing mobs",
+  "enchantment.ma-enchants.wisdom.desc": "Gives you more XP when killing mobs.",
 
   "enchantment.ma-enchants.blazing_walker.desc": "Temporary turns lava into a melted cobblestone.",
   "enchantment.ma-enchants.step_assist.desc": "Allows you to walk onto 1 height block without jumping.",

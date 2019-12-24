@@ -4,10 +4,12 @@ import net.minecraftforge.common.ForgeConfigSpec;
 
 final class ServerConfig {
 
-	// Enchants
+	// Curses
 	final ForgeConfigSpec.BooleanValue curse_breaking;
 	final ForgeConfigSpec.BooleanValue curse_butterfingers;
-
+	final ForgeConfigSpec.BooleanValue curse_aquaphobia;
+	
+	// Enchants
 	final ForgeConfigSpec.BooleanValue reinforced_tip;
 	final ForgeConfigSpec.BooleanValue stone_mending;
 	final ForgeConfigSpec.BooleanValue lumberjack;
@@ -18,6 +20,7 @@ final class ServerConfig {
 	final ForgeConfigSpec.BooleanValue quick_draw;
 	final ForgeConfigSpec.BooleanValue floating;
 	final ForgeConfigSpec.BooleanValue paralysis;
+	final ForgeConfigSpec.BooleanValue detonation;
 
 	final ForgeConfigSpec.BooleanValue combo;
 	final ForgeConfigSpec.BooleanValue faster_attack;
@@ -37,6 +40,10 @@ final class ServerConfig {
 
 		builder.push("curse_butterfingers");
 		curse_butterfingers = builder.define("enable", true);
+		builder.pop();
+
+		builder.push("curse_aquaphobia");
+		curse_aquaphobia = builder.define("enable", true);
 		builder.pop();
 
 
@@ -60,7 +67,6 @@ final class ServerConfig {
 		butchering = builder.define("enable", true);
 		builder.pop();
 
-
 		builder.push("true_shot");
 		true_shot = builder.define("enable", true);
 		builder.pop();
@@ -75,6 +81,10 @@ final class ServerConfig {
 
 		builder.push("paralysis");
 		paralysis = builder.define("enable", true);
+		builder.pop();
+
+		builder.push("detonation");
+		detonation = builder.define("enable", true);
 		builder.pop();
 
 

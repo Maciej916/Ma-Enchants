@@ -65,6 +65,7 @@ public final class ModEventSubscriber {
 				// All
 				setup(new EnchantmentCurseBreaking(), "curse_breaking"),
 				setup(new EnchantmentCurseButterfingers(), "curse_butterfingers"),
+				setup(new EnchantmentCurseAquaphobia(), "curse_aquaphobia"),
 
 				// Tools
 				setup(new EnchantmentReinforcedTip(), "reinforced_tip"),
@@ -78,6 +79,7 @@ public final class ModEventSubscriber {
 				setup(new EnchantmentQuickDraw(), "quick_draw"),
 				setup(new EnchantmentFloating(), "floating"),
 				setup(new EnchantmentParalysis(), "paralysis"),
+				setup(new EnchantmentDetonation(), "detonation"),
 
 				// Swords
 				setup(new EnchantmentCombo(), "combo"),
