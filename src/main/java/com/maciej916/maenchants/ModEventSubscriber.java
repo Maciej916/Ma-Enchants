@@ -8,9 +8,10 @@ import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
+import net.minecraft.client.Minecraft;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
+import net.minecraft.enchantment.EnchantmentData;
+import net.minecraft.item.*;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -44,27 +45,13 @@ public final class ModEventSubscriber {
 	}
 
 	@SubscribeEvent
-	public static void onRegisterItems(final RegistryEvent.Register<Item> event) {
-		final IForgeRegistry<Item> registry = event.getRegistry();
-		for (final Block block : ForgeRegistries.BLOCKS.getValues()) {
-			final ResourceLocation blockRegistryName = block.getRegistryName();
-			Preconditions.checkNotNull(blockRegistryName, "Registry Name of Block \"" + block + "\" of class \"" + block.getClass().getName() + "\"is null! This is not allowed!");
-			if (!blockRegistryName.getNamespace().equals(MODID)) {
-				continue;
-			}
-			final Item.Properties properties = new Item.Properties().group(MOD_ITEM_GROUP);
-			final BlockItem blockItem = new BlockItem(block, properties);
-			registry.register(setup(blockItem, blockRegistryName));
-		}
-	}
-
-	@SubscribeEvent
 	public static void registerEnchantments(RegistryEvent.Register<Enchantment> event) {
 		final IForgeRegistry<Enchantment> registry = event.getRegistry();
 		registry.registerAll(
 				// All
 				setup(new EnchantmentCurseBreaking(), "curse_breaking"),
 				setup(new EnchantmentCurseButterfingers(), "curse_butterfingers"),
+				setup(new EnchantmentCurseAquaphobia(), "curse_aquaphobia"),
 
 				// Tools
 				setup(new EnchantmentReinforcedTip(), "reinforced_tip"),
@@ -78,6 +65,7 @@ public final class ModEventSubscriber {
 				setup(new EnchantmentQuickDraw(), "quick_draw"),
 				setup(new EnchantmentFloating(), "floating"),
 				setup(new EnchantmentParalysis(), "paralysis"),
+				setup(new EnchantmentDetonation(), "detonation"),
 
 				// Swords
 				setup(new EnchantmentCombo(), "combo"),

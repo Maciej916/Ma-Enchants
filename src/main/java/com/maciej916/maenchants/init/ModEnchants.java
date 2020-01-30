@@ -11,6 +11,7 @@ public class ModEnchants {
     // All
     public static final Enchantment CURSE_BREAKING = ModUtil._null();
     public static final Enchantment CURSE_BUTTERFINGERS = ModUtil._null();
+    public static final Enchantment CURSE_AQUAPHOBIA = ModUtil._null();
 
     // Tools
     public static final Enchantment REINFORCED_TIP = ModUtil._null();
@@ -24,6 +25,7 @@ public class ModEnchants {
     public static final Enchantment QUICK_DRAW = ModUtil._null();
     public static final Enchantment FLOATING = ModUtil._null();
     public static final Enchantment PARALYSIS = ModUtil._null();
+    public static final Enchantment DETONATION = ModUtil._null();
 
     // Swords
     public static final Enchantment COMBO = ModUtil._null();

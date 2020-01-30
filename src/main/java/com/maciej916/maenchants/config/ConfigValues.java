@@ -4,6 +4,7 @@ public final class ConfigValues {
 
 	public static boolean curse_breaking;
 	public static boolean curse_butterfingers;
+	public static boolean curse_aquaphobia;
 
 	public static boolean reinforced_tip;
 	public static boolean stone_mending;
@@ -15,6 +16,7 @@ public final class ConfigValues {
 	public static boolean quick_draw;
 	public static boolean floating;
 	public static boolean paralysis;
+	public static boolean detonation;
 
 	public static boolean combo;
 	public static boolean faster_attack;
