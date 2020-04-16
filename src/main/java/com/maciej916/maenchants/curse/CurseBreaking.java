@@ -1,4 +1,4 @@
-package com.maciej916.maenchants.enchantment;
+package com.maciej916.maenchants.curse;
 
 import com.maciej916.maenchants.config.ConfigValues;
 import net.minecraft.enchantment.Enchantment;
@@ -6,9 +6,9 @@ import net.minecraft.enchantment.EnchantmentType;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
 
-public class EnchantmentCurseBreaking extends Enchantment {
+public class CurseBreaking extends Enchantment {
 
-    public EnchantmentCurseBreaking() {
+    public CurseBreaking() {
         super(Rarity.VERY_RARE, EnchantmentType.BREAKABLE, EquipmentSlotType.values());
     }
 

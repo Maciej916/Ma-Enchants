@@ -6,31 +6,28 @@ import net.minecraft.enchantment.EnchantmentType;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
 
-public class EnchantmentCurseAquaphobia extends Enchantment {
+public class EnchantmentTimeless extends Enchantment {
 
-    public EnchantmentCurseAquaphobia() {
-        super(Rarity.RARE, EnchantmentType.ARMOR_FEET, new EquipmentSlotType[]{
-                EquipmentSlotType.FEET,
+    public EnchantmentTimeless() {
+        super(Rarity.RARE, EnchantmentType.ALL, new EquipmentSlotType[]{
+                EquipmentSlotType.MAINHAND
         });
     }
 
     public int getMinEnchantability(int level) {
-        return 20;
+        return 5 + 10 * (level - 1);
     }
 
     public boolean canApply(ItemStack stack) {
-        return ConfigValues.curse_aquaphobia && super.canApply(stack);
+        return ConfigValues.timeless && super.canApply(stack);
     }
 
     public boolean canApplyAtEnchantingTable(ItemStack stack) {
-        return ConfigValues.curse_aquaphobia && super.canApplyAtEnchantingTable(stack);
-    }
-
-    public boolean isCurse() {
-        return true;
+        return ConfigValues.timeless && super.canApplyAtEnchantingTable(stack);
     }
 
     public boolean isAllowedOnBooks() {
-        return ConfigValues.curse_aquaphobia;
+        return ConfigValues.timeless;
     }
+
 }

@@ -15,6 +15,7 @@ import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraftforge.event.entity.item.ItemExpireEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -63,6 +64,7 @@ public final class ForgeEventSubscriber {
         if (!world.isRemote()) {
             HandlerBlazingWalker.handlerPlayerTick(player);
             HandlerCurseAquaphobia.handlerPlayerTick(event);
+            HandlerCurseDeath.handlerPlayerTick(event);
         } else {
             HandlerMultiJump.handlerPlayerTick(event);
             HandlerNightVision.handlerPlayerTick(player);
@@ -109,6 +111,11 @@ public final class ForgeEventSubscriber {
         ServerPlayerEntity serverPlayer = (ServerPlayerEntity) event.getPlayer();
 
         HandlerMultiJump.handlerLoggedIn(serverPlayer);
+    }
+
+    @SubscribeEvent
+    public static void onItemDespawn(ItemExpireEvent event) {
+        HandlerTimeless.handlerItemExpire(event);
     }
 
 }

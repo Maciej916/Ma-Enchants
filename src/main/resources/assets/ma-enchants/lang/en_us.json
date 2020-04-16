@@ -3,9 +3,13 @@
   "block.ma-enchants.melted_cobblestone": "Melted Cobblestone",
   "key.ma-enchants.key.excavate": "Excavate",
 
+  "death.attack.aquaphobia": "%s iis afraid of water",
+  "death.attack.death": "%s can not handle power of this item",
+
   "enchantment.ma-enchants.curse_breaking": "Curse of Breaking",
   "enchantment.ma-enchants.curse_butterfingers": "Curse of Butterfingers",
   "enchantment.ma-enchants.curse_aquaphobia": "Curse of Aquaphobia",
+  "enchantment.ma-enchants.curse_death": "Curse of Death",
 
   "enchantment.ma-enchants.reinforced_tip": "Reinforced Tip",
   "enchantment.ma-enchants.stone_mending": "Stone Mending",
@@ -30,6 +34,7 @@
   "enchantment.ma-enchants.night_vision": "Night Vision",
   "enchantment.ma-enchants.multi_jump": "Multi Jump",
 
+  "enchantment.ma-enchants.timeless": "Timeless",
 
   "enchantment.ma-enchants.momentum.speed": "§aMomentum speed: §a§l%s",
   "enchantment.ma-enchants.momentum.speed_max": "§cMomentum speed: §c§l%s",
@@ -44,6 +49,9 @@
   "_comment": "Descriptions",
   "enchantment.ma-enchants.curse_breaking.desc": "Your tool is breaking faster.",
   "enchantment.ma-enchants.curse_butterfingers.desc": "Chance to drop your item when mining or attacking a mob.",
+  "enchantment.ma-enchants.curse_aquaphobia.desc": "Deals damage to player when swimming in water.",
+  "enchantment.ma-enchants.curse_death.desc": "Deals massive amount of damage when equipped or held in hand.",
+
 
   "enchantment.ma-enchants.reinforced_tip.desc": "Increase speed when mining obsidian.",
   "enchantment.ma-enchants.stone_mending.desc": "Chance to restore durability when mining stone.",
@@ -65,5 +73,7 @@
   "enchantment.ma-enchants.blazing_walker.desc": "Temporary turns lava into a melted cobblestone.",
   "enchantment.ma-enchants.step_assist.desc": "Allows you to walk onto 1 height block without jumping.",
   "enchantment.ma-enchants.night_vision.desc": "Gives you night vision potion effect when you wear it.",
-  "enchantment.ma-enchants.multi_jump.desc": "Allows you to make more jump in air."
+  "enchantment.ma-enchants.multi_jump.desc": "Allows you to make more jump in air.",
+
+  "enchantment.ma-enchants.timeless.desc": "Item with this enchant with not despawn after time when dropped on ground."
 }

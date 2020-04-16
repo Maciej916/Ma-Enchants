@@ -8,6 +8,7 @@ final class ServerConfig {
 	final ForgeConfigSpec.BooleanValue curse_breaking;
 	final ForgeConfigSpec.BooleanValue curse_butterfingers;
 	final ForgeConfigSpec.BooleanValue curse_aquaphobia;
+	final ForgeConfigSpec.BooleanValue curse_death;
 
 	// Enchants
 	final ForgeConfigSpec.BooleanValue reinforced_tip;
@@ -33,6 +34,8 @@ final class ServerConfig {
 	final ForgeConfigSpec.BooleanValue night_vision;
 	final ForgeConfigSpec.BooleanValue multi_jump;
 
+	final ForgeConfigSpec.BooleanValue timeless;
+
 	ServerConfig(final ForgeConfigSpec.Builder builder) {
 		builder.push("curse_breaking");
 		curse_breaking = builder.define("enable", true);
@@ -44,6 +47,10 @@ final class ServerConfig {
 
 		builder.push("curse_aquaphobia");
 		curse_aquaphobia = builder.define("enable", true);
+		builder.pop();
+
+		builder.push("curse_death");
+		curse_death = builder.define("enable", true);
 		builder.pop();
 
 
@@ -124,6 +131,10 @@ final class ServerConfig {
 
 		builder.push("multi_jump");
 		multi_jump = builder.define("enable", true);
+		builder.pop();;
+
+		builder.push("timeless");
+		timeless = builder.define("enable", true);
 		builder.pop();
 	}
 }

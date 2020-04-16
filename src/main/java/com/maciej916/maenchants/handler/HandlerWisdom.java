@@ -18,7 +18,7 @@ public class HandlerWisdom {
         if (lvl == 0) return;
 
         int orginalExp = event.getOriginalExperience();
-        int resultExp = (int) (orginalExp + orginalExp * (lvl * 0.2));
+        int resultExp = (int) (orginalExp + orginalExp * (lvl * 0.4));
         event.setDroppedExperience(resultExp);
     }
 

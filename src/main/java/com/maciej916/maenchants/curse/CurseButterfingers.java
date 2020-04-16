@@ -1,4 +1,4 @@
-package com.maciej916.maenchants.enchantment;
+package com.maciej916.maenchants.curse;
 
 import com.maciej916.maenchants.config.ConfigValues;
 import com.maciej916.maenchants.utils.CustomEnchantmentType;
@@ -9,9 +9,9 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
 
-public class EnchantmentCurseButterfingers extends Enchantment {
+public class CurseButterfingers extends Enchantment {
 
-    public EnchantmentCurseButterfingers() {
+    public CurseButterfingers() {
         super(Rarity.VERY_RARE, CustomEnchantmentType.WEAPON_DIGGER, new EquipmentSlotType[]{
                 EquipmentSlotType.MAINHAND
         });

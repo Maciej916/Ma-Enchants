@@ -13,6 +13,8 @@ public final class ConfigHelper {
 		ConfigValues.curse_butterfingers = ConfigHolder.SERVER.curse_butterfingers.get();
 		ConfigValues.curse_aquaphobia = ConfigHolder.SERVER.curse_aquaphobia.get();
 
+		ConfigValues.curse_death = ConfigHolder.SERVER.curse_death.get();
+
 		ConfigValues.reinforced_tip = ConfigHolder.SERVER.reinforced_tip.get();
 		ConfigValues.stone_mending = ConfigHolder.SERVER.stone_mending.get();
 		ConfigValues.lumberjack = ConfigHolder.SERVER.lumberjack.get();
@@ -36,6 +38,8 @@ public final class ConfigHelper {
 		ConfigValues.step_assist = ConfigHolder.SERVER.step_assist.get();
 		ConfigValues.night_vision = ConfigHolder.SERVER.night_vision.get();
 		ConfigValues.multi_jump = ConfigHolder.SERVER.multi_jump.get();
+
+		ConfigValues.timeless = ConfigHolder.SERVER.timeless.get();
 	}
 
 	public static void setValueAndSave(final ModConfig modConfig, final String path, final Object newValue) {

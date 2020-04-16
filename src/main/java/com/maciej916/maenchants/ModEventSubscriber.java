@@ -3,21 +3,21 @@ package com.maciej916.maenchants;
 import com.google.common.base.Preconditions;
 import com.maciej916.maenchants.block.MeltedCobblestone;
 import com.maciej916.maenchants.config.ConfigHelper;
+import com.maciej916.maenchants.curse.CurseAquaphobia;
+import com.maciej916.maenchants.curse.CurseBreaking;
+import com.maciej916.maenchants.curse.CurseButterfingers;
+import com.maciej916.maenchants.curse.CurseDeath;
 import com.maciej916.maenchants.enchantment.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
-import net.minecraft.client.Minecraft;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentData;
-import net.minecraft.item.*;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 import org.jline.utils.Log;
@@ -25,7 +25,6 @@ import org.jline.utils.Log;
 import javax.annotation.Nonnull;
 
 import static com.maciej916.maenchants.MaEnchants.MODID;
-import static com.maciej916.maenchants.init.ModItemGroups.MOD_ITEM_GROUP;
 
 @EventBusSubscriber(modid = MODID, bus = EventBusSubscriber.Bus.MOD)
 public final class ModEventSubscriber {
@@ -49,9 +48,10 @@ public final class ModEventSubscriber {
 		final IForgeRegistry<Enchantment> registry = event.getRegistry();
 		registry.registerAll(
 				// All
-				setup(new EnchantmentCurseBreaking(), "curse_breaking"),
-				setup(new EnchantmentCurseButterfingers(), "curse_butterfingers"),
-				setup(new EnchantmentCurseAquaphobia(), "curse_aquaphobia"),
+				setup(new CurseBreaking(), "curse_breaking"),
+				setup(new CurseButterfingers(), "curse_butterfingers"),
+				setup(new CurseAquaphobia(), "curse_aquaphobia"),
+				setup(new CurseDeath(), "curse_death"),
 
 				// Tools
 				setup(new EnchantmentReinforcedTip(), "reinforced_tip"),
@@ -78,7 +78,10 @@ public final class ModEventSubscriber {
 				setup(new EnchantmentBlazingWalker(), "blazing_walker"),
 				setup(new EnchantmentStepAssist(), "step_assist"),
 				setup(new EnchantmentNightVision(), "night_vision"),
-				setup(new EnchantmentMultiJump(), "multi_jump")
+				setup(new EnchantmentMultiJump(), "multi_jump"),
+
+				// All
+				setup(new EnchantmentTimeless(), "timeless")
 		);
 	}
 
