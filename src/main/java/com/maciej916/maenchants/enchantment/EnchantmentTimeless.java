@@ -9,7 +9,7 @@ import net.minecraft.item.ItemStack;
 public class EnchantmentTimeless extends Enchantment {
 
     public EnchantmentTimeless() {
-        super(Rarity.RARE, EnchantmentType.ALL, new EquipmentSlotType[]{
+        super(Rarity.RARE, EnchantmentType.BREAKABLE, new EquipmentSlotType[]{
                 EquipmentSlotType.MAINHAND
         });
     }

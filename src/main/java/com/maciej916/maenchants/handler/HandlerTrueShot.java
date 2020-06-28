@@ -36,7 +36,7 @@ public class HandlerTrueShot {
     public static void handlerSpawn(EntityJoinWorldEvent event) {
         Entity entity = event.getEntity();
         if (!(entity instanceof AbstractArrowEntity)) return;
-        Entity shooter = ((AbstractArrowEntity) entity).getShooter();
+        Entity shooter = ((AbstractArrowEntity) entity).func_234616_v_();
         if (!(shooter instanceof PlayerEntity)) return;
         PlayerEntity player = (PlayerEntity) shooter;
 

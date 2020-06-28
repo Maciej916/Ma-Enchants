@@ -10,7 +10,7 @@ import net.minecraft.item.ItemStack;
 public class CurseDeath extends Enchantment {
 
     public CurseDeath() {
-        super(Rarity.VERY_RARE, EnchantmentType.ALL, new EquipmentSlotType[]{
+        super(Rarity.VERY_RARE, EnchantmentType.BREAKABLE, new EquipmentSlotType[]{
                 EquipmentSlotType.MAINHAND
         });
     }

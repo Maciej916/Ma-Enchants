@@ -33,7 +33,7 @@ public class HandlerBlazingWalker {
         if (lvl == 0) return;
 
         BlockPos prevBlockpos = ObfuscationReflectionHelper.getPrivateValue(LivingEntity.class, player, "field_184620_bC");
-        BlockPos blockpos = new BlockPos(player);
+        BlockPos blockpos = new BlockPos(player.getPositionVec());
 
         if (!Objects.equal(prevBlockpos, blockpos)) {
             makeFloor(player, player.world, blockpos, lvl);
@@ -41,7 +41,7 @@ public class HandlerBlazingWalker {
     }
 
     private static void makeFloor(LivingEntity living, World worldIn, BlockPos pos, int level) {
-        if (living.onGround) {
+        if (living.func_233570_aj_()) {
             BlockState blockstate = ModBlocks.MELTED_COBBLESTONE.getDefaultState();
             float f = (float)Math.min(16, 2 + level);
             BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable();
@@ -65,7 +65,7 @@ public class HandlerBlazingWalker {
 
                 BlockState blockstate2 = worldIn.getBlockState(blockpos);
                 boolean isFull = blockstate2.getBlock() == Blocks.LAVA && (Integer)blockstate2.get(FlowingFluidBlock.LEVEL) == 0;
-                if (blockstate2.getMaterial() == Material.LAVA && isFull && blockstate.isValidPosition(worldIn, blockpos) && worldIn.func_226663_a_(blockstate, blockpos, ISelectionContext.dummy()) && !ForgeEventFactory.onBlockPlace(living, new BlockSnapshot(worldIn, blockpos, blockstate2), Direction.UP)) {
+                if (blockstate2.getMaterial() == Material.LAVA && isFull && blockstate.isValidPosition(worldIn, blockpos) && worldIn.func_226663_a_(blockstate, blockpos, ISelectionContext.dummy()) && !ForgeEventFactory.onBlockPlace(living, BlockSnapshot.create(worldIn, blockpos), Direction.UP)) {
                     worldIn.setBlockState(blockpos, blockstate);
                     worldIn.getPendingBlockTicks().scheduleTick(blockpos, ModBlocks.MELTED_COBBLESTONE, MathHelper.nextInt(living.getRNG(), 20, 60));
                 }

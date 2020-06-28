@@ -25,7 +25,7 @@ public class HandlerMultiJump {
 
     public static void handlerPlayerTick(TickEvent.PlayerTickEvent event) {
         if (event.phase != TickEvent.Phase.END) return;
-        if (event.player.onGround) {
+        if (event.player.func_233570_aj_()) {
             IEnchants enchantsCap = PlayerUtil.getAliveEnchantsCapability(event.player);
             if (enchantsCap == null) return;
             enchantsCap.setMultiJump(0);
@@ -87,7 +87,7 @@ public class HandlerMultiJump {
     private static boolean allowJump(PlayerEntity player) {
         if (player.isCrouching()) return false;
 
-        boolean performingAction = player.onGround || player.isBeingRidden() || player.abilities.isFlying || player.abilities.allowFlying;
+        boolean performingAction = player.func_233570_aj_() || player.isBeingRidden() || player.abilities.isFlying || player.abilities.allowFlying;
         boolean insideLiquid = player.isInWater() || player.isInLava();
 
         if (performingAction || insideLiquid) return false;
