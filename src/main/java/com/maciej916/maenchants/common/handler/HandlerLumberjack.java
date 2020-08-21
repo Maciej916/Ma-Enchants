@@ -1,4 +1,4 @@
-package com.maciej916.maenchants.client.handler;
+package com.maciej916.maenchants.common.handler;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.ImmutableSet;
@@ -86,7 +86,7 @@ public class HandlerLumberjack {
         ItemStack stack = player.getHeldItem(Hand.MAIN_HAND);
 
         for (BlockPos point : ImmutableSet.copyOf(treeMap.get(player))) {
-            if (stack.getDamage() > 0) {
+            if (stack.getDamage() >= 0) {
                 logsBreak++;
                 world.setBlockState(point, Blocks.AIR.getDefaultState());
                 stack.damageItem(1, player, playerEntity -> playerEntity.sendBreakAnimation(player.getActiveHand()));

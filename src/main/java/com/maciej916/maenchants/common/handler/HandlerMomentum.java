@@ -1,4 +1,4 @@
-package com.maciej916.maenchants.client.handler;
+package com.maciej916.maenchants.common.handler;
 
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.PlayerEntity;

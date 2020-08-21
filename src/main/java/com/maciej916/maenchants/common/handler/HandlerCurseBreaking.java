@@ -30,6 +30,8 @@ public class HandlerCurseBreaking {
         Entity source = event.getSource().getTrueSource();
         Entity target = event.getEntity();
 
+        if (source == null || target == null) return;
+
         Random rand = new Random();
 
         if (source instanceof PlayerEntity) {
@@ -72,8 +74,12 @@ public class HandlerCurseBreaking {
     }
 
     private static void damageStack(PlayerEntity player, ItemStack stack, Random rand, int lvl) {
-        if (rand.nextInt(lvl + 1) > 0) {
-            stack.damageItem(lvl, player, p -> p.sendBreakAnimation(Objects.requireNonNull(stack.getEquipmentSlot())));
+        try {
+            if (rand.nextInt(lvl + 1) > 0) {
+                stack.damageItem(lvl, player, p -> p.sendBreakAnimation(Objects.requireNonNull(stack.getEquipmentSlot())));
+            }
+        } catch (Exception ignored) {
+
         }
     }
 }

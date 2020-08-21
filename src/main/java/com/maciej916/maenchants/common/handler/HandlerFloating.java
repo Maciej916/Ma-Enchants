@@ -17,7 +17,7 @@ public class HandlerFloating {
         Entity source = event.getSource().getTrueSource();
         LivingEntity target = (LivingEntity) event.getEntity();
 
-        if (!(source instanceof PlayerEntity)) return;
+        if (!(source instanceof PlayerEntity) || source == target) return;
 
         PlayerEntity player = (PlayerEntity) source;
         ItemStack stack = player.getHeldItem(player.getActiveHand());

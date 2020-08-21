@@ -1,4 +1,4 @@
-package com.maciej916.maenchants.client.handler;
+package com.maciej916.maenchants.common.handler;
 
 import com.maciej916.maenchants.common.network.Networking;
 import com.maciej916.maenchants.common.network.packet.PacketComboReset;

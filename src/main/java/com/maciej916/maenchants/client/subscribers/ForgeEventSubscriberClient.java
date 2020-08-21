@@ -1,10 +1,10 @@
 package com.maciej916.maenchants.client.subscribers;
 
 import com.maciej916.maenchants.MaEnchants;
-import com.maciej916.maenchants.client.handler.HandlerCombo;
-import com.maciej916.maenchants.client.handler.HandlerLumberjack;
-import com.maciej916.maenchants.client.handler.HandlerMomentum;
-import com.maciej916.maenchants.client.handler.HandlerMultiJump;
+import com.maciej916.maenchants.common.handler.HandlerCombo;
+import com.maciej916.maenchants.common.handler.HandlerLumberjack;
+import com.maciej916.maenchants.common.handler.HandlerMomentum;
+import com.maciej916.maenchants.common.handler.HandlerMultiJump;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.InputEvent;

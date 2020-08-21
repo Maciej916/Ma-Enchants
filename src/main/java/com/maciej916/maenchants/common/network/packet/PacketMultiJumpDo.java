@@ -1,6 +1,6 @@
 package com.maciej916.maenchants.common.network.packet;
 
-import com.maciej916.maenchants.client.handler.HandlerMultiJump;
+import com.maciej916.maenchants.common.handler.HandlerMultiJump;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.particles.ParticleTypes;

@@ -39,34 +39,25 @@ public class HandlerBlazingWalker {
         }
     }
 
-    private static void makeFloor(LivingEntity living, World worldIn, BlockPos pos, int level) {
+
+    public static void makeFloor(LivingEntity living, World worldIn, BlockPos pos, int level) {
         if (living.func_233570_aj_()) {
             BlockState blockstate = ModBlocks.MELTED_COBBLESTONE.getDefaultState();
             float f = (float)Math.min(16, 2 + level);
             BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable();
-            Iterator var7 = BlockPos.getAllInBoxMutable(pos.add((double)(-f), -1.0D, (double)(-f)), pos.add((double)f, -1.0D, (double)f)).iterator();
 
-            while(true) {
-                BlockPos blockpos;
-                BlockState blockstate1;
-                do {
-                    do {
-                        if (!var7.hasNext()) {
-                            return;
-                        }
-
-                        blockpos = (BlockPos)var7.next();
-                    } while(!blockpos.withinDistance(living.getPositionVec(), (double)f));
-
+            for(BlockPos blockpos : BlockPos.getAllInBoxMutable(pos.add((double)(-f), -1.0D, (double)(-f)), pos.add((double)f, -1.0D, (double)f))) {
+                if (blockpos.withinDistance(living.getPositionVec(), (double)f)) {
                     blockpos$mutable.setPos(blockpos.getX(), blockpos.getY() + 1, blockpos.getZ());
-                    blockstate1 = worldIn.getBlockState(blockpos$mutable);
-                } while(!blockstate1.isAir(worldIn, blockpos$mutable));
-
-                BlockState blockstate2 = worldIn.getBlockState(blockpos);
-                boolean isFull = blockstate2.getBlock() == Blocks.LAVA && (Integer)blockstate2.get(FlowingFluidBlock.LEVEL) == 0;
-                if (blockstate2.getMaterial() == Material.LAVA && isFull && blockstate.isValidPosition(worldIn, blockpos) && worldIn.func_226663_a_(blockstate, blockpos, ISelectionContext.dummy()) && !ForgeEventFactory.onBlockPlace(living, BlockSnapshot.create(worldIn, blockpos), Direction.UP)) {
-                    worldIn.setBlockState(blockpos, blockstate);
-                    worldIn.getPendingBlockTicks().scheduleTick(blockpos, ModBlocks.MELTED_COBBLESTONE, MathHelper.nextInt(living.getRNG(), 20, 60));
+                    BlockState blockstate1 = worldIn.getBlockState(blockpos$mutable);
+                    if (blockstate1.isAir(worldIn, blockpos$mutable)) {
+                        BlockState blockstate2 = worldIn.getBlockState(blockpos);
+                        boolean isFull = blockstate2.getBlock() == Blocks.LAVA && blockstate2.get(FlowingFluidBlock.LEVEL) == 0; //TODO: Forge, modded waters?
+                        if (blockstate2.getMaterial() == Material.LAVA && isFull && blockstate.isValidPosition(worldIn, blockpos) && worldIn.func_226663_a_(blockstate, blockpos, ISelectionContext.dummy()) && !net.minecraftforge.event.ForgeEventFactory.onBlockPlace(living, net.minecraftforge.common.util.BlockSnapshot.create(worldIn.func_234923_W_(), worldIn, blockpos), net.minecraft.util.Direction.UP)) {
+                            worldIn.setBlockState(blockpos, blockstate);
+                            worldIn.getPendingBlockTicks().scheduleTick(blockpos, ModBlocks.MELTED_COBBLESTONE, MathHelper.nextInt(living.getRNG(), 20, 60));
+                        }
+                    }
                 }
             }
         }
