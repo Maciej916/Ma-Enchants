@@ -40,6 +40,8 @@ public class HandlerTrueShot {
         if (!(shooter instanceof PlayerEntity)) return;
         PlayerEntity player = (PlayerEntity) shooter;
 
+        if (player == null || player.getActiveHand() == null) return;
+
         ItemStack stack = player.getHeldItem(player.getActiveHand());
         if (EnchantmentHelper.getEnchantmentLevel(TRUE_SHOT, stack) == 0) return;
 
