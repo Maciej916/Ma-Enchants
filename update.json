@@ -1,11 +1,16 @@
 {
   "homepage": "https://www.curseforge.com/minecraft/mc-mods/ma-enchants",
   "changelog": "https://www.curseforge.com/minecraft/mc-mods/ma-enchants/files",
+  "1.16.2": {
+    "3.3.0": "https://www.curseforge.com/minecraft/mc-mods/ma-enchants/files/3038348"
+  },
   "1.16.1": {
     "3.2.1": "https://www.curseforge.com/minecraft/mc-mods/ma-enchants/files/2991871",
     "3.2.0": "https://www.curseforge.com/minecraft/mc-mods/ma-enchants/files/2871888"
   },
   "promos": {
+    "1.16.2-latest": "1.16.2-3.3.0",
+    "1.16.2-recommended": "1.16.2-3.3.0",
     "1.16.1-latest": "1.16.1-3.2.1",
     "1.16.1-recommended": "1.16.1-3.2.1"
   }
