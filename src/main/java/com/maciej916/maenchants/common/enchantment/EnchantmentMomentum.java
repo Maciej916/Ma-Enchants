@@ -6,28 +6,21 @@ import net.minecraft.enchantment.EnchantmentType;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
 
-public class EnchantmentMomentum extends Enchantment {
+public class EnchantmentMomentum extends BasicEnchantment {
 
-    public EnchantmentMomentum() {
-        super(Rarity.RARE, EnchantmentType.DIGGER, new EquipmentSlotType[]{
+    public EnchantmentMomentum(String registryName) {
+        super(registryName, Rarity.RARE, EnchantmentType.DIGGER, new EquipmentSlotType[]{
                 EquipmentSlotType.MAINHAND
         });
     }
 
+    @Override
     public int getMinEnchantability(int level) {
         return 15;
     }
 
-    public boolean canApply(ItemStack stack) {
-        return ConfigValues.momentum && super.canApply(stack);
-    }
-
-    public boolean canApplyAtEnchantingTable(ItemStack stack) {
-        return ConfigValues.momentum && super.canApplyAtEnchantingTable(stack);
-    }
-
-    public boolean isAllowedOnBooks() {
+    @Override
+    public boolean isEnabled() {
         return ConfigValues.momentum;
     }
-
 }

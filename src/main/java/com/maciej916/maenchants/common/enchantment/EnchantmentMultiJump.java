@@ -6,28 +6,21 @@ import net.minecraft.enchantment.EnchantmentType;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
 
-public class EnchantmentMultiJump extends Enchantment {
+public class EnchantmentMultiJump extends BasicEnchantment {
 
-    public EnchantmentMultiJump() {
-        super(Rarity.RARE, EnchantmentType.ARMOR_FEET, new EquipmentSlotType[]{
+    public EnchantmentMultiJump(String registryName) {
+        super(registryName, Rarity.RARE, EnchantmentType.ARMOR_FEET, new EquipmentSlotType[]{
                 EquipmentSlotType.FEET
         });
     }
 
+    @Override
     public int getMaxLevel() {
         return 2;
     }
 
-    public boolean canApply(ItemStack stack) {
-        return ConfigValues.multi_jump && super.canApply(stack);
-    }
-
-    public boolean canApplyAtEnchantingTable(ItemStack stack) {
-        return ConfigValues.multi_jump && super.canApplyAtEnchantingTable(stack);
-    }
-
-    public boolean isAllowedOnBooks() {
+    @Override
+    public boolean isEnabled() {
         return ConfigValues.multi_jump;
     }
-
 }

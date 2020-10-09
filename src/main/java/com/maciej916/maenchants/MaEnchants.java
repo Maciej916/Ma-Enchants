@@ -20,7 +20,7 @@ public class MaEnchants {
 
     public MaEnchants() {
         final ModLoadingContext modLoadingContext = ModLoadingContext.get();
-        modLoadingContext.registerConfig(ModConfig.Type.SERVER, ConfigHolder.SERVER_SPEC);
+        modLoadingContext.registerConfig(ModConfig.Type.COMMON, ConfigHolder.COMMON_SPEC);
 
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::onCommonSetup);
     }

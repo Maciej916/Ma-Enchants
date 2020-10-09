@@ -7,43 +7,40 @@ import net.minecraft.enchantment.Enchantments;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
 
-public class EnchantmentBlazingWalker extends Enchantment {
+public class EnchantmentBlazingWalker extends BasicEnchantment {
 
-    public EnchantmentBlazingWalker() {
-        super(Enchantment.Rarity.RARE, EnchantmentType.ARMOR_FEET, new EquipmentSlotType[]{
+    public EnchantmentBlazingWalker(String registryName) {
+        super(registryName, Enchantment.Rarity.RARE, EnchantmentType.ARMOR_FEET, new EquipmentSlotType[]{
                 EquipmentSlotType.FEET
         });
     }
 
+    @Override
     public int getMinEnchantability(int enchantmentLevel) {
         return enchantmentLevel * 10;
     }
 
+    @Override
     public int getMaxEnchantability(int enchantmentLevel) {
         return this.getMinEnchantability(enchantmentLevel) + 15;
     }
 
+    @Override
     public boolean isTreasureEnchantment() {
         return true;
     }
 
+    @Override
     public int getMaxLevel() {
         return 2;
     }
 
-    public boolean canApply(ItemStack stack) {
-        return ConfigValues.blazing_walker && super.canApply(stack);
-    }
-
-    public boolean canApplyAtEnchantingTable(ItemStack stack) {
-        return ConfigValues.blazing_walker && super.canApplyAtEnchantingTable(stack);
-    }
-
-    public boolean isAllowedOnBooks() {
-        return ConfigValues.blazing_walker;
-    }
-
     public boolean canApplyTogether(Enchantment ench) {
         return super.canApplyTogether(ench) && ench != Enchantments.FROST_WALKER;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return ConfigValues.blazing_walker;
     }
 }

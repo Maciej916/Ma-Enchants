@@ -1,0 +1,79 @@
+{
+  "itemGroup.ma-enchants": "Ma Enchants",
+  "block.ma-enchants.melted_cobblestone": "Расплавленный булыжник",
+  "key.ma-enchants.key.excavate": "Рытье",
+
+  "death.attack.aquaphobia": "%s аквафобия",
+  "death.attack.death": "%s предмет слишком мощный",
+
+  "enchantment.ma-enchants.curse_breaking": "Проклятие разрушения",
+  "enchantment.ma-enchants.curse_butterfingers": "Проклятие скользких пальцев",
+  "enchantment.ma-enchants.curse_aquaphobia": "Аквафобия",
+  "enchantment.ma-enchants.curse_death": "Проклятие смерти",
+
+  "enchantment.ma-enchants.reinforced_tip": "Закалка",
+  "enchantment.ma-enchants.stone_mending": "Ремонт камнем",
+  "enchantment.ma-enchants.lumberjack": "Лесоруб",
+  "enchantment.ma-enchants.momentum": "Ускорение",
+  "enchantment.ma-enchants.butchering": "Мясорубка",
+
+  "enchantment.ma-enchants.true_shot": "Точно в цель",
+  "enchantment.ma-enchants.quick_draw": "Лучник",
+  "enchantment.ma-enchants.floating": "Флоутинг",
+  "enchantment.ma-enchants.paralysis": "Паралич",
+  "enchantment.ma-enchants.detonation": "Детонация",
+
+  "enchantment.ma-enchants.combo": "Комбо",
+  "enchantment.ma-enchants.faster_attack": "Быстрая атака",
+  "enchantment.ma-enchants.lifesteal": "Кража жизни",
+  "enchantment.ma-enchants.ice_aspect": "Заморозка",
+  "enchantment.ma-enchants.wisdom": "Мудрость",
+
+  "enchantment.ma-enchants.blazing_walker": "Лавоход",
+  "enchantment.ma-enchants.step_assist": "Ходок",
+  "enchantment.ma-enchants.night_vision": "Ночное зрение",
+  "enchantment.ma-enchants.multi_jump": "Мультипрыжок",
+
+  "enchantment.ma-enchants.timeless": "Вечность",
+
+  "enchantment.ma-enchants.momentum.speed": "В§aУскорение: В§aВ§l%s",
+  "enchantment.ma-enchants.momentum.speed_max": "В§cУскорение: В§cВ§l%s",
+  "enchantment.ma-enchants.momentum.block": "В§aУскорение: В§aВ§l%s",
+  "enchantment.ma-enchants.combo.lvl": "В§aКомбо: В§aВ§l%s",
+  "enchantment.ma-enchants.combo.lvl_max": "В§aКомбо: В§aВ§l%s",
+
+
+
+
+
+  "_comment": "Описание",
+  "enchantment.ma-enchants.curse_breaking.desc": "Инструмент сломается быстрее.",
+  "enchantment.ma-enchants.curse_butterfingers.desc": "Шанс выпадения из рук предмета во время добычи блоков или атаки.",
+  "enchantment.ma-enchants.curse_aquaphobia.desc": "Игрок получает урон при плавании.",
+  "enchantment.ma-enchants.curse_death.desc": "Наносит огромный урон игроку, когда экипирован или держится в руке.",
+
+  "enchantment.ma-enchants.reinforced_tip.desc": "Увеличивает скорость при добыче обсидиана.",
+  "enchantment.ma-enchants.stone_mending.desc": "Шанс восстановить прочность при добыче камня.",
+  "enchantment.ma-enchants.lumberjack.desc": "Срубайте всё дерево сразу.",
+  "enchantment.ma-enchants.momentum.desc": "Скорость добычи одинаковых блоков увеличивается с каждым добытым блоком.",
+  "enchantment.ma-enchants.butchering.desc": "Наносит дополнительный урон животным",
+  "enchantment.ma-enchants.detonation.desc": "Взрыв без разрушения блоков.",
+
+  "enchantment.ma-enchants.true_shot.desc": "На стрелы не действует сила тяжести.",
+  "enchantment.ma-enchants.quick_draw.desc": "Быстрое натягивание тетивы",
+  "enchantment.ma-enchants.floating.desc": "Накладывает на атакуемую цель эффект плавания.",
+  "enchantment.ma-enchants.paralysis.desc": "Атакуемая цель не сможет двигаться, прыгать или атаковать.",
+
+  "enchantment.ma-enchants.combo.desc": "Увеличенный урон с каждым успешным ударом, сбрасывается при ударе в воздух или блок.",
+  "enchantment.ma-enchants.faster_attack.desc": "Увеличивает скорость атаки.",
+  "enchantment.ma-enchants.lifesteal.desc": "Часть нанесенного урона восстанавливает здоровье.",
+  "enchantment.ma-enchants.ice_aspect.desc": "Замедляет врагов.",
+  "enchantment.ma-enchants.wisdom.desc": "Дает дополнительный опыт при убийстве мобов.",
+
+  "enchantment.ma-enchants.blazing_walker.desc": "Временно превращает лаву в расплавленный булыжник.",
+  "enchantment.ma-enchants.step_assist.desc": "Позволяет без прыжков пройти на 1 блок.",
+  "enchantment.ma-enchants.night_vision.desc": "Дает эффект зелья ночного видения, когда вы его носите.",
+  "enchantment.ma-enchants.multi_jump.desc": "Дополнительные прыжки в воздухе.",
+
+  "enchantment.ma-enchants.timeless.desc": "Предмет с этим чаром не исчезает после падения на землю."
+}

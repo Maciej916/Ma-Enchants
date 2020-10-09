@@ -8,37 +8,32 @@ import net.minecraft.item.ItemStack;
 
 import static com.maciej916.maenchants.common.registries.ModEnchants.PARALYSIS;
 
-public class EnchantmentFloating extends Enchantment {
+public class EnchantmentFloating extends BasicEnchantment {
 
-    public EnchantmentFloating() {
-        super(Rarity.RARE, EnchantmentType.BOW, new EquipmentSlotType[]{
+    public EnchantmentFloating(String registryName) {
+        super(registryName, Rarity.RARE, EnchantmentType.BOW, new EquipmentSlotType[]{
                 EquipmentSlotType.MAINHAND,
                 EquipmentSlotType.OFFHAND
         });
     }
 
+    @Override
     public int getMinEnchantability(int level) {
         return 5 + 10 * (level - 1);
     }
 
+    @Override
     public int getMaxLevel() {
         return 3;
     }
 
-    public boolean canApply(ItemStack stack) {
-        return ConfigValues.floating && super.canApply(stack);
-    }
-
-    public boolean canApplyAtEnchantingTable(ItemStack stack) {
-        return ConfigValues.floating && super.canApplyAtEnchantingTable(stack);
-    }
-
-    public boolean isAllowedOnBooks() {
-        return ConfigValues.floating;
-    }
-
+    @Override
     public boolean canApplyTogether(Enchantment ench) {
         return super.canApplyTogether(ench) && ench != PARALYSIS;
     }
 
+    @Override
+    public boolean isEnabled() {
+        return ConfigValues.floating;
+    }
 }

@@ -3,6 +3,7 @@ package com.maciej916.maenchants.common.subscribers;
 import com.google.common.base.Preconditions;
 import com.maciej916.maenchants.common.block.MeltedCobblestone;
 import com.maciej916.maenchants.common.config.ConfigHelper;
+import com.maciej916.maenchants.common.config.ConfigValues;
 import com.maciej916.maenchants.common.curse.CurseAquaphobia;
 import com.maciej916.maenchants.common.curse.CurseBreaking;
 import com.maciej916.maenchants.common.curse.CurseButterfingers;
@@ -23,6 +24,8 @@ import net.minecraftforge.registries.IForgeRegistryEntry;
 import org.jline.utils.Log;
 
 import javax.annotation.Nonnull;
+
+import java.util.ArrayList;
 
 import static com.maciej916.maenchants.MaEnchants.MODID;
 
@@ -46,43 +49,52 @@ public final class ModEventSubscriber {
 	@SubscribeEvent
 	public static void registerEnchantments(RegistryEvent.Register<Enchantment> event) {
 		final IForgeRegistry<Enchantment> registry = event.getRegistry();
-		registry.registerAll(
-				// All
-				setup(new CurseBreaking(), "curse_breaking"),
-				setup(new CurseButterfingers(), "curse_butterfingers"),
-				setup(new CurseAquaphobia(), "curse_aquaphobia"),
-				setup(new CurseDeath(), "curse_death"),
 
-				// Tools
-				setup(new EnchantmentReinforcedTip(), "reinforced_tip"),
-				setup(new EnchantmentStoneMending(), "stone_mending"),
-				setup(new EnchantmentLumberjack(), "lumberjack"),
-				setup(new EnchantmentMomentum(), "momentum"),
-				setup(new EnchantmentButchering(), "butchering"),
+		ArrayList<BasicEnchantment> enchantments = new ArrayList<>();
 
-				// Bows
-				setup(new EnchantmentTrueShot(), "true_shot"),
-				setup(new EnchantmentQuickDraw(), "quick_draw"),
-				setup(new EnchantmentFloating(), "floating"),
-				setup(new EnchantmentParalysis(), "paralysis"),
-				setup(new EnchantmentDetonation(), "detonation"),
+		// Curse
+		enchantments.add(new CurseBreaking("curse_breaking"));
+		enchantments.add(new CurseButterfingers("curse_butterfingers"));
+		enchantments.add(new CurseAquaphobia("curse_aquaphobia"));
+		enchantments.add(new CurseDeath("curse_death"));
 
-				// Swords
-				setup(new EnchantmentCombo(), "combo"),
-				setup(new EnchantmentFasterAttack(), "faster_attack"),
-				setup(new EnchantmentLifesteal(), "lifesteal"),
-				setup(new EnchantmentIceAspect(), "ice_aspect"),
-				setup(new EnchantmentWisdom(), "wisdom"),
+		// Tools
+		enchantments.add(new EnchantmentReinforcedTip("reinforced_tip"));
+		enchantments.add(new EnchantmentStoneMending("stone_mending"));
+		enchantments.add(new EnchantmentLumberjack("lumberjack"));
+		enchantments.add(new EnchantmentMomentum("momentum"));
+		enchantments.add(new EnchantmentButchering("butchering"));
 
-				// Armour
-				setup(new EnchantmentBlazingWalker(), "blazing_walker"),
-				setup(new EnchantmentStepAssist(), "step_assist"),
-				setup(new EnchantmentNightVision(), "night_vision"),
-				setup(new EnchantmentMultiJump(), "multi_jump"),
+		// Bows
+		enchantments.add(new EnchantmentTrueShot("true_shot"));
+		enchantments.add(new EnchantmentQuickDraw("quick_draw"));
+		enchantments.add(new EnchantmentFloating("floating"));
+		enchantments.add(new EnchantmentParalysis("paralysis"));
+		enchantments.add(new EnchantmentDetonation("detonation"));
 
-				// All
-				setup(new EnchantmentTimeless(), "timeless")
-		);
+		// Swords
+		enchantments.add(new EnchantmentCombo("combo"));
+		enchantments.add(new EnchantmentFasterAttack("faster_attack"));
+		enchantments.add(new EnchantmentLifesteal("lifesteal"));
+		enchantments.add(new EnchantmentIceAspect("ice_aspect"));
+		enchantments.add(new EnchantmentWisdom("wisdom"));
+
+		// Armour
+		enchantments.add(new EnchantmentBlazingWalker("blazing_walker"));
+		enchantments.add(new EnchantmentStepAssist("step_assist"));
+		enchantments.add(new EnchantmentNightVision("night_vision"));
+		enchantments.add(new EnchantmentMultiJump("multi_jump"));
+		enchantments.add(new EnchantmentSoftFall("soft_fall"));
+
+		// Other
+		enchantments.add(new EnchantmentTimeless("timeless"));
+
+
+		enchantments.forEach((e) -> {
+//			if (e.isEnabled()) {
+				registry.register(setup(e, e.getRegistry()));
+//			}
+		});
 	}
 
 	@Nonnull

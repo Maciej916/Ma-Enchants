@@ -2,7 +2,7 @@ package com.maciej916.maenchants.common.config;
 
 import net.minecraftforge.common.ForgeConfigSpec;
 
-final class ServerConfig {
+final class CommonConfig {
 
 	// Curses
 	final ForgeConfigSpec.BooleanValue curse_breaking;
@@ -33,10 +33,11 @@ final class ServerConfig {
 	final ForgeConfigSpec.BooleanValue step_assist;
 	final ForgeConfigSpec.BooleanValue night_vision;
 	final ForgeConfigSpec.BooleanValue multi_jump;
+	final ForgeConfigSpec.BooleanValue soft_fall;
 
 	final ForgeConfigSpec.BooleanValue timeless;
 
-	ServerConfig(final ForgeConfigSpec.Builder builder) {
+	CommonConfig(final ForgeConfigSpec.Builder builder) {
 		builder.push("curse_breaking");
 		curse_breaking = builder.define("enable", true);
 		builder.pop();
@@ -131,6 +132,10 @@ final class ServerConfig {
 
 		builder.push("multi_jump");
 		multi_jump = builder.define("enable", true);
+		builder.pop();;
+
+		builder.push("soft_fall");
+		soft_fall = builder.define("enable", true);
 		builder.pop();;
 
 		builder.push("timeless");

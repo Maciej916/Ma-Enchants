@@ -1,10 +1,7 @@
 package com.maciej916.maenchants.common.network;
 
 import com.maciej916.maenchants.MaEnchants;
-import com.maciej916.maenchants.common.network.packet.PacketComboReset;
-import com.maciej916.maenchants.common.network.packet.PacketLumberjackToggle;
-import com.maciej916.maenchants.common.network.packet.PacketMultiJumpDo;
-import com.maciej916.maenchants.common.network.packet.PacketMultiJumpSync;
+import com.maciej916.maenchants.common.network.packet.*;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.network.NetworkRegistry;
 import net.minecraftforge.fml.network.simple.SimpleChannel;
@@ -24,6 +21,8 @@ public class Networking {
         INSTANCE.registerMessage(nextID(), PacketMultiJumpSync.class, PacketMultiJumpSync::toBytes, PacketMultiJumpSync::new, PacketMultiJumpSync::handle);
         INSTANCE.registerMessage(nextID(), PacketMultiJumpDo.class, PacketMultiJumpDo::toBytes, PacketMultiJumpDo::new, PacketMultiJumpDo::handle);
         INSTANCE.registerMessage(nextID(), PacketLumberjackToggle.class, PacketLumberjackToggle::toBytes, PacketLumberjackToggle::new, PacketLumberjackToggle::handle);
+
+        INSTANCE.registerMessage(nextID(), PacketCloudParticles.class, PacketCloudParticles::toBytes, PacketCloudParticles::new, PacketCloudParticles::handle);
     }
 
 }

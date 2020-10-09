@@ -40,6 +40,7 @@ public final class ModEnchants {
     public static final Enchantment STEP_ASSIST = ModUtil._null();
     public static final Enchantment NIGHT_VISION = ModUtil._null();
     public static final Enchantment MULTI_JUMP = ModUtil._null();
+    public static final Enchantment SOFT_FALL = ModUtil._null();
 
     // All
     public static final Enchantment TIMELESS = ModUtil._null();

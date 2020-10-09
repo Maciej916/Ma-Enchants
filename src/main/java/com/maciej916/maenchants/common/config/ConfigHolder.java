@@ -5,13 +5,13 @@ import org.apache.commons.lang3.tuple.Pair;
 
 public final class ConfigHolder {
 
-	public static final ForgeConfigSpec SERVER_SPEC;
-	static final ServerConfig SERVER;
+	public static final ForgeConfigSpec COMMON_SPEC;
+	static final CommonConfig COMMON;
 	static {
 		{
-			final Pair<ServerConfig, ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(ServerConfig::new);
-			SERVER = specPair.getLeft();
-			SERVER_SPEC = specPair.getRight();
+			final Pair<CommonConfig, ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(CommonConfig::new);
+			COMMON = specPair.getLeft();
+			COMMON_SPEC = specPair.getRight();
 		}
 	}
 }

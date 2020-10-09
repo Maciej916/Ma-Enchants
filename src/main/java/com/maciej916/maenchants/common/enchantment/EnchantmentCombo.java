@@ -12,32 +12,22 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.Hand;
 
-public class EnchantmentCombo extends Enchantment {
+public class EnchantmentCombo extends BasicEnchantment {
 
-    public EnchantmentCombo() {
-        super(Rarity.RARE, EnchantmentType.WEAPON, new EquipmentSlotType[]{
+    private static boolean handled = false;
+
+    public EnchantmentCombo(String registryName) {
+        super(registryName, Rarity.RARE, EnchantmentType.WEAPON, new EquipmentSlotType[]{
                 EquipmentSlotType.MAINHAND
         });
     }
 
+    @Override
     public int getMinEnchantability(int level) {
         return 15;
     }
 
-    public boolean canApply(ItemStack stack) {
-        return ConfigValues.combo && super.canApply(stack);
-    }
-
-    public boolean canApplyAtEnchantingTable(ItemStack stack) {
-        return ConfigValues.combo && super.canApplyAtEnchantingTable(stack);
-    }
-
-    public boolean isAllowedOnBooks() {
-        return ConfigValues.combo;
-    }
-
-    private static boolean handled = false;
-
+    @Override
     public void onEntityDamaged(LivingEntity entity, Entity target, int level) {
         if (handled) {
             handled = false;
@@ -54,5 +44,10 @@ public class EnchantmentCombo extends Enchantment {
             compound.putInt("combo", compound.getInt("combo") + 1);
         }
         handled = true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return ConfigValues.combo;
     }
 }

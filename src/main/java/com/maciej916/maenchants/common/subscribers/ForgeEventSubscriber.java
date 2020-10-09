@@ -10,6 +10,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.item.ItemExpireEvent;
+import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.world.BlockEvent;
@@ -54,6 +55,11 @@ public final class ForgeEventSubscriber {
         HandlerCurseBreaking.handlerAttack(event);
         HandlerButchering.handlerAttack(event);
         HandlerDetonation.handlerAttack(event);
+    }
+
+    @SubscribeEvent
+    public static void onFall(LivingFallEvent event) {
+        HandlerSoftFall.handlerFall(event);
     }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)

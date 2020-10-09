@@ -7,33 +7,26 @@ import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.AxeItem;
 import net.minecraft.item.ItemStack;
 
-public class EnchantmentButchering extends Enchantment {
+public class EnchantmentButchering extends BasicEnchantment {
 
-    public EnchantmentButchering() {
-        super(Rarity.COMMON, CustomEnchantmentType.AXE, new EquipmentSlotType[]{
+    public EnchantmentButchering(String registryName) {
+        super(registryName, Rarity.COMMON, CustomEnchantmentType.AXE, new EquipmentSlotType[]{
                 EquipmentSlotType.MAINHAND
         });
     }
 
+    @Override
     public int getMinEnchantability(int level) {
         return level * 8;
     }
 
+    @Override
     public int getMaxLevel() {
         return 5;
     }
 
-    public boolean canApply(ItemStack stack) {
-        if (!ConfigValues.butchering) return false;
-        return stack.getItem() instanceof AxeItem || super.canApply(stack);
-    }
-
-    public boolean canApplyAtEnchantingTable(ItemStack stack) {
-        return ConfigValues.butchering && super.canApplyAtEnchantingTable(stack);
-    }
-
-    public boolean isAllowedOnBooks() {
+    @Override
+    public boolean isEnabled() {
         return ConfigValues.butchering;
     }
-
 }

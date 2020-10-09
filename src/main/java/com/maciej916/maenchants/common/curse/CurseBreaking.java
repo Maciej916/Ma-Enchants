@@ -1,39 +1,44 @@
 package com.maciej916.maenchants.common.curse;
 
 import com.maciej916.maenchants.common.config.ConfigValues;
-import net.minecraft.enchantment.Enchantment;
+import com.maciej916.maenchants.common.enchantment.BasicEnchantment;
 import net.minecraft.enchantment.EnchantmentType;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
 
-public class CurseBreaking extends Enchantment {
+public class CurseBreaking extends BasicEnchantment {
 
-    public CurseBreaking() {
-        super(Rarity.VERY_RARE, EnchantmentType.BREAKABLE, EquipmentSlotType.values());
+    public CurseBreaking(String registryName) {
+        super(registryName, Rarity.VERY_RARE, EnchantmentType.BREAKABLE, EquipmentSlotType.values());
     }
 
+    @Override
     public int getMinEnchantability(int enchantmentLevel) {
         return 25;
     }
 
+    @Override
     public int getMaxEnchantability(int enchantmentLevel) {
         return 50;
     }
 
+    @Override
     public int getMaxLevel() {
         return 3;
     }
 
+    @Override
     public boolean isTreasureEnchantment() {
         return true;
     }
 
+    @Override
     public boolean isCurse() {
         return true;
     }
 
-    public boolean canApply(ItemStack stack) {
-        return ConfigValues.curse_breaking && super.canApply(stack);
+    @Override
+    public boolean isEnabled() {
+        return ConfigValues.curse_breaking;
     }
-
 }

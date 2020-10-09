@@ -6,27 +6,21 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
 
-public class EnchantmentStoneMending extends Enchantment {
+public class EnchantmentStoneMending extends BasicEnchantment {
 
-    public EnchantmentStoneMending() {
-        super(Enchantment.Rarity.RARE, CustomEnchantmentType.PICKAXE, new EquipmentSlotType[]{
+    public EnchantmentStoneMending(String registryName) {
+        super(registryName, Enchantment.Rarity.RARE, CustomEnchantmentType.PICKAXE, new EquipmentSlotType[]{
                 EquipmentSlotType.MAINHAND
         });
     }
 
-    public boolean canApply(ItemStack stack) {
-        return ConfigValues.stone_mending && super.canApply(stack);
-    }
-
-    public boolean canApplyAtEnchantingTable(ItemStack stack) {
-        return ConfigValues.stone_mending && super.canApplyAtEnchantingTable(stack);
-    }
-
-    public boolean isAllowedOnBooks() {
-        return ConfigValues.stone_mending;
-    }
-
+    @Override
     public int getMaxLevel() {
         return 3;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return ConfigValues.stone_mending;
     }
 }

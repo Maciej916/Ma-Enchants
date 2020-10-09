@@ -29,6 +29,7 @@ public final class ConfigValues {
 	public static boolean step_assist;
 	public static boolean night_vision;
 	public static boolean multi_jump;
+	public static boolean soft_fall;
 
 	public static boolean timeless;
 

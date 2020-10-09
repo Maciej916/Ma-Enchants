@@ -6,28 +6,21 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
 
-public class EnchantmentReinforcedTip extends Enchantment {
+public class EnchantmentReinforcedTip extends BasicEnchantment {
 
-    public EnchantmentReinforcedTip() {
-        super(Rarity.UNCOMMON, CustomEnchantmentType.PICKAXE, new EquipmentSlotType[]{
+    public EnchantmentReinforcedTip(String registryName) {
+        super(registryName, Rarity.UNCOMMON, CustomEnchantmentType.PICKAXE, new EquipmentSlotType[]{
                 EquipmentSlotType.MAINHAND
         });
     }
 
-    public boolean canApply(ItemStack stack) {
-        return ConfigValues.reinforced_tip && super.canApply(stack);
-    }
-
-    public boolean canApplyAtEnchantingTable(ItemStack stack) {
-        return ConfigValues.reinforced_tip && super.canApplyAtEnchantingTable(stack);
-    }
-
-    public boolean isAllowedOnBooks() {
-        return ConfigValues.reinforced_tip;
-    }
-
+    @Override
     public int getMaxLevel() {
         return 3;
     }
 
+    @Override
+    public boolean isEnabled() {
+        return ConfigValues.reinforced_tip;
+    }
 }

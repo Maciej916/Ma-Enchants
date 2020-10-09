@@ -6,32 +6,26 @@ import net.minecraft.enchantment.EnchantmentType;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
 
-public class EnchantmentWisdom extends Enchantment {
+public class EnchantmentWisdom extends BasicEnchantment {
 
-    public EnchantmentWisdom() {
-        super(Rarity.RARE, EnchantmentType.WEAPON, new EquipmentSlotType[]{
+    public EnchantmentWisdom(String registryName) {
+        super(registryName, Rarity.RARE, EnchantmentType.WEAPON, new EquipmentSlotType[]{
                 EquipmentSlotType.MAINHAND
         });
     }
 
+    @Override
     public int getMinEnchantability(int level) {
         return 5 + 10 * (level - 1);
     }
 
+    @Override
     public int getMaxLevel() {
         return 5;
     }
 
-    public boolean canApply(ItemStack stack) {
-        return ConfigValues.wisdom && super.canApply(stack);
-    }
-
-    public boolean canApplyAtEnchantingTable(ItemStack stack) {
-        return ConfigValues.wisdom && super.canApplyAtEnchantingTable(stack);
-    }
-
-    public boolean isAllowedOnBooks() {
+    @Override
+    public boolean isEnabled() {
         return ConfigValues.wisdom;
     }
-
 }

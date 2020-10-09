@@ -6,29 +6,22 @@ import net.minecraft.enchantment.EnchantmentType;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
 
-public class EnchantmentTrueShot extends Enchantment {
+public class EnchantmentTrueShot extends BasicEnchantment {
 
-    public EnchantmentTrueShot() {
-        super(Rarity.VERY_RARE, EnchantmentType.BOW, new EquipmentSlotType[]{
+    public EnchantmentTrueShot(String registryName) {
+        super(registryName, Rarity.VERY_RARE, EnchantmentType.BOW, new EquipmentSlotType[]{
                 EquipmentSlotType.MAINHAND,
                 EquipmentSlotType.OFFHAND
         });
     }
 
+    @Override
     public int getMinEnchantability(int level) {
         return 20;
     }
 
-    public boolean canApply(ItemStack stack) {
-        return ConfigValues.true_shot && super.canApply(stack);
-    }
-
-    public boolean canApplyAtEnchantingTable(ItemStack stack) {
-        return ConfigValues.true_shot && super.canApplyAtEnchantingTable(stack);
-    }
-
-    public boolean isAllowedOnBooks() {
+    @Override
+    public boolean isEnabled() {
         return ConfigValues.true_shot;
     }
-
 }
