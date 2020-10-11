@@ -1,11 +1,11 @@
 package com.maciej916.maenchants.common.handler;
 
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.world.BlockEvent;
 
 import static com.maciej916.maenchants.common.registries.ModEnchants.STONE_MENDING;
@@ -20,7 +20,8 @@ public class HandlerStoneMending {
         int lvl = EnchantmentHelper.getEnchantmentLevel(STONE_MENDING, stack);
         if (lvl == 0) return;
 
-        if (state.getBlock() != Blocks.STONE) return;
+        ResourceLocation stoneTagID = new ResourceLocation("forge", "stone");
+        if (!state.getBlock().getTags().contains(stoneTagID)) return;
 
         switch (lvl) {
             case 1: if (Math.random()> 0.30) return;
