@@ -75,6 +75,7 @@
   "enchantment.ma-enchants.step_assist.desc": "Allows you to walk onto 1 height block without jumping.",
   "enchantment.ma-enchants.night_vision.desc": "Gives you night vision potion effect when you wear it.",
   "enchantment.ma-enchants.multi_jump.desc": "Allows you to make more jump in air.",
+  "enchantment.ma-enchants.soft_fall.desc": "Eliminates falling damage, downside is that it gives exhaustion.",
 
   "enchantment.ma-enchants.timeless.desc": "Item with this enchant with not despawn after time when dropped on ground."
 }
