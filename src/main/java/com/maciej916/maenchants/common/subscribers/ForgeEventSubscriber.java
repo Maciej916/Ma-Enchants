@@ -1,8 +1,5 @@
 package com.maciej916.maenchants.common.subscribers;
 
-import com.maciej916.maenchants.common.handler.HandlerLumberjack;
-import com.maciej916.maenchants.common.handler.HandlerMomentum;
-import com.maciej916.maenchants.common.handler.HandlerMultiJump;
 import com.maciej916.maenchants.common.handler.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;

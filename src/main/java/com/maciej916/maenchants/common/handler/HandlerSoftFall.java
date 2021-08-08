@@ -7,6 +7,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 
 import static com.maciej916.maenchants.common.registries.ModEnchants.SOFT_FALL;
@@ -17,6 +18,7 @@ public class HandlerSoftFall {
         Entity source = event.getEntityLiving();
         if (!(source instanceof PlayerEntity)) return;
         PlayerEntity player = (PlayerEntity) source;
+        World world = player.world;
 
         ItemStack stack = player.getItemStackFromSlot(EquipmentSlotType.FEET);
         int lvl = EnchantmentHelper.getEnchantmentLevel(SOFT_FALL, stack);
@@ -25,7 +27,10 @@ public class HandlerSoftFall {
         if (event.getDistance() <= Math.max((lvl * 2), 15) && event.getDistance() > 3) {
             player.getFoodStats().addExhaustion(event.getDistance());
             event.setCanceled(true);
-            Networking.INSTANCE.sendToServer(new PacketCloudParticles());
+
+            if (world.isRemote()) {
+                Networking.INSTANCE.sendToServer(new PacketCloudParticles());
+            }
         }
     }
 
