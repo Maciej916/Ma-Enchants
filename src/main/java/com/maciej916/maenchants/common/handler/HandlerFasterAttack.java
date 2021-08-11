@@ -17,7 +17,7 @@ public class HandlerFasterAttack {
         if (lvl == 0) return;
 
         int swing = ObfuscationReflectionHelper.getPrivateValue(LivingEntity.class, player, "field_184617_aD");
-        swing = new Double(swing * (lvl * 0.1 + 1)).intValue();
+        swing = Double.valueOf(swing * (lvl * 0.1 + 1)).intValue();
         swing = Math.min(swing, 100);
         ObfuscationReflectionHelper.setPrivateValue(LivingEntity.class, player, swing, "field_184617_aD");
     }
