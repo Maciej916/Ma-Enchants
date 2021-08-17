@@ -1,0 +1,81 @@
+{
+  "itemGroup.maenchants": "Ma Enchants",
+  "block.maenchants.melted_cobblestone": "Расплавленный булыжник",
+  "key.maenchants.key.excavate": "Рытье",
+
+  "death.attack.aquaphobia": "%s аквафобия",
+  "death.attack.death": "%s предмет слишком мощный",
+
+  "enchantment.maenchants.curse_breaking": "Проклятие разрушения",
+  "enchantment.maenchants.curse_butterfingers": "Проклятие скользких пальцев",
+  "enchantment.maenchants.curse_aquaphobia": "Аквафобия",
+  "enchantment.maenchants.curse_death": "Проклятие смерти",
+
+  "enchantment.maenchants.reinforced_tip": "Закалка",
+  "enchantment.maenchants.stone_mending": "Ремонт камнем",
+  "enchantment.maenchants.lumberjack": "Лесоруб",
+  "enchantment.maenchants.momentum": "Ускорение",
+  "enchantment.maenchants.butchering": "Мясорубка",
+
+  "enchantment.maenchants.true_shot": "Точно в цель",
+  "enchantment.maenchants.quick_draw": "Лучник",
+  "enchantment.maenchants.floating": "Флоутинг",
+  "enchantment.maenchants.paralysis": "Паралич",
+  "enchantment.maenchants.detonation": "Детонация",
+
+  "enchantment.maenchants.combo": "Комбо",
+  "enchantment.maenchants.faster_attack": "Быстрая атака",
+  "enchantment.maenchants.lifesteal": "Кража жизни",
+  "enchantment.maenchants.ice_aspect": "Заморозка",
+  "enchantment.maenchants.wisdom": "Мудрость",
+
+  "enchantment.maenchants.blazing_walker": "Лавоход",
+  "enchantment.maenchants.step_assist": "Ходок",
+  "enchantment.maenchants.night_vision": "Ночное зрение",
+  "enchantment.maenchants.multi_jump": "Мультипрыжок",
+
+  "enchantment.maenchants.timeless": "Вечность",
+
+  "enchantment.maenchants.momentum.speed": "В§aУскорение: В§aВ§l%s",
+  "enchantment.maenchants.momentum.speed_max": "В§cУскорение: В§cВ§l%s",
+  "enchantment.maenchants.momentum.block": "В§aУскорение: В§aВ§l%s",
+  "enchantment.maenchants.combo.lvl": "В§aКомбо: В§aВ§l%s",
+  "enchantment.maenchants.combo.lvl_max": "В§aКомбо: В§aВ§l%s",
+
+
+
+
+
+  "_comment": "Описание",
+  "enchantment.maenchants.curse_breaking.desc": "Инструмент сломается быстрее.",
+  "enchantment.maenchants.curse_butterfingers.desc": "Шанс выпадения из рук предмета во время добычи блоков или атаки.",
+  "enchantment.maenchants.curse_aquaphobia.desc": "Игрок получает урон при плавании.",
+  "enchantment.maenchants.curse_death.desc": "Наносит огромный урон игроку, когда экипирован или держится в руке.",
+
+  "enchantment.maenchants.reinforced_tip.desc": "Увеличивает скорость при добыче обсидиана.",
+  "enchantment.maenchants.stone_mending.desc": "Шанс восстановить прочность при добыче камня.",
+  "enchantment.maenchants.lumberjack.desc": "Срубайте всё дерево сразу.",
+  "enchantment.maenchants.momentum.desc": "Скорость добычи одинаковых блоков увеличивается с каждым добытым блоком.",
+  "enchantment.maenchants.butchering.desc": "Наносит дополнительный урон животным",
+  "enchantment.maenchants.detonation.desc": "Взрыв без разрушения блоков.",
+
+  "enchantment.maenchants.true_shot.desc": "На стрелы не действует сила тяжести.",
+  "enchantment.maenchants.quick_draw.desc": "Быстрое натягивание тетивы",
+  "enchantment.maenchants.floating.desc": "Накладывает на атакуемую цель эффект плавания.",
+  "enchantment.maenchants.paralysis.desc": "Атакуемая цель не сможет двигаться, прыгать или атаковать.",
+
+  "enchantment.maenchants.combo.desc": "Увеличенный урон с каждым успешным ударом, сбрасывается при ударе в воздух или блок.",
+  "enchantment.maenchants.faster_attack.desc": "Увеличивает скорость атаки.",
+  "enchantment.maenchants.lifesteal.desc": "Часть нанесенного урона восстанавливает здоровье.",
+  "enchantment.maenchants.ice_aspect.desc": "Замедляет врагов.",
+  "enchantment.maenchants.wisdom.desc": "Дает дополнительный опыт при убийстве мобов.",
+
+  "enchantment.maenchants.blazing_walker.desc": "Временно превращает лаву в расплавленный булыжник.",
+  "enchantment.maenchants.step_assist.desc": "Позволяет без прыжков пройти на 1 блок.",
+  "enchantment.maenchants.night_vision.desc": "Дает эффект зелья ночного видения, когда вы его носите.",
+  "enchantment.maenchants.multi_jump.desc": "Дополнительные прыжки в воздухе.",
+
+  "enchantment.maenchants.timeless.desc": "Предмет с этим чаром не исчезает после падения на землю.",
+  "enchantment.maenchants.soft_fall": "Soft Fall",
+  "enchantment.maenchants.soft_fall.desc": "Eliminates falling damage, downside is that it gives exhaustion."
+}

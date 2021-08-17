@@ -1,0 +1,79 @@
+{
+  "itemGroup.maenchants": "Ma 附魔",
+  "block.maenchants.melted_cobblestone": "融化的的圆石",
+  "key.maenchants.key.excavate": "砍伐/挖掘",
+  "death.attack.aquaphobia": " %s 死于对水的恐惧",
+
+  "enchantment.maenchants.curse_breaking": "损坏诅咒",
+  "enchantment.maenchants.curse_butterfingers": "掉落诅咒",
+  "enchantment.maenchants.curse_aquaphobia": "恐水诅咒",
+
+  "enchantment.maenchants.reinforced_tip": "顶部强化",
+  "enchantment.maenchants.stone_mending": "石头修补",
+  "enchantment.maenchants.lumberjack": "伐木工",
+  "enchantment.maenchants.momentum": "推进力",
+  "enchantment.maenchants.butchering": "屠夫",
+
+  "enchantment.maenchants.true_shot": "神箭手",
+  "enchantment.maenchants.quick_draw": "快速射击",
+  "enchantment.maenchants.floating": "漂浮",
+  "enchantment.maenchants.paralysis": "麻痹",
+  "enchantment.maenchants.detonation": "爆炸",
+
+  "enchantment.maenchants.combo": "连击",
+  "enchantment.maenchants.faster_attack": "快速攻击",
+  "enchantment.maenchants.lifesteal": "生命偷取",
+  "enchantment.maenchants.ice_aspect": "冰冻",
+  "enchantment.maenchants.wisdom": "智慧",
+
+  "enchantment.maenchants.blazing_walker": "烈焰行者",
+  "enchantment.maenchants.step_assist": "爬坡",
+  "enchantment.maenchants.night_vision": "夜视",
+  "enchantment.maenchants.multi_jump": "多段跳",
+
+
+  "enchantment.maenchants.momentum.speed": "§a推进速度: §a§l%s",
+  "enchantment.maenchants.momentum.speed_max": "§c推进速度: §c§l%s",
+  "enchantment.maenchants.momentum.block": "§a推进方块: §a§l%s",
+  "enchantment.maenchants.combo.lvl": "§a连击: §a§l%s",
+  "enchantment.maenchants.combo.lvl_max": "§a连击: §a§l%s",
+
+
+
+
+
+  "_comment": "Descriptions",
+  "enchantment.maenchants.curse_breaking.desc": "你的工具损坏得更快.",
+  "enchantment.maenchants.curse_butterfingers.desc": "当你的工具挖掘或攻击时有几率掉落.",
+  "enchantment.maenchants.curse_aquaphobia.desc": "在水里将会持续受到伤害.",
+
+  "enchantment.maenchants.reinforced_tip.desc": "增加挖掘黑曜石的速度.",
+  "enchantment.maenchants.stone_mending.desc": "挖掘石头时有几率恢复耐久.",
+  "enchantment.maenchants.lumberjack.desc": "一次就能砍倒整棵树.",
+  "enchantment.maenchants.momentum.desc": "连续挖掘同样方块的时候增加挖掘速度.",
+  "enchantment.maenchants.butchering.desc": "对动物造成额外伤害",
+  "enchantment.maenchants.detonation.desc": "攻击时产生爆炸.",
+
+  "enchantment.maenchants.true_shot.desc": "射出的箭不受重力影响.",
+  "enchantment.maenchants.quick_draw.desc": "拉弓更快.",
+  "enchantment.maenchants.floating.desc": "攻击时造成漂浮效果.",
+  "enchantment.maenchants.paralysis.desc": "攻击时造成麻痹效果,限制移动,跳跃和攻击.",
+
+  "enchantment.maenchants.combo.desc": "连续攻击时提高伤害,攻击到空气或者方块时重置效果.",
+  "enchantment.maenchants.faster_attack.desc": "增加攻击速度.",
+  "enchantment.maenchants.lifesteal.desc": "根据造成的伤害回复生命值.",
+  "enchantment.maenchants.ice_aspect.desc": "减缓敌人的速度.",
+  "enchantment.maenchants.wisdom.desc": "杀死生物时获得更多经验值",
+
+  "enchantment.maenchants.blazing_walker.desc": "行走时暂时将岩浆变为圆石.",
+  "enchantment.maenchants.step_assist.desc": "可以行走上1格高的方块而无需跳跃.",
+  "enchantment.maenchants.night_vision.desc": "穿戴时提供夜视效果.",
+  "enchantment.maenchants.multi_jump.desc": "可以在空气中连续跳跃.",
+  "death.attack.death": "%s can not handle power of this item",
+  "enchantment.maenchants.curse_death": "Curse of Death",
+  "enchantment.maenchants.soft_fall": "Soft Fall",
+  "enchantment.maenchants.timeless": "Timeless",
+  "enchantment.maenchants.curse_death.desc": "Deals massive amount of damage when equipped or held in hand.",
+  "enchantment.maenchants.soft_fall.desc": "Eliminates falling damage, downside is that it gives exhaustion.",
+  "enchantment.maenchants.timeless.desc": "Item with this enchant with not despawn after time when dropped on ground."
+}

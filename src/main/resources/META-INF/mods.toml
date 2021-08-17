@@ -1,0 +1,29 @@
+modLoader="javafml"
+loaderVersion="[36,)"
+issueTrackerURL="https://github.com/Maciej916/maenchants/issues"
+license="GNU LESSER GENERAL PUBLIC LICENSE"
+
+[[mods]]
+    modId="maenchants"
+    version="${file.jarVersion}"
+    displayName="Ma Enchants"
+    updateJSONURL="https://raw.githubusercontent.com/Maciej916/ma-enchants/1.17/update.json"
+    displayURL="https://www.curseforge.com/minecraft/mc-mods/maenchants"
+    logoFile="maenchants.png"
+    credits=""
+    authors="Maciej916"
+    description="Multiple new enchants and curses"
+
+    [[dependencies.maenchants]]
+        modId="forge"
+        mandatory=true
+        versionRange="[37.0.0,)"
+        ordering="NONE"
+        side="BOTH"
+
+    [[dependencies.maenchants]]
+        modId="minecraft"
+        mandatory=true
+        versionRange="[1.17.1]"
+        ordering="NONE"
+        side="BOTH"

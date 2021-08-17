@@ -1,0 +1,6 @@
+{
+	"parent": "block/cube_all",
+	"textures": {
+		"all": "maenchants:block/melted_cobblestone_1"
+	}
+}
