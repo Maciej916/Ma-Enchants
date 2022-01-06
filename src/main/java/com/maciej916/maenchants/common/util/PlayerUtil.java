@@ -1,20 +1,20 @@
 package com.maciej916.maenchants.common.util;
 
-import com.maciej916.maenchants.common.capabilities.Capabilities;
-import com.maciej916.maenchants.common.capabilities.mod.IModCapability;
+import com.maciej916.maenchants.common.capabilities.player.IPlayerCapability;
+import com.maciej916.maenchants.common.registries.ModCapabilities;
 import net.minecraft.world.entity.player.Player;
 
 import javax.annotation.Nullable;
 
 public class PlayerUtil {
 
-    public static IModCapability getEnchantsCapability(Player player) {
-        return player.getCapability(Capabilities.MOD_CAPABILITY, null).orElseThrow(() -> new IllegalArgumentException("LazyOptional must not be empty!"));
+    public static IPlayerCapability getEnchantsCapability(Player player) {
+        return player.getCapability(ModCapabilities.PLAYER_CAPABILITY, null).orElseThrow(() -> new IllegalArgumentException("LazyOptional must not be empty!"));
     }
 
     @Nullable
-    public static IModCapability getAliveEnchantsCapability(Player player) {
-        return player.getCapability(Capabilities.MOD_CAPABILITY, null).orElse(null);
+    public static IPlayerCapability getAliveEnchantsCapability(Player player) {
+        return player.getCapability(ModCapabilities.PLAYER_CAPABILITY, null).orElse(null);
     }
 
 }

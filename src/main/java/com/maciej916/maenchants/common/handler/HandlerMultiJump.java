@@ -1,7 +1,7 @@
 package com.maciej916.maenchants.common.handler;
 
-import com.maciej916.maenchants.common.capabilities.mod.IModCapability;
-import com.maciej916.maenchants.common.network.Networking;
+import com.maciej916.maenchants.common.capabilities.player.IPlayerCapability;
+import com.maciej916.maenchants.common.network.ModNetworking;
 import com.maciej916.maenchants.common.network.packet.PacketMultiJumpDo;
 import com.maciej916.maenchants.common.network.packet.PacketMultiJumpSync;
 import com.maciej916.maenchants.common.util.PlayerUtil;
@@ -17,7 +17,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.fmllegacy.network.NetworkDirection;
+import net.minecraftforge.network.NetworkDirection;
 
 import static com.maciej916.maenchants.common.registries.ModEnchants.MULTI_JUMP;
 
@@ -26,25 +26,25 @@ public class HandlerMultiJump {
     public static void handlerPlayerTick(TickEvent.PlayerTickEvent event) {
         if (event.phase != TickEvent.Phase.END) return;
         if (event.player.isOnGround()) {
-            IModCapability enchantsCap = PlayerUtil.getAliveEnchantsCapability(event.player);
+            IPlayerCapability enchantsCap = PlayerUtil.getAliveEnchantsCapability(event.player);
             if (enchantsCap == null) return;
             enchantsCap.setMultiJump(0);
         }
     }
 
     public static void handlerLoggedIn(ServerPlayer player) {
-        IModCapability enchantsCap = PlayerUtil.getAliveEnchantsCapability(player);
+        IPlayerCapability enchantsCap = PlayerUtil.getAliveEnchantsCapability(player);
         if (enchantsCap == null) return;
 
         int jumps = enchantsCap.getMultiJump();
         if (jumps > 0) {
-            Networking.INSTANCE.sendTo(new PacketMultiJumpSync(jumps), player.connection.getConnection(), NetworkDirection.PLAY_TO_CLIENT);
+            ModNetworking.INSTANCE.sendTo(new PacketMultiJumpSync(jumps), player.connection.getConnection(), NetworkDirection.PLAY_TO_CLIENT);
         }
     }
 
     private static void handlerJumpClient(Player player) {
         if (handlerJump(player)) {
-            Networking.INSTANCE.sendToServer(new PacketMultiJumpDo());
+            ModNetworking.INSTANCE.sendToServer(new PacketMultiJumpDo());
         }
     }
 
@@ -52,7 +52,7 @@ public class HandlerMultiJump {
     public static void handlerKeyInput(Minecraft mc, InputEvent.KeyInputEvent event) {
         if (!mc.isWindowActive() || mc.player == null || mc.level == null) return;
 
-        IModCapability enchantsCap = PlayerUtil.getAliveEnchantsCapability(mc.player);
+        IPlayerCapability enchantsCap = PlayerUtil.getAliveEnchantsCapability(mc.player);
         if (enchantsCap == null) return;
 
         boolean down = mc.options.keyJump.isDown();
@@ -71,7 +71,7 @@ public class HandlerMultiJump {
         int lvl = EnchantmentHelper.getItemEnchantmentLevel(MULTI_JUMP, stack);
         if (lvl == 0 || !allowJump(player)) return false;
 
-        IModCapability enchantsCap = PlayerUtil.getAliveEnchantsCapability(player);
+        IPlayerCapability enchantsCap = PlayerUtil.getAliveEnchantsCapability(player);
         if (enchantsCap == null) return false;
 
         int jumps = enchantsCap.getMultiJump();

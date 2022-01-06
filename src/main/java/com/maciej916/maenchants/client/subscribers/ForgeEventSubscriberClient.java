@@ -13,7 +13,7 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 
-import static com.maciej916.maenchants.MaEnchants.proxy;
+import static com.maciej916.maenchants.MaEnchants.PROXY;
 
 @EventBusSubscriber(modid = MaEnchants.MODID, bus = EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
 public final class ForgeEventSubscriberClient {
@@ -30,7 +30,7 @@ public final class ForgeEventSubscriberClient {
 
     @SubscribeEvent
     public static void onClientKeyInput(InputEvent.KeyInputEvent event) {
-        Minecraft mc = proxy.getClient();
+        Minecraft mc = PROXY.getClient();
         if (!mc.isWindowActive() || mc.level == null) return;
 
         HandlerMultiJump.handlerKeyInput(mc, event);

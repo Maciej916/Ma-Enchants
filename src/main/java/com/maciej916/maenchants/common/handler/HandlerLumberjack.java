@@ -3,14 +3,13 @@ package com.maciej916.maenchants.common.handler;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.ImmutableSet;
 import com.maciej916.maenchants.client.Keys;
-import com.maciej916.maenchants.common.capabilities.mod.IModCapability;
-import com.maciej916.maenchants.common.network.Networking;
+import com.maciej916.maenchants.common.capabilities.player.IPlayerCapability;
+import com.maciej916.maenchants.common.network.ModNetworking;
 import com.maciej916.maenchants.common.network.packet.PacketLumberjackToggle;
 import com.maciej916.maenchants.common.util.PlayerUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
@@ -34,7 +33,7 @@ public class HandlerLumberjack {
 
     @OnlyIn(Dist.CLIENT)
     public static void handlerKeyInput(Minecraft mc, InputEvent.KeyInputEvent event) {
-        IModCapability enchantsCap = PlayerUtil.getAliveEnchantsCapability(mc.player);
+        IPlayerCapability enchantsCap = PlayerUtil.getAliveEnchantsCapability(mc.player);
         if (enchantsCap == null) return;
 
         boolean down = Keys.excavateKey.isDown();
@@ -42,12 +41,12 @@ public class HandlerLumberjack {
             if (!enchantsCap.getExcavateActive()) {
                 enchantsCap.setExcavateActive(true);
 
-                Networking.INSTANCE.sendToServer(new PacketLumberjackToggle(true));
+                ModNetworking.INSTANCE.sendToServer(new PacketLumberjackToggle(true));
             }
         } else {
             if (enchantsCap.getExcavateActive()) {
                 enchantsCap.setExcavateActive(false);
-                Networking.INSTANCE.sendToServer(new PacketLumberjackToggle(false));
+                ModNetworking.INSTANCE.sendToServer(new PacketLumberjackToggle(false));
             }
         }
     }
@@ -61,7 +60,7 @@ public class HandlerLumberjack {
         ItemStack stack = player.getItemInHand(hand);
         if (EnchantmentHelper.getItemEnchantmentLevel(LUMBERJACK, stack) == 0) return;
 
-        IModCapability enchantsCap = PlayerUtil.getAliveEnchantsCapability(player);
+        IPlayerCapability enchantsCap = PlayerUtil.getAliveEnchantsCapability(player);
         if (enchantsCap == null) return;
 
         if (enchantsCap.getExcavateActive()) {

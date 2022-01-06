@@ -26,37 +26,34 @@ public class HandlerBlazingWalker {
         int lvl = EnchantmentHelper.getItemEnchantmentLevel(BLAZING_WALKER, stack);
         if (lvl == 0) return;
 
-        if (!player.level.isClientSide) {
-            BlockPos blockpos = player.blockPosition();
-            BlockPos lastPos = ObfuscationReflectionHelper.getPrivateValue(LivingEntity.class, player, "lastPos");
+        BlockPos blockpos = player.blockPosition();
+        BlockPos lastPos = ObfuscationReflectionHelper.getPrivateValue(LivingEntity.class, player, "lastPos");
 
-            if (!Objects.equal(lastPos, blockpos)) {
-                makeFloor(player, player.level, blockpos, lvl);
-            }
+        if (!Objects.equal(lastPos, blockpos)) {
+            onEntityMoved(player, player.level, blockpos, lvl);
         }
     }
 
-    public static void makeFloor(LivingEntity p_45019_, Level p_45020_, BlockPos p_45021_, int p_45022_) {
-        if (p_45019_.isOnGround()) {
-            BlockState blockstate = ModBlocks.MELTED_COBBLESTONE.defaultBlockState();
-            float f = (float)Math.min(16, 2 + p_45022_);
+    public static void onEntityMoved(LivingEntity entity, Level level, BlockPos pos, int lvl) {
+        if (entity.isOnGround()) {
+            BlockState blockstate = ModBlocks.MELTED_COBBLESTONE.getBlock().defaultBlockState();
+            float f = (float)Math.min(16, 2 + lvl);
             BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
 
-            for(BlockPos blockpos : BlockPos.betweenClosed(p_45021_.offset((double)(-f), -1.0D, (double)(-f)), p_45021_.offset((double)f, -1.0D, (double)f))) {
-                if (blockpos.closerThan(p_45019_.position(), (double)f)) {
+            for(BlockPos blockpos : BlockPos.betweenClosed(pos.offset(-f, -1.0D, -f), pos.offset(f, -1.0D, f))) {
+                if (blockpos.closerThan(entity.position(), f)) {
                     blockpos$mutableblockpos.set(blockpos.getX(), blockpos.getY() + 1, blockpos.getZ());
-                    BlockState blockstate1 = p_45020_.getBlockState(blockpos$mutableblockpos);
+                    BlockState blockstate1 = level.getBlockState(blockpos$mutableblockpos);
                     if (blockstate1.isAir()) {
-                        BlockState blockstate2 = p_45020_.getBlockState(blockpos);
+                        BlockState blockstate2 = level.getBlockState(blockpos);
                         boolean isFull = blockstate2.getBlock() == Blocks.LAVA && blockstate2.getValue(LiquidBlock.LEVEL) == 0; //TODO: Forge, modded waters?
-                        if (blockstate2.getMaterial() == Material.LAVA && isFull && blockstate.canSurvive(p_45020_, blockpos) && p_45020_.isUnobstructed(blockstate, blockpos, CollisionContext.empty()) && !net.minecraftforge.event.ForgeEventFactory.onBlockPlace(p_45019_, net.minecraftforge.common.util.BlockSnapshot.create(p_45020_.dimension(), p_45020_, blockpos), net.minecraft.core.Direction.UP)) {
-                            p_45020_.setBlockAndUpdate(blockpos, blockstate);
-                            p_45020_.getBlockTicks().scheduleTick(blockpos, ModBlocks.MELTED_COBBLESTONE, Mth.nextInt(p_45019_.getRandom(), 20, 60));
+                        if (blockstate2.getMaterial() == Material.LAVA && isFull && blockstate.canSurvive(level, blockpos) && level.isUnobstructed(blockstate, blockpos, CollisionContext.empty()) && !net.minecraftforge.event.ForgeEventFactory.onBlockPlace(entity, net.minecraftforge.common.util.BlockSnapshot.create(level.dimension(), level, blockpos), net.minecraft.core.Direction.UP)) {
+                            level.setBlockAndUpdate(blockpos, blockstate);
+                            level.m_186460_(blockpos, ModBlocks.MELTED_COBBLESTONE.getBlock(), Mth.nextInt(entity.getRandom(), 20, 60));
                         }
                     }
                 }
             }
-
         }
     }
 

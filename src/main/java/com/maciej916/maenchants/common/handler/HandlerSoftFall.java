@@ -1,6 +1,6 @@
 package com.maciej916.maenchants.common.handler;
 
-import com.maciej916.maenchants.common.network.Networking;
+import com.maciej916.maenchants.common.network.ModNetworking;
 import com.maciej916.maenchants.common.network.packet.PacketCloudParticles;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -28,7 +28,7 @@ public class HandlerSoftFall {
             event.setCanceled(true);
 
             if (world.isClientSide()) {
-                Networking.INSTANCE.sendToServer(new PacketCloudParticles());
+                ModNetworking.INSTANCE.sendToServer(new PacketCloudParticles());
             }
         }
     }

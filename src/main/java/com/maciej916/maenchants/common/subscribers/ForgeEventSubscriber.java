@@ -1,9 +1,8 @@
 package com.maciej916.maenchants.common.subscribers;
 
 import com.maciej916.maenchants.common.handler.*;
-import net.minecraft.core.BlockPos;
+import com.maciej916.maenchants.common.registries.ModCapabilities;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.event.TickEvent;
@@ -22,8 +21,8 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 public final class ForgeEventSubscriber {
 
     @SubscribeEvent
-    public static void worldTick(TickEvent.ServerTickEvent event) {
-        HandlerTrueShot.handlerWorldTick(event);
+    public static void onEntityJoinWorld(EntityJoinWorldEvent event) {
+        event.getWorld().getCapability(ModCapabilities.LEVEL_CAPABILITY).ifPresent(iLevelCapability -> iLevelCapability.entityJoinWorldEvent(event));
     }
 
     @SubscribeEvent
@@ -33,7 +32,7 @@ public final class ForgeEventSubscriber {
         Level world = player.getCommandSenderWorld();
 
         if (!world.isClientSide()) {
-//            HandlerBlazingWalker.handlerPlayerTick(player);
+            HandlerBlazingWalker.handlerPlayerTick(player);
             HandlerCurseAquaphobia.handlerPlayerTick(event);
             HandlerCurseDeath.handlerPlayerTick(event);
         } else {
@@ -44,9 +43,6 @@ public final class ForgeEventSubscriber {
             HandlerQuickDraw.handlerPlayerTick(player);
         }
     }
-
-
-
 
     @SubscribeEvent
     public static void onAttack(LivingHurtEvent event) {
@@ -78,11 +74,6 @@ public final class ForgeEventSubscriber {
     public static void onBreakSpeed(PlayerEvent.BreakSpeed event) {
         HandlerMomentum.handlerSpeed(event);
         HandlerReinforcedTip.handlerSpeed(event);
-    }
-
-    @SubscribeEvent
-    public static void onEntityJoinWorld(EntityJoinWorldEvent event) {
-        HandlerTrueShot.handlerSpawn(event);
     }
 
     @SubscribeEvent

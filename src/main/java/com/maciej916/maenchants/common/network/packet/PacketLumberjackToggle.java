@@ -1,9 +1,9 @@
 package com.maciej916.maenchants.common.network.packet;
 
-import com.maciej916.maenchants.common.capabilities.mod.IModCapability;
+import com.maciej916.maenchants.common.capabilities.player.IPlayerCapability;
 import com.maciej916.maenchants.common.util.PlayerUtil;
 import io.netty.buffer.ByteBuf;
-import net.minecraftforge.fmllegacy.network.NetworkEvent;
+import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
 
@@ -26,7 +26,7 @@ public class PacketLumberjackToggle {
     public void handle(Supplier<NetworkEvent.Context> ctx) {
         ctx.get().enqueueWork(() -> {
             if (ctx.get() == null || ctx.get().getSender() == null) return;
-            IModCapability enchantsCap = PlayerUtil.getEnchantsCapability(ctx.get().getSender());
+            IPlayerCapability enchantsCap = PlayerUtil.getEnchantsCapability(ctx.get().getSender());
             enchantsCap.setExcavateActive(toggle);
         });
         ctx.get().setPacketHandled(true);

@@ -1,8 +1,7 @@
 package com.maciej916.maenchants;
 
-import com.maciej916.maenchants.common.capabilities.Capabilities;
 import com.maciej916.maenchants.common.config.ConfigHolder;
-import com.maciej916.maenchants.common.network.Networking;
+import com.maciej916.maenchants.common.network.ModNetworking;
 import com.maciej916.maenchants.common.proxy.ClientProxy;
 import com.maciej916.maenchants.common.proxy.IProxy;
 import com.maciej916.maenchants.common.proxy.ServerProxy;
@@ -16,7 +15,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 @Mod(MaEnchants.MODID)
 public class MaEnchants {
     public static final String MODID = "maenchants";
-    public static IProxy proxy = DistExecutor.runForDist(() -> ClientProxy::new, () -> ServerProxy::new);
+    public static IProxy PROXY = DistExecutor.runForDist(() -> ClientProxy::new, () -> ServerProxy::new);
 
     public MaEnchants() {
         final ModLoadingContext modLoadingContext = ModLoadingContext.get();
@@ -26,9 +25,8 @@ public class MaEnchants {
     }
 
     public void onCommonSetup(FMLCommonSetupEvent event) {
-        Capabilities.register();
-        Networking.registerMessages();
-        proxy.init();
+        ModNetworking.setup();
+        PROXY.init();
     }
 
 }

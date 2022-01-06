@@ -1,6 +1,6 @@
 package com.maciej916.maenchants.common.handler;
 
-import com.maciej916.maenchants.common.network.Networking;
+import com.maciej916.maenchants.common.network.ModNetworking;
 import com.maciej916.maenchants.common.network.packet.PacketComboReset;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.TranslatableComponent;
@@ -18,13 +18,13 @@ public class HandlerCombo {
     @OnlyIn(Dist.CLIENT)
     public static void handlerMiss(PlayerInteractEvent.LeftClickEmpty event) {
         if (EnchantmentHelper.getItemEnchantmentLevel(COMBO, event.getItemStack()) == 0) return;
-        Networking.INSTANCE.sendToServer(new PacketComboReset());
+        ModNetworking.INSTANCE.sendToServer(new PacketComboReset());
     }
 
     @OnlyIn(Dist.CLIENT)
     public static void handlerHitBlock(PlayerInteractEvent.LeftClickBlock event) {
         if (EnchantmentHelper.getItemEnchantmentLevel(COMBO, event.getItemStack()) == 0) return;
-        Networking.INSTANCE.sendToServer(new PacketComboReset());
+        ModNetworking.INSTANCE.sendToServer(new PacketComboReset());
     }
 
     @OnlyIn(Dist.CLIENT)

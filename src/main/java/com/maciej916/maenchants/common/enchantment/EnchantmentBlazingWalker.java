@@ -54,4 +54,6 @@ public class EnchantmentBlazingWalker extends BasicEnchantment {
     public boolean isEnabled() {
         return ConfigValues.blazing_walker;
     }
+
+
 }

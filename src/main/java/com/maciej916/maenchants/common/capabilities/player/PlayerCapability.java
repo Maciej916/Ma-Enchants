@@ -1,33 +1,22 @@
-package com.maciej916.maenchants.common.capabilities.basic;
+package com.maciej916.maenchants.common.capabilities.player;
 
-import com.maciej916.maenchants.common.capabilities.mod.IModCapability;
+import com.maciej916.maenchants.common.registries.ModCapabilities;
+import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.Tag;
-import net.minecraft.nbt.TagType;
-import net.minecraft.nbt.TagVisitor;
-import net.minecraftforge.common.capabilities.CapabilityManager;
-import net.minecraftforge.common.util.INBTSerializable;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ICapabilitySerializable;
+import net.minecraftforge.common.util.LazyOptional;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-import java.io.DataOutput;
-import java.io.IOException;
+public class PlayerCapability implements IPlayerCapability, ICapabilitySerializable<CompoundTag> {
 
-public class DefaultModCapability implements IModCapability, INBTSerializable<CompoundTag> {
-
-    private byte version;
+    private final LazyOptional<IPlayerCapability> modCapabilityLazyOptional = LazyOptional.of(() -> this);
     private boolean stepAssist;
     private boolean nightVision;
     private int multiJump;
     private boolean multiJumpSpace;
     private boolean excavate;
-
-    public static void register() {
-        CapabilityManager.INSTANCE.register(IModCapability.class);
-    }
-
-    @Override
-    public byte getVersion() {
-        return this.version;
-    }
 
     @Override
     public boolean getStepAssist() {
@@ -52,11 +41,6 @@ public class DefaultModCapability implements IModCapability, INBTSerializable<Co
     @Override
     public boolean getExcavateActive() {
         return excavate;
-    }
-
-    @Override
-    public void setVersion(byte version) {
-        this.version = version;
     }
 
     @Override
@@ -85,8 +69,7 @@ public class DefaultModCapability implements IModCapability, INBTSerializable<Co
     }
 
     @Override
-    public void clone(IModCapability capability) {
-        setVersion(capability.getVersion());
+    public void clone(IPlayerCapability capability) {
         setStepAssist(capability.getStepAssist());
         setNightVision(capability.getNightVision());
         setMultiJump(capability.getMultiJump());
@@ -97,7 +80,6 @@ public class DefaultModCapability implements IModCapability, INBTSerializable<Co
     @Override
     public CompoundTag serializeNBT() {
         CompoundTag tag = new CompoundTag();
-        tag.putByte("version", getVersion());
         tag.putBoolean("stepAssist", getStepAssist());
         tag.putBoolean("nightVision", getNightVision());
         tag.putInt("multiJump", getMultiJump());
@@ -108,7 +90,6 @@ public class DefaultModCapability implements IModCapability, INBTSerializable<Co
 
     @Override
     public void deserializeNBT(CompoundTag nbt) {
-        setVersion(nbt.getByte("version"));
         setStepAssist(nbt.getBoolean("stepAssist"));
         setNightVision(nbt.getBoolean("nightVision"));
         setMultiJump(nbt.getInt("multiJump"));
@@ -116,28 +97,12 @@ public class DefaultModCapability implements IModCapability, INBTSerializable<Co
         setExcavateActive(nbt.getBoolean("excavate"));
     }
 
+    @NotNull
     @Override
-    public void write(DataOutput p_129329_) throws IOException {
-
-    }
-
-    @Override
-    public byte getId() {
-        return 0;
-    }
-
-    @Override
-    public TagType<?> getType() {
-        return null;
-    }
-
-    @Override
-    public Tag copy() {
-        return null;
-    }
-
-    @Override
-    public void accept(TagVisitor p_178208_) {
-
+    public <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
+        if (cap == ModCapabilities.PLAYER_CAPABILITY) {
+            return modCapabilityLazyOptional.cast();
+        }
+        return LazyOptional.empty();
     }
 }

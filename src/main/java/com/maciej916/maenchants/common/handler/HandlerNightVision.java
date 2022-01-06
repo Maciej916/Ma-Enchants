@@ -1,6 +1,6 @@
 package com.maciej916.maenchants.common.handler;
 
-import com.maciej916.maenchants.common.capabilities.mod.IModCapability;
+import com.maciej916.maenchants.common.capabilities.player.IPlayerCapability;
 import com.maciej916.maenchants.common.util.PlayerUtil;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -14,7 +14,7 @@ import static com.maciej916.maenchants.common.registries.ModEnchants.NIGHT_VISIO
 public class HandlerNightVision {
 
     public static void handlerPlayerTick(Player player) {
-        IModCapability enchantsCap = PlayerUtil.getAliveEnchantsCapability(player);
+        IPlayerCapability enchantsCap = PlayerUtil.getAliveEnchantsCapability(player);
         if (enchantsCap == null) return;
 
         ItemStack stack = player.getItemBySlot(EquipmentSlot.HEAD);

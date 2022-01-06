@@ -3,7 +3,7 @@ package com.maciej916.maenchants.common.network.packet;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.fmllegacy.network.NetworkEvent;
+import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
 
