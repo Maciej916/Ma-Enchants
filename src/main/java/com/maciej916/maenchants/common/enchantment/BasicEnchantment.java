@@ -1,6 +1,6 @@
 package com.maciej916.maenchants.common.enchantment;
 
-import com.maciej916.maenchants.interfaces.IEnchantment;
+import com.maciej916.maenchants.common.interfaces.IEnchantment;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;

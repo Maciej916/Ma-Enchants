@@ -1,95 +1,60 @@
 package com.maciej916.maenchants.common.registries;
 
+import com.google.common.base.Supplier;
 import com.maciej916.maenchants.common.curse.CurseAquaphobia;
 import com.maciej916.maenchants.common.curse.CurseBreaking;
 import com.maciej916.maenchants.common.curse.CurseButterfingers;
 import com.maciej916.maenchants.common.curse.CurseDeath;
 import com.maciej916.maenchants.common.enchantment.*;
 import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
+import static com.maciej916.maenchants.MaEnchants.MODID;
+
 public final class ModEnchantments {
 
-    public static Enchantment CURSE_BREAKING;
-    public static Enchantment CURSE_BUTTERFINGERS;
-    public static Enchantment CURSE_AQUAPHOBIA;
-    public static Enchantment CURSE_DEATH;
+    public static final DeferredRegister<Enchantment> ENCHANTMENTS = DeferredRegister.create(ForgeRegistries.ENCHANTMENTS, MODID);
 
-    public static Enchantment REINFORCED_TIP;
-    public static Enchantment STONE_MENDING;
-    public static Enchantment LUMBERJACK;
-    public static Enchantment MOMENTUM;
-    public static Enchantment BUTCHERING;
+    public static final RegistryObject<Enchantment> CURSE_BREAKING = registerEnchantment("curse_breaking", CurseBreaking::new);
+    public static final RegistryObject<Enchantment> CURSE_BUTTERFINGERS = registerEnchantment("curse_butterfingers", CurseButterfingers::new);
+    public static final RegistryObject<Enchantment> CURSE_AQUAPHOBIA = registerEnchantment("curse_aquaphobia", CurseAquaphobia::new);
+    public static final RegistryObject<Enchantment> CURSE_DEATH = registerEnchantment("curse_death", CurseDeath::new);
 
-    public static Enchantment TRUE_SHOT;
-    public static Enchantment QUICK_DRAW;
-    public static Enchantment FLOATING;
-    public static Enchantment PARALYSIS;
-    public static Enchantment DETONATION;
+    public static final RegistryObject<Enchantment> REINFORCED_TIP = registerEnchantment("reinforced_tip", EnchantmentReinforcedTip::new);
+    public static final RegistryObject<Enchantment> STONE_MENDING = registerEnchantment("stone_mending", EnchantmentStoneMending::new);
+    public static final RegistryObject<Enchantment> LUMBERJACK = registerEnchantment("lumberjack", EnchantmentLumberjack::new);
+    public static final RegistryObject<Enchantment> MOMENTUM = registerEnchantment("momentum", EnchantmentMomentum::new);
+    public static final RegistryObject<Enchantment> BUTCHERING = registerEnchantment("butchering", EnchantmentButchering::new);
 
-    public static Enchantment COMBO;
-    public static Enchantment FASTER_ATTACK;
-    public static Enchantment LIFESTEAL;
-    public static Enchantment ICE_ASPECT;
-    public static Enchantment WISDOM;
+    public static final RegistryObject<Enchantment> TRUE_SHOT = registerEnchantment("true_shot", EnchantmentTrueShot::new);
+    public static final RegistryObject<Enchantment> QUICK_DRAW = registerEnchantment("quick_draw", EnchantmentQuickDraw::new);
+    public static final RegistryObject<Enchantment> FLOATING = registerEnchantment("floating", EnchantmentFloating::new);
+    public static final RegistryObject<Enchantment> PARALYSIS = registerEnchantment("paralysis", EnchantmentParalysis::new);
+    public static final RegistryObject<Enchantment> DETONATION = registerEnchantment("detonation", EnchantmentDetonation::new);
 
-    public static Enchantment BLAZING_WALKER;
-    public static Enchantment STEP_ASSIST;
-    public static Enchantment NIGHT_VISION;
-    public static Enchantment MULTI_JUMP;
-    public static Enchantment SOFT_FALL;
+    public static final RegistryObject<Enchantment> COMBO = registerEnchantment("combo", EnchantmentCombo::new);
+    public static final RegistryObject<Enchantment> FASTER_ATTACK = registerEnchantment("faster_attack", EnchantmentFasterAttack::new);
+    public static final RegistryObject<Enchantment> LIFESTEAL = registerEnchantment("lifesteal", EnchantmentLifesteal::new);
+    public static final RegistryObject<Enchantment> ICE_ASPECT = registerEnchantment("ice_aspect", EnchantmentIceAspect::new);
+    public static final RegistryObject<Enchantment> WISDOM = registerEnchantment("wisdom", EnchantmentWisdom::new);
 
-    public static Enchantment TIMELESS;
+    public static final RegistryObject<Enchantment> BLAZING_WALKER = registerEnchantment("blazing_walker", EnchantmentBlazingWalker::new);
+    public static final RegistryObject<Enchantment> STEP_ASSIST = registerEnchantment("step_assist", EnchantmentStepAssist::new);
+    public static final RegistryObject<Enchantment> NIGHT_VISION = registerEnchantment("night_vision", EnchantmentNightVision::new);
+    public static final RegistryObject<Enchantment> MULTI_JUMP = registerEnchantment("multi_jump", EnchantmentMultiJump::new);
+    public static final RegistryObject<Enchantment> SOFT_FALL = registerEnchantment("soft_fall", EnchantmentSoftFall::new);
 
-    @SubscribeEvent
-    public static void registerEnchantments(RegistryEvent.Register<Enchantment> event) {
+    public static final RegistryObject<Enchantment> TIMELESS = registerEnchantment("timeless", EnchantmentTimeless::new);
 
-        // Curse
-        CURSE_BREAKING = registerEnchantment(new CurseBreaking(), "curse_breaking");
-        CURSE_BUTTERFINGERS = registerEnchantment(new CurseButterfingers(), "curse_butterfingers");
-        CURSE_AQUAPHOBIA = registerEnchantment(new CurseAquaphobia(), "curse_aquaphobia");
-        CURSE_DEATH = registerEnchantment(new CurseDeath(), "curse_death");
-
-        // Tools
-        REINFORCED_TIP = registerEnchantment(new EnchantmentReinforcedTip(), "reinforced_tip");
-        STONE_MENDING = registerEnchantment(new EnchantmentStoneMending(), "stone_mending");
-        LUMBERJACK = registerEnchantment(new EnchantmentLumberjack(), "lumberjack");
-        MOMENTUM = registerEnchantment(new EnchantmentMomentum(), "momentum");
-        BUTCHERING = registerEnchantment(new EnchantmentButchering(), "butchering");
-
-        // Bows
-        TRUE_SHOT = registerEnchantment(new EnchantmentTrueShot(), "true_shot");
-        QUICK_DRAW = registerEnchantment(new EnchantmentQuickDraw(), "quick_draw");
-        FLOATING = registerEnchantment(new EnchantmentFloating(), "floating");
-        PARALYSIS = registerEnchantment(new EnchantmentParalysis(), "paralysis");
-        DETONATION = registerEnchantment(new EnchantmentDetonation(), "detonation");
-
-        // Swords
-        COMBO = registerEnchantment(new EnchantmentCombo(), "combo");
-        FASTER_ATTACK = registerEnchantment(new EnchantmentFasterAttack(), "faster_attack");
-        LIFESTEAL = registerEnchantment(new EnchantmentLifesteal(), "lifesteal");
-        ICE_ASPECT = registerEnchantment(new EnchantmentIceAspect(), "ice_aspect");
-        WISDOM = registerEnchantment(new EnchantmentWisdom(), "wisdom");
-
-        // Armour
-        BLAZING_WALKER = registerEnchantment(new EnchantmentBlazingWalker(), "blazing_walker");
-        STEP_ASSIST = registerEnchantment(new EnchantmentStepAssist(), "step_assist");
-        NIGHT_VISION = registerEnchantment(new EnchantmentNightVision(), "night_vision");
-        MULTI_JUMP = registerEnchantment(new EnchantmentMultiJump(), "multi_jump");
-        SOFT_FALL = registerEnchantment(new EnchantmentSoftFall(), "soft_fall");
-
-        // Other
-        TIMELESS = registerEnchantment(new EnchantmentTimeless(), "timeless");
-
+    private static <T extends Enchantment> RegistryObject<T> registerEnchantment(String name, Supplier<T> block) {
+        return ENCHANTMENTS.register(name, block);
     }
 
-    public static Enchantment registerEnchantment(Enchantment enchantment, String name) {
-        enchantment.setRegistryName(name);
-        ForgeRegistries.ENCHANTMENTS.register(enchantment);
-        return enchantment;
+    public static void register(IEventBus eventBus) {
+        ENCHANTMENTS.register(eventBus);
     }
+
 }

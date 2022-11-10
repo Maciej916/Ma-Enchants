@@ -1,4 +1,4 @@
-package com.maciej916.maenchants.interfaces;
+package com.maciej916.maenchants.common.interfaces;
 
 public interface IEnchantment {
 

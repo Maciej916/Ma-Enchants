@@ -1,21 +1,10 @@
 package com.maciej916.maenchants.common.enchantment;
 
-import com.maciej916.maenchants.common.config.ConfigValues;
-import com.maciej916.maenchants.common.registries.ModBlocks;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.Mth;
+import com.maciej916.maenchants.common.config.configs.ServerConfig;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import net.minecraft.world.item.enchantment.Enchantments;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.LiquidBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public class EnchantmentBlazingWalker extends BasicEnchantment {
 
@@ -52,7 +41,7 @@ public class EnchantmentBlazingWalker extends BasicEnchantment {
 
     @Override
     public boolean isEnabled() {
-        return ConfigValues.blazing_walker;
+        return ServerConfig.blazing_walker.get();
     }
 
 

@@ -1,14 +1,14 @@
 package com.maciej916.maenchants.common.proxy;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
+import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.player.LocalPlayer;
 
 public interface IProxy {
 
     void init();
     Minecraft getClient();
-    Level getClientWorld();
-    Player getClientPlayer();
+    ClientLevel getClientLevel();
+    LocalPlayer getLocalPlayer();
 
 }

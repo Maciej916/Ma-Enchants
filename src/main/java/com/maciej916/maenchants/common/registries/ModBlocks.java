@@ -1,37 +1,26 @@
 package com.maciej916.maenchants.common.registries;
 
+import com.google.common.base.Supplier;
 import com.maciej916.maenchants.common.block.MeltedCobblestone;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
+import static com.maciej916.maenchants.MaEnchants.MODID;
+
 public final class ModBlocks {
 
-	public static BlockItem MELTED_COBBLESTONE;
+	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
 
-	@SubscribeEvent
-	public static void registerBlocks(RegistryEvent.Register<Block> event) {
-		MELTED_COBBLESTONE = registerBlock(new MeltedCobblestone(), "melted_cobblestone");
+	public static final RegistryObject<Block> MELTED_COBBLESTONE = registerBlock("melted_cobblestone", MeltedCobblestone::new);
+
+	private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
+		return BLOCKS.register(name, block);
 	}
 
-	public static BlockItem registerBlock(BlockItem blockItem, String name) {
-		return registerBlock(blockItem.getBlock(), blockItem, name);
-	}
-
-	public static BlockItem registerBlock(Block block, String name) {
-		return registerBlock(block, new BlockItem(block, new Item.Properties()), name);
-	}
-
-	public static BlockItem registerBlock(Block block, BlockItem blockItem, String name) {
-		block.setRegistryName(name);
-		blockItem.setRegistryName(name);
-		ForgeRegistries.BLOCKS.register(block);
-		ForgeRegistries.ITEMS.register(blockItem);
-		return blockItem;
+	public static void register(IEventBus eventBus) {
+		BLOCKS.register(eventBus);
 	}
 }

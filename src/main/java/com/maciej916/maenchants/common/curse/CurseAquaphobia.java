@@ -1,6 +1,6 @@
 package com.maciej916.maenchants.common.curse;
 
-import com.maciej916.maenchants.common.config.ConfigValues;
+import com.maciej916.maenchants.common.config.configs.ServerConfig;
 import com.maciej916.maenchants.common.enchantment.BasicEnchantment;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
@@ -25,6 +25,6 @@ public class CurseAquaphobia extends BasicEnchantment {
 
     @Override
     public boolean isEnabled() {
-        return ConfigValues.curse_aquaphobia;
+        return ServerConfig.curse_aquaphobia.get();
     }
 }

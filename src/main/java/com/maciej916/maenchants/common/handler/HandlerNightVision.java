@@ -1,6 +1,7 @@
 package com.maciej916.maenchants.common.handler;
 
 import com.maciej916.maenchants.common.capabilities.player.IPlayerCapability;
+import com.maciej916.maenchants.common.registries.ModEnchantments;
 import com.maciej916.maenchants.common.util.PlayerUtil;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -9,16 +10,15 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 
-import static com.maciej916.maenchants.common.registries.ModEnchants.NIGHT_VISION;
-
 public class HandlerNightVision {
 
     public static void handlerPlayerTick(Player player) {
         IPlayerCapability enchantsCap = PlayerUtil.getAliveEnchantsCapability(player);
         if (enchantsCap == null) return;
 
+
         ItemStack stack = player.getItemBySlot(EquipmentSlot.HEAD);
-        int lvl = EnchantmentHelper.getItemEnchantmentLevel(NIGHT_VISION, stack);
+        int lvl = EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.NIGHT_VISION.get(), stack);
 
         if (lvl == 0) {
             if (enchantsCap.getNightVision()) {

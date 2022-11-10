@@ -1,8 +1,8 @@
 package com.maciej916.maenchants.common.proxy;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
+import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.player.LocalPlayer;
 
 public class ServerProxy implements IProxy {
 
@@ -17,12 +17,12 @@ public class ServerProxy implements IProxy {
     }
 
     @Override
-    public Level getClientWorld() {
+    public ClientLevel getClientLevel() {
         throw new IllegalStateException("Only run this on the client!");
     }
 
     @Override
-    public Player getClientPlayer() {
+    public LocalPlayer getLocalPlayer() {
         throw new IllegalStateException("Only run this on the client!");
     }
 

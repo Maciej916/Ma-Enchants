@@ -1,7 +1,7 @@
 {
   "itemGroup.maenchants": "Ma Enchants",
   "block.maenchants.melted_cobblestone": "Melted Cobblestone",
-  "key.maenchants.key.excavate": "Excavate",
+  "key.maenchants.excavate": "Excavate",
 
   "death.attack.aquaphobia": "%s iis afraid of water",
   "death.attack.death": "%s can not handle power of this item",

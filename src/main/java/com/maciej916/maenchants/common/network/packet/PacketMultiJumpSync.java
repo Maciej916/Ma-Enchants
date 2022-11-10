@@ -3,12 +3,10 @@ package com.maciej916.maenchants.common.network.packet;
 import com.maciej916.maenchants.common.capabilities.player.IPlayerCapability;
 import com.maciej916.maenchants.common.util.PlayerUtil;
 import io.netty.buffer.ByteBuf;
-import net.minecraft.world.entity.player.Player;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
-
-import static com.maciej916.maenchants.MaEnchants.PROXY;
 
 public class PacketMultiJumpSync {
 
@@ -28,7 +26,8 @@ public class PacketMultiJumpSync {
 
     public void handle(Supplier<NetworkEvent.Context> ctx) {
         ctx.get().enqueueWork(() -> {
-            Player player = PROXY.getClientPlayer();
+            ServerPlayer player = ctx.get().getSender();
+            assert player != null;
             IPlayerCapability enchantsCap = PlayerUtil.getEnchantsCapability(player);
             enchantsCap.setMultiJump(multiJump);
         });

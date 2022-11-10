@@ -15,8 +15,8 @@ public class ModNetworking {
         return ID++;
     }
 
-    public static void setup() {
-        INSTANCE = NetworkRegistry.newSimpleChannel(new ResourceLocation(MaEnchants.MODID, MaEnchants.MODID), () -> "1.0", s -> true, s -> true);
+    public static void init() {
+        INSTANCE = NetworkRegistry.newSimpleChannel(new ResourceLocation(MaEnchants.MODID, "networking"), () -> "1.0", s -> true, s -> true);
         INSTANCE.registerMessage(nextID(), PacketComboReset.class, PacketComboReset::toBytes, PacketComboReset::new, PacketComboReset::handle);
         INSTANCE.registerMessage(nextID(), PacketMultiJumpSync.class, PacketMultiJumpSync::toBytes, PacketMultiJumpSync::new, PacketMultiJumpSync::handle);
         INSTANCE.registerMessage(nextID(), PacketMultiJumpDo.class, PacketMultiJumpDo::toBytes, PacketMultiJumpDo::new, PacketMultiJumpDo::handle);

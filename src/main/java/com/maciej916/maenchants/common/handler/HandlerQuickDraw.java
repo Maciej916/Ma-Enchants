@@ -1,5 +1,6 @@
 package com.maciej916.maenchants.common.handler;
 
+import com.maciej916.maenchants.common.registries.ModEnchantments;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -7,8 +8,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 
 import java.lang.reflect.Method;
-
-import static com.maciej916.maenchants.common.registries.ModEnchants.QUICK_DRAW;
 
 public class HandlerQuickDraw {
 
@@ -20,11 +19,9 @@ public class HandlerQuickDraw {
             return;
         }
 
-        InteractionHand hand = player.getUsedItemHand();
-        if (hand == null) return;
+        ItemStack stack = player.getItemInHand(player.getUsedItemHand());
 
-        ItemStack stack = player.getItemInHand(hand);
-        int lvl = EnchantmentHelper.getItemEnchantmentLevel(QUICK_DRAW, stack);
+        int lvl = stack.getEnchantmentLevel(ModEnchantments.QUICK_DRAW.get());
         if (lvl == 0) return;
 
         switch (lvl) {
@@ -43,7 +40,7 @@ public class HandlerQuickDraw {
             method.setAccessible(true);
             method.invoke(player);
         } catch (Exception e) {
-            System.out.println("updateActiveHand error " + e.getMessage());
+//            System.out.println("updateActiveHand error " + e.getMessage());
         }
     }
 

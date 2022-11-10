@@ -4,6 +4,7 @@ import com.maciej916.maenchants.common.capabilities.player.IPlayerCapability;
 import com.maciej916.maenchants.common.network.ModNetworking;
 import com.maciej916.maenchants.common.network.packet.PacketMultiJumpDo;
 import com.maciej916.maenchants.common.network.packet.PacketMultiJumpSync;
+import com.maciej916.maenchants.common.registries.ModEnchantments;
 import com.maciej916.maenchants.common.util.PlayerUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.server.level.ServerPlayer;
@@ -18,8 +19,6 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.network.NetworkDirection;
-
-import static com.maciej916.maenchants.common.registries.ModEnchants.MULTI_JUMP;
 
 public class HandlerMultiJump {
 
@@ -49,7 +48,7 @@ public class HandlerMultiJump {
     }
 
     @OnlyIn(Dist.CLIENT)
-    public static void handlerKeyInput(Minecraft mc, InputEvent.KeyInputEvent event) {
+    public static void handlerKeyInput(Minecraft mc, InputEvent.Key event) {
         if (!mc.isWindowActive() || mc.player == null || mc.level == null) return;
 
         IPlayerCapability enchantsCap = PlayerUtil.getAliveEnchantsCapability(mc.player);
@@ -68,7 +67,7 @@ public class HandlerMultiJump {
 
     public static boolean handlerJump(Player player) {
         ItemStack stack = player.getItemBySlot(EquipmentSlot.FEET);
-        int lvl = EnchantmentHelper.getItemEnchantmentLevel(MULTI_JUMP, stack);
+        int lvl = EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.MULTI_JUMP.get(), stack);
         if (lvl == 0 || !allowJump(player)) return false;
 
         IPlayerCapability enchantsCap = PlayerUtil.getAliveEnchantsCapability(player);
@@ -95,9 +94,7 @@ public class HandlerMultiJump {
         ItemStack itemstack = player.getItemBySlot(EquipmentSlot.CHEST);
         boolean fallFlyingReady = itemstack.getItem() == Items.ELYTRA && ElytraItem.isFlyEnabled(itemstack);
 
-        if (fallFlyingReady) return false;
-
-        return true;
+        return !fallFlyingReady;
     }
 
     private static void extraExhaustion(Player player) {

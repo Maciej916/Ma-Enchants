@@ -1,31 +1,43 @@
 package com.maciej916.maenchants.common.handler;
 
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.LivingEntity;
+import com.maciej916.maenchants.common.capabilities.player.IPlayerCapability;
+import com.maciej916.maenchants.common.registries.ModEnchantments;
+import com.maciej916.maenchants.common.registries.ModMobEffects;
+import com.maciej916.maenchants.common.util.PlayerUtil;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraftforge.fml.util.ObfuscationReflectionHelper;
 
-import static com.maciej916.maenchants.common.registries.ModEnchants.FASTER_ATTACK;
+import java.util.Objects;
 
 public class HandlerFasterAttack {
 
     public static void handlerPlayerTick(Player player) {
+        IPlayerCapability enchantsCap = PlayerUtil.getAliveEnchantsCapability(player);
+        if (enchantsCap == null) return;
 
-        InteractionHand hand = player.getUsedItemHand();
-        if (hand == null) return;
+        ItemStack stack = player.getItemInHand(player.getUsedItemHand());
+        int lvl = stack.getEnchantmentLevel(ModEnchantments.FASTER_ATTACK.get());
+        if (lvl > 0) {
+            if (enchantsCap.getFasterAttack() == 0) {
 
-        ItemStack stack = player.getItemInHand(hand);
+//                MobEffectInstance instance = new MobEffectInstance(ModMobEffects.FASTER_ATTACK.get(), 900, lvl, false, false, false);
+//                instance.setNoCounter(true);
+//                player.addEffect(instance);
 
-        int lvl = EnchantmentHelper.getItemEnchantmentLevel(FASTER_ATTACK, stack);
-        if (lvl == 0) return;
-
-//        int swing = ObfuscationReflectionHelper.getPrivateValue(LivingEntity.class, player, "field_184617_aD");
-//        swing = Double.valueOf(swing * (lvl * 0.1 + 1)).intValue();
-//        swing = Math.min(swing, 100);
-//        ObfuscationReflectionHelper.setPrivateValue(LivingEntity.class, player, swing, "field_184617_aD");
+                double baseAttack = Attributes.ATTACK_SPEED.getDefaultValue();
+                Objects.requireNonNull(player.getAttribute(Attributes.ATTACK_SPEED)).setBaseValue(baseAttack * lvl);
+                enchantsCap.setFasterAttack(lvl);
+            }
+        } else {
+            if (enchantsCap.getFasterAttack() != 0) {
+                double attackSpeed = Objects.requireNonNull(player.getAttribute(Attributes.ATTACK_SPEED)).getValue();
+                Objects.requireNonNull(player.getAttribute(Attributes.ATTACK_SPEED)).setBaseValue(attackSpeed / enchantsCap.getFasterAttack());
+                player.removeEffect(ModMobEffects.FASTER_ATTACK.get());
+                enchantsCap.setFasterAttack(0);
+            }
+        }
     }
-
 }
 

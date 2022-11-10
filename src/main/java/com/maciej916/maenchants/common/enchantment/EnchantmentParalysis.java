@@ -1,13 +1,12 @@
 package com.maciej916.maenchants.common.enchantment;
 
 import com.maciej916.maenchants.MaEnchants;
-import com.maciej916.maenchants.common.config.ConfigValues;
+import com.maciej916.maenchants.common.config.configs.ServerConfig;
+import com.maciej916.maenchants.common.registries.ModEnchantments;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import net.minecraftforge.fml.common.Mod;
-
-import static com.maciej916.maenchants.common.registries.ModEnchants.FLOATING;
 
 @Mod.EventBusSubscriber(modid = MaEnchants.MODID)
 public class EnchantmentParalysis extends BasicEnchantment {
@@ -31,11 +30,11 @@ public class EnchantmentParalysis extends BasicEnchantment {
 
     @Override
     public boolean checkCompatibility(Enchantment ench) {
-        return super.checkCompatibility(ench) && ench != FLOATING;
+        return super.checkCompatibility(ench) && ench != ModEnchantments.FLOATING.get();
     }
 
     @Override
     public boolean isEnabled() {
-        return ConfigValues.paralysis;
+        return ServerConfig.paralysis.get();
     }
 }

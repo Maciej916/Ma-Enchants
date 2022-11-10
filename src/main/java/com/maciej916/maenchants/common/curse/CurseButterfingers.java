@@ -1,6 +1,6 @@
 package com.maciej916.maenchants.common.curse;
 
-import com.maciej916.maenchants.common.config.ConfigValues;
+import com.maciej916.maenchants.common.config.configs.ServerConfig;
 import com.maciej916.maenchants.common.enchantment.BasicEnchantment;
 import com.maciej916.maenchants.common.util.CustomEnchantmentCategory;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -40,6 +40,6 @@ public class CurseButterfingers extends BasicEnchantment {
 
     @Override
     public boolean isEnabled() {
-        return ConfigValues.curse_butterfingers;
+        return ServerConfig.curse_butterfingers.get();
     }
 }

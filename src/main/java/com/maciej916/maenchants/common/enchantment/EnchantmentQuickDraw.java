@@ -1,6 +1,6 @@
 package com.maciej916.maenchants.common.enchantment;
 
-import com.maciej916.maenchants.common.config.ConfigValues;
+import com.maciej916.maenchants.common.config.configs.ServerConfig;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
 
@@ -25,6 +25,6 @@ public class EnchantmentQuickDraw extends BasicEnchantment {
 
     @Override
     public boolean isEnabled() {
-        return ConfigValues.quick_draw;
+        return ServerConfig.quick_draw.get();
     }
 }

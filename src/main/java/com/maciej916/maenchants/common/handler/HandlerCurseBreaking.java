@@ -1,35 +1,30 @@
 package com.maciej916.maenchants.common.handler;
 
-import net.minecraft.world.InteractionHand;
+import com.maciej916.maenchants.common.registries.ModEnchantments;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.event.world.BlockEvent;
+import net.minecraftforge.event.level.BlockEvent;
 
 import java.util.Objects;
 import java.util.Random;
-
-import static com.maciej916.maenchants.common.registries.ModEnchants.CURSE_BREAKING;
 
 public class HandlerCurseBreaking {
 
     public static void handlerBreak(BlockEvent.BreakEvent event) {
         Player player = event.getPlayer();
+        ItemStack stack = player.getItemInHand(player.getUsedItemHand());
 
-        InteractionHand hand = player.getUsedItemHand();
-        if (hand == null) return;
-
-        ItemStack stack = player.getItemInHand(hand);
-        int lvl = EnchantmentHelper.getItemEnchantmentLevel(CURSE_BREAKING, stack);
+        int lvl = stack.getEnchantmentLevel(ModEnchantments.CURSE_BREAKING.get());
         if (lvl == 0) return;
+
         Random rand = new Random();
         damageStack(player, stack, rand, lvl);
     }
 
-    public static void handlerAttack(LivingHurtEvent event) {
+    public static void handlerHurt(LivingHurtEvent event) {
         Entity source = event.getSource().getEntity();
         Entity target = event.getEntity();
 
@@ -37,41 +32,37 @@ public class HandlerCurseBreaking {
 
         Random rand = new Random();
 
-        if (source instanceof Player) {
-            Player player = (Player) source;
-
-            ItemStack stack_hand = player.getItemBySlot(EquipmentSlot.MAINHAND);
-            int lvl_hand = EnchantmentHelper.getItemEnchantmentLevel(CURSE_BREAKING, stack_hand);
-            if (lvl_hand > 0) {
-                damageStack(player, stack_hand, rand, lvl_hand);
+        if (source instanceof Player player) {
+            ItemStack stackInHand = player.getItemInHand(player.getUsedItemHand());
+            int lvlHand = stackInHand.getEnchantmentLevel(ModEnchantments.CURSE_BREAKING.get());
+            if (lvlHand > 0) {
+                damageStack(player, stackInHand, rand, lvlHand);
             }
         }
 
-        if (target instanceof Player) {
-            Player player = (Player) target;
-
-            ItemStack stack_head = player.getItemBySlot(EquipmentSlot.HEAD);
-            int lvl_head = EnchantmentHelper.getItemEnchantmentLevel(CURSE_BREAKING, stack_head);
-            if (lvl_head > 0 && rand.nextFloat() < 0.6F) {
-                damageStack(player, stack_head, rand, lvl_head);
+        if (target instanceof Player player) {
+            ItemStack stackOnHead = player.getItemBySlot(EquipmentSlot.HEAD);
+            int lvlHead = stackOnHead.getEnchantmentLevel(ModEnchantments.CURSE_BREAKING.get());
+            if (lvlHead > 0 && rand.nextFloat() < 0.6F) {
+                damageStack(player, stackOnHead, rand, lvlHead);
             }
 
-            ItemStack stack_chest = player.getItemBySlot(EquipmentSlot.CHEST);
-            int lvl_chest = EnchantmentHelper.getItemEnchantmentLevel(CURSE_BREAKING, stack_chest);
-            if (lvl_chest > 0 && rand.nextFloat() < 0.6F) {
-                damageStack(player, stack_chest, rand, lvl_chest);
+            ItemStack stackOnChest = player.getItemBySlot(EquipmentSlot.CHEST);
+            int lvlChest = stackOnChest.getEnchantmentLevel(ModEnchantments.CURSE_BREAKING.get());
+            if (lvlChest > 0 && rand.nextFloat() < 0.6F) {
+                damageStack(player, stackOnChest, rand, lvlChest);
             }
 
-            ItemStack stack_legs = player.getItemBySlot(EquipmentSlot.LEGS);
-            int lvl_legs = EnchantmentHelper.getItemEnchantmentLevel(CURSE_BREAKING, stack_legs);
-            if (lvl_legs > 0 && rand.nextFloat() < 0.6F) {
-                damageStack(player, stack_legs, rand, lvl_legs);
+            ItemStack stackOnLegs = player.getItemBySlot(EquipmentSlot.LEGS);
+            int lvlLegs = stackOnLegs.getEnchantmentLevel(ModEnchantments.CURSE_BREAKING.get());
+            if (lvlLegs > 0 && rand.nextFloat() < 0.6F) {
+                damageStack(player, stackOnLegs, rand, lvlLegs);
             }
 
-            ItemStack stack_feet = player.getItemBySlot(EquipmentSlot.FEET);
-            int lvl_feet = EnchantmentHelper.getItemEnchantmentLevel(CURSE_BREAKING, stack_feet);
-            if (lvl_feet > 0 && rand.nextFloat() < 0.6F) {
-                damageStack(player, stack_feet, rand, lvl_feet);
+            ItemStack stackOnFeet = player.getItemBySlot(EquipmentSlot.FEET);
+            int lvlFeet = stackOnFeet.getEnchantmentLevel(ModEnchantments.CURSE_BREAKING.get());
+            if (lvlFeet > 0 && rand.nextFloat() < 0.6F) {
+                damageStack(player, stackOnFeet, rand, lvlFeet);
             }
         }
     }

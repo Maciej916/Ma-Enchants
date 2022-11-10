@@ -1,10 +1,11 @@
-package com.maciej916.maenchants.client.subscribers;
+package com.maciej916.maenchants.common.client;
 
 import com.maciej916.maenchants.MaEnchants;
 import com.maciej916.maenchants.common.handler.HandlerCombo;
 import com.maciej916.maenchants.common.handler.HandlerLumberjack;
 import com.maciej916.maenchants.common.handler.HandlerMomentum;
 import com.maciej916.maenchants.common.handler.HandlerMultiJump;
+import com.maciej916.maenchants.common.proxy.ModProxy;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.InputEvent;
@@ -13,10 +14,8 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 
-import static com.maciej916.maenchants.MaEnchants.PROXY;
-
 @EventBusSubscriber(modid = MaEnchants.MODID, bus = EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
-public final class ForgeEventSubscriberClient {
+public final class ClientForgeEventSubscriber {
 
     @SubscribeEvent
     public static void onMiss(PlayerInteractEvent.LeftClickEmpty event) {
@@ -29,13 +28,14 @@ public final class ForgeEventSubscriberClient {
     }
 
     @SubscribeEvent
-    public static void onClientKeyInput(InputEvent.KeyInputEvent event) {
-        Minecraft mc = PROXY.getClient();
-        if (!mc.isWindowActive() || mc.level == null) return;
+    public static void clientKeyInput(InputEvent.Key event) {
+        Minecraft minecraft = ModProxy.PROXY.getClient();
 
-        HandlerMultiJump.handlerKeyInput(mc, event);
-        HandlerLumberjack.handlerKeyInput(mc, event);
+
+        HandlerMultiJump.handlerKeyInput(minecraft, event);
+        HandlerLumberjack.handlerKeyInput(minecraft, event);
     }
+
 
     @SubscribeEvent
     public static void onItemTooltip(ItemTooltipEvent event) {

@@ -1,30 +1,28 @@
 package com.maciej916.maenchants.common.handler;
 
+import com.maciej916.maenchants.common.registries.ModEnchantments;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.InteractionHand;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.event.world.BlockEvent;
-
-import static com.maciej916.maenchants.common.registries.ModEnchants.STONE_MENDING;
+import net.minecraftforge.event.level.BlockEvent;
 
 public class HandlerStoneMending {
+
+    private static final TagKey<Block> FORGE_STONE = BlockTags.create(new ResourceLocation("forge", "stone"));
 
     public static void handlerBreak(BlockEvent.BreakEvent event) {
         Player player = event.getPlayer();
         BlockState state = event.getState();
 
-        InteractionHand hand = player.getUsedItemHand();
-        if (hand == null) return;
+        ItemStack stack = player.getItemInHand(player.getUsedItemHand());
 
-        ItemStack stack = player.getItemInHand(hand);
-        int lvl = EnchantmentHelper.getItemEnchantmentLevel(STONE_MENDING, stack);
+        int lvl = stack.getEnchantmentLevel(ModEnchantments.STONE_MENDING.get());
         if (lvl == 0) return;
-
-        ResourceLocation stoneTagID = new ResourceLocation("forge", "stone");
-        if (!state.getBlock().getTags().contains(stoneTagID)) return;
+        if (!state.is(FORGE_STONE)) return;
 
         switch (lvl) {
             case 1: if (Math.random()> 0.30) return;

@@ -23,13 +23,16 @@ public final class CapabilitiesAttach {
     @SubscribeEvent
     public static void onAttachLevelCapabilities(AttachCapabilitiesEvent<Level> event) {
         Level level = event.getObject();
-        event.addCapability(new ResourceLocation(MaEnchants.MODID, "level"), new LevelCapability(level));
+        if (!level.isClientSide()) {
+            event.addCapability(new ResourceLocation(MaEnchants.MODID, "level"), new LevelCapability(level));
+        }
     }
 
     @SubscribeEvent
-    public static void onWorldTick(TickEvent.WorldTickEvent event) {
-        if (event.world.isClientSide()) return;
-        event.world.getCapability(ModCapabilities.LEVEL_CAPABILITY).ifPresent(ILevelCapability::tick);
+    public static void onWorldTick(TickEvent.LevelTickEvent event) {
+        if (!event.level.isClientSide()) {
+            event.level.getCapability(ModCapabilities.LEVEL_CAPABILITY).ifPresent(ILevelCapability::tick);
+        }
     }
 
     @SubscribeEvent
@@ -43,7 +46,7 @@ public final class CapabilitiesAttach {
     public static void onPlayerClone(PlayerEvent.Clone event) {
         if (event.getOriginal().getCapability(ModCapabilities.PLAYER_CAPABILITY, null).isPresent()) {
             IPlayerCapability origEnchantsCap = PlayerUtil.getEnchantsCapability(event.getOriginal());
-            IPlayerCapability enchantsCap = PlayerUtil.getEnchantsCapability(event.getPlayer());
+            IPlayerCapability enchantsCap = PlayerUtil.getEnchantsCapability(event.getEntity());
             enchantsCap.clone(origEnchantsCap);
         }
     }

@@ -1,6 +1,6 @@
 package com.maciej916.maenchants.common.enchantment;
 
-import com.maciej916.maenchants.common.config.ConfigValues;
+import com.maciej916.maenchants.common.config.configs.ServerConfig;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
@@ -50,6 +50,6 @@ public class EnchantmentCombo extends BasicEnchantment {
 
     @Override
     public boolean isEnabled() {
-        return ConfigValues.combo;
+        return ServerConfig.combo.get();
     }
 }

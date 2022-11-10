@@ -1,15 +1,14 @@
 package com.maciej916.maenchants.common.proxy;
 
-import com.maciej916.maenchants.client.Keys;
 import net.minecraft.client.Minecraft;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
+import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.player.LocalPlayer;
 
 public class ClientProxy implements IProxy {
 
     @Override
     public void init() {
-        Keys.registerKeys();
+
     }
 
     @Override
@@ -18,12 +17,12 @@ public class ClientProxy implements IProxy {
     }
 
     @Override
-    public Level getClientWorld() {
-        return Minecraft.getInstance().player.getCommandSenderWorld();
+    public ClientLevel getClientLevel() {
+        return Minecraft.getInstance().level;
     }
 
     @Override
-    public Player getClientPlayer() {
+    public LocalPlayer getLocalPlayer() {
         return Minecraft.getInstance().player;
     }
 

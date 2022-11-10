@@ -1,6 +1,6 @@
 package com.maciej916.maenchants.common.enchantment;
 
-import com.maciej916.maenchants.common.config.ConfigValues;
+import com.maciej916.maenchants.common.config.configs.ServerConfig;
 import com.maciej916.maenchants.common.util.CustomEnchantmentCategory;
 import net.minecraft.world.entity.EquipmentSlot;
 
@@ -19,6 +19,6 @@ public class EnchantmentReinforcedTip extends BasicEnchantment {
 
     @Override
     public boolean isEnabled() {
-        return ConfigValues.reinforced_tip;
+        return ServerConfig.reinforced_tip.get();
     }
 }

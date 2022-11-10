@@ -1,29 +1,29 @@
 package com.maciej916.maenchants.common.handler;
 
-import net.minecraft.world.InteractionHand;
+import com.maciej916.maenchants.common.registries.ModEnchantments;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 
-import static com.maciej916.maenchants.common.registries.ModEnchants.REINFORCED_TIP;
-
 public class HandlerReinforcedTip {
 
+    private static final TagKey<Block> FORGE_OBSIDIAN = BlockTags.create(new ResourceLocation("forge", "obsidian"));
+
     public static void handlerSpeed(PlayerEvent.BreakSpeed event) {
-        Player player = event.getPlayer();
+        Player player = event.getEntity();
         BlockState state = event.getState();
 
-        InteractionHand hand = player.getUsedItemHand();
-        if (hand == null) return;
+        ItemStack stack = player.getItemInHand(player.getUsedItemHand());
 
-        ItemStack stack = player.getItemInHand(hand);
-        int lvl = EnchantmentHelper.getItemEnchantmentLevel(REINFORCED_TIP, stack);
+        int lvl = stack.getEnchantmentLevel(ModEnchantments.REINFORCED_TIP.get());
         if (lvl == 0) return;
 
-        if (state.getBlock() != Blocks.OBSIDIAN) return;
+        if (!state.is(FORGE_OBSIDIAN)) return;
 
         float oldSpeed = event.getOriginalSpeed();
         event.setNewSpeed(oldSpeed * lvl + 1);
