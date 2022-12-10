@@ -7,17 +7,17 @@ import net.minecraft.world.item.Items;
 
 public final class ModItemGroups {
 
-	public static final CreativeModeTab MOD_ITEM_GROUP = new ModCreativeTab(MaEnchants.MODID);
-
-	public static final class ModCreativeTab extends CreativeModeTab {
-
-		public ModCreativeTab(String label) {
-			super(label);
-		}
-
-		@Override
-		public ItemStack makeIcon() {
-			return new ItemStack(Items.ENCHANTED_BOOK);
-		}
-	}
+//	public static final CreativeModeTab MOD_ITEM_GROUP = new ModCreativeTab(MaEnchants.MODID);
+//
+//	public static final class ModCreativeTab extends CreativeModeTab {
+//
+//		public ModCreativeTab(String label) {
+//			super(label);
+//		}
+//
+//		@Override
+//		public ItemStack makeIcon() {
+//			return new ItemStack(Items.ENCHANTED_BOOK);
+//		}
+//	}
 }

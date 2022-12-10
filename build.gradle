@@ -24,8 +24,8 @@ minecraft {
     //
     // Use non-default mappings at your own risk. They may not always work.
     // Simply re-run your setup task after changing the mappings to update your workspace.
-//    mappings channel: 'official', version: '1.18.2'
-    mappings channel: 'parchment', version: '2022.10.16-1.19.2'
+    mappings channel: 'official', version: '1.19.3'
+//    mappings channel: 'parchment', version: '2022.10.16-1.19.2'
 
     // accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 
@@ -146,12 +146,12 @@ dependencies {
     minecraft "net.minecraftforge:forge:${forgeVersion}"
 
     // compile against the JEI API but do not include it at runtime
-    compileOnly(fg.deobf("mezz.jei:jei-${minecraftRelease}-common-api:${jeiVersion}"))
-    compileOnly(fg.deobf("mezz.jei:jei-${minecraftRelease}-forge-api:${jeiVersion}"))
+//    compileOnly(fg.deobf("mezz.jei:jei-${minecraftRelease}-common-api:${jeiVersion}"))
+//    compileOnly(fg.deobf("mezz.jei:jei-${minecraftRelease}-forge-api:${jeiVersion}"))
     // at runtime, use the full JEI jar for Forge
-    runtimeOnly(fg.deobf("mezz.jei:jei-${minecraftRelease}-forge:${jeiVersion}"))
+//    runtimeOnly(fg.deobf("mezz.jei:jei-${minecraftRelease}-forge:${jeiVersion}"))
 
-    implementation fg.deobf("curse.maven:the-one-probe-245211:3965693")
+//    implementation fg.deobf("curse.maven:the-one-probe-245211:3965693")
 
 
 

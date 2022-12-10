@@ -28,7 +28,7 @@ public class HandlerNightVision {
         } else {
             if (!enchantsCap.getNightVision()) {
                 MobEffectInstance effect = new MobEffectInstance(MobEffects.NIGHT_VISION, 1000000, 100, false, false);
-                effect.setNoCounter(true);
+//                effect.setNoCounter(true);
                 player.addEffect(effect);
                 enchantsCap.setNightVision(true);
             }
