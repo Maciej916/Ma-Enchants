@@ -1,0 +1,81 @@
+{
+  "itemGroup.maenchants": "Ma Enchants",
+  "block.maenchants.melted_cobblestone": "Adoquín derretido",
+  "key.maenchants.excavate": "Extracción",
+
+  "death.attack.aquaphobia": "%s tiene miedo al agua",
+  "death.attack.death": "%s no puede manejar el poder de este artículo",
+
+  "enchantment.maenchants.curse_breaking": "Maldición de ruptura",
+  "enchantment.maenchants.curse_butterfingers": "Maldición de los dedos de mantequilla",
+  "enchantment.maenchants.curse_aquaphobia": "Maldición de fobia al agua",
+  "enchantment.maenchants.curse_death": "Maldición de la muerte",
+
+  "enchantment.maenchants.reinforced_tip": "Punta reforzada",
+  "enchantment.maenchants.stone_mending": "Reparación de piedra",
+  "enchantment.maenchants.lumberjack": "Leñador",
+  "enchantment.maenchants.momentum": "Impulso",
+  "enchantment.maenchants.butchering": "Carnicería",
+
+  "enchantment.maenchants.true_shot": "Tiro verdadero",
+  "enchantment.maenchants.quick_draw": "Dibujo veloz",
+  "enchantment.maenchants.floating": "Flotante",
+  "enchantment.maenchants.paralysis": "Parálisis",
+  "enchantment.maenchants.detonation": "Detonación",
+
+  "enchantment.maenchants.combo": "Combo",
+  "enchantment.maenchants.faster_attack": "Ataque rápido",
+  "enchantment.maenchants.lifesteal": "Roba vidas",
+  "enchantment.maenchants.ice_aspect": "Aspecto helado",
+  "enchantment.maenchants.wisdom": "Sabiduría",
+
+  "enchantment.maenchants.blazing_walker": "Caminante llameante",
+  "enchantment.maenchants.step_assist": "Ayuda oportuna",
+  "enchantment.maenchants.night_vision": "Vision nocturna",
+  "enchantment.maenchants.multi_jump": "Salto múltiple",
+  "enchantment.maenchants.soft_fall": "Caída suave",
+
+  "enchantment.maenchants.timeless": "Eterno",
+
+  "enchantment.maenchants.momentum.speed": "§aVelocidad de impulso: §a§l%s",
+  "enchantment.maenchants.momentum.speed_max": "§cVelocidad de impulso: §c§l%s",
+  "enchantment.maenchants.momentum.block": "§aBloque de impulso: §a§l%s",
+  "enchantment.maenchants.combo.lvl": "§aCombo: §a§l%s",
+  "enchantment.maenchants.combo.lvl_max": "§aCombo: §a§l%s",
+
+
+
+
+
+  "_comment": "Descripciones",
+  "enchantment.maenchants.curse_breaking.desc": "Tu herramienta se rompe más rápido.",
+  "enchantment.maenchants.curse_butterfingers.desc": "Posibilidad de soltar tu objeto al minar o atacar una mafia.",
+  "enchantment.maenchants.curse_aquaphobia.desc": "Daña al jugador cuando nada en el agua.",
+  "enchantment.maenchants.curse_death.desc": "Inflige una gran cantidad de daño cuando está equipado o sostenido en la mano.",
+
+
+  "enchantment.maenchants.reinforced_tip.desc": "Aumenta la velocidad de extracción de obsidiana.",
+  "enchantment.maenchants.stone_mending.desc": "Posibilidad de restaurar la durabilidad al extraer piedra.",
+  "enchantment.maenchants.lumberjack.desc": "Cortar los árboles a la vez.",
+  "enchantment.maenchants.momentum.desc": "La velocidad de minería aumenta por cada bloque consecutivo del mismo.",
+  "enchantment.maenchants.butchering.desc": "Inflige daño extra a los animales",
+
+  "enchantment.maenchants.true_shot.desc": "Las flechas disparadas por este arco no se verán afectadas por la gravedad.",
+  "enchantment.maenchants.quick_draw.desc": "Dibuja el arco más rápido.",
+  "enchantment.maenchants.floating.desc": "Cualquier turba golpeada con este encantamiento se verá afectada por el efecto flotante.",
+  "enchantment.maenchants.paralysis.desc": "Cualquier mafia golpeada con esto se verá incapaz de moverse, saltar o atacar.",
+
+  "enchantment.maenchants.combo.desc": "Mayor daño con cada golpe exitoso, se restablece si golpea el aire o se bloquea.",
+  "enchantment.maenchants.faster_attack.desc": "Aumenta la velocidad de ataque.",
+  "enchantment.maenchants.lifesteal.desc": "Parte del daño infligido restaura tu salud.",
+  "enchantment.maenchants.ice_aspect.desc": "Disminuye la velocidad de los enemigos.",
+  "enchantment.maenchants.wisdom.desc": "Te da más experiencia al matar mobs",
+
+  "enchantment.maenchants.blazing_walker.desc": "Temporalmente convierte la lava en un adoquín derretido.",
+  "enchantment.maenchants.step_assist.desc": "Le permite caminar sobre un bloque de altura sin saltar.",
+  "enchantment.maenchants.night_vision.desc": "Te da un efecto de poción de visión nocturna cuando lo usas.",
+  "enchantment.maenchants.multi_jump.desc": "Te permite hacer más saltos en el aire.",
+  "enchantment.maenchants.soft_fall.desc": "Elimina el daño por caída, la desventaja es que da agotamiento.",
+
+  "enchantment.maenchants.timeless.desc": "El objeto con este encantamiento no desaparece con el tiempo cuando se deja caer al suelo."
+}
